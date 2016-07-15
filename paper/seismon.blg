@@ -1,0 +1,47 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: seismon.aux
+The style file: unsrt.bst
+Database file #1: seismonNotes.bib
+Database file #2: references.bib
+You've used 19 entries,
+            1791 wiz_defined-function locations,
+            587 strings with 7169 characters,
+and the built_in function-call counts, 4587 in all, are:
+= -- 374
+> -- 253
+< -- 1
++ -- 94
+- -- 75
+* -- 371
+:= -- 786
+add.period$ -- 58
+call.type$ -- 19
+change.case$ -- 19
+chr.to.int$ -- 0
+cite$ -- 19
+duplicate$ -- 179
+empty$ -- 421
+format.name$ -- 75
+if$ -- 973
+int.to.chr$ -- 0
+int.to.str$ -- 19
+missing$ -- 19
+newline$ -- 98
+num.names$ -- 21
+pop$ -- 22
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 69
+stack$ -- 0
+substring$ -- 317
+swap$ -- 26
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 43
+width$ -- 21
+write$ -- 213
