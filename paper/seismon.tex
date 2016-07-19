@@ -62,6 +62,9 @@
 \author{Michelle Guy}
 \affiliation{United States Geological Survey, Golden, CO 80401, USA}
 
+\author{Matthew Perry}
+\affiliation{United States Geological Survey, Golden, CO 80401, USA}
+
 \author{Jan Harms}
 \affiliation{INFN, Sezione di Firenze, Sesto Fiorentino, 50019, Italy}
 
@@ -261,14 +264,16 @@ The third is when this earthquake is expected to arrive at the site.
 
 \subsection{Notification latency}
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \hspace*{-0.5cm}
- \includegraphics[width=3.5in]{delaysCDF.pdf}
- \caption{The time delay between the earthquake notification from the PDL client and approximate arrival of surface waves at the LIGO Hanford site for global earthquakes. A majority of the locations allow for more than a minute of time between notification and site arrival.}
+ \includegraphics[width=3.5in]{earthquake_notice.pdf}
+ \includegraphics[width=3.5in]{lockloss_notice.pdf}
+ \caption{On the left is the time delay between the earthquake and generation of the PDL client notification. On the right is the time delay between the earthquake notification from the PDL client and approximate arrival of surface waves at the LIGO Hanford site for global earthquakes. A majority of the locations allow for more than a minute of time between notification and site arrival.}
  \label{fig:delays}
-\end{figure}
+\end{figure*}
 
-In figure~\ref{fig:delays}, we show the cumulative probability distribution of time delays between the earthquake and approximate arrival of surface waves, assuming surface wave velocities of 3.5\,km/s. 
+On the left of figure~\ref{fig:delays}, we show the time delay between the earthquake and generation of the PDL client notification. In general, notices are generated within 5 minutes of the earthquake. On the right of figure~\ref{fig:delays},
+the cumulative probability distribution of time delays between the earthquake and approximate arrival of surface waves, assuming surface wave velocities of 3.5\,km/s. 
 In general, there is more than 10 minutes available between notification and surface wave arrivals.
 
 \subsection{The effect of large ground velocity on gravitational-wave detectors}
