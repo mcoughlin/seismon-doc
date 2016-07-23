@@ -270,7 +270,7 @@ the cumulative probability distribution of time delays between the earthquake an
 In general, there is more than 10 minutes available between notification and surface wave arrivals.
 This is more than sufficient time for gravitational-wave detectors to respond by changing control configurations.
 
-\subsection{Prediction Performance}
+\subsection{Ground Velocity Prediction Performance}
 
 \begin{figure}[t]
 \hspace*{-0.5cm}
@@ -298,7 +298,7 @@ In Fig.\ref{fig:initialvsfinal}, we show the difference of arrival times and pre
 In addition, we show the difference between the initial and final estimates of the earthquake time. About 90\% of early estimates are within 3\,s of the final time, which is much smaller than the latency from the generation of the notice itself.
 For these reasons, the use of the early notices is not a major source of systematic error for \seismon.
 
-\subsection{The effect of large ground velocity on gravitational-wave detectors}
+\subsection{Gravitational-wave detector lockloss prediction performance}
 
 \begin{figure*}[t]
 \hspace*{-0.5cm}
@@ -313,7 +313,6 @@ We now measure the amplitude of the seismic ground motion that causes the detect
 We also determine the times that the gravitational-wave detectors fell out of lock during these times. 
 We then compare these two figures of merit. 
 Fig.~\ref{fig:lockloss} shows these times, both for those times when lock losses occurred (red), when they did not (green), and when the detector was not locked (blue). 
-It is of significant interest to determine at what ground velocities the detector loses lock.
 Fig.~\ref{fig:locklossCDF} shows the cumulative density function of lock loss as a function of peak ground velocity.
 Lock loss typically occurs during times of ground velocities greater than about 5\,$\mu$m/s.
 
@@ -323,6 +322,31 @@ Lock loss typically occurs during times of ground velocities greater than about 
  \caption{Cumulative density function of lock loss as a function of peak ground velocity.}
  \label{fig:locklossCDF}
 \end{figure}
+
+It is of significant interest to determine the earthquake parameters (and the ground velocities they create) that cause the detectors to lose lock.
+Given that \seismon is an early warning system, the only parameters available for use are those returned by USGS in low latency, which are magnitude, depth and location (and thus distance). 
+In addition, we can use the predicted ground velocity derived from these parameters.
+The goal is to predict the outcome of the interferometer lock status based on these parameters.
+
+In the following, we will use a Machine Learning Algorithm (MLA) to develop a lockloss prediction model. MLAs, which are useful for classifying and predicting outcomes for various data analysis problems, have been used in the past with great success in gravitational-wave data analysis \cite{BiBl2013,KyHa2015}. In this particular case, lock status, which is a binary output where the interferometer can only be locked or not locked, we can use a method called logistic regression to weight the importance of parameters in this problem. As lockloss is the only output parameter, this is a single-class classification problem.
+
+In this particular analysis, we seek to determine the matrix $\theta$ such that \begin{equation}
+h_{\theta} = \theta x
+\end{equation}
+where $h$ is the lockloss parameter (1 for lockloss, 0 for locked) and x is an array of numerical values corresponding to the input parameters (magnitude, depth, distance, predicted ground velocity). We use a hypothesis function $h= \frac{1}{(1+{\theta^{T}*x})}$ to minimize the difference between the observed and predicted lockloss values. This optimization results in a $theta$ array, giving weight to each parameter.
+	
+To classify the performance of the function, we use plots of real outcomes vs. false alarm probability (FAP). The idea is that by setting the false alarm rate to a certain threshold, we can find a optimum point of efficiency for predicting the outcome.
+In the analysis that follows, we use $\frac{2}{3}$ of the earthquakes for training and  $\frac{1}{3}$ of the earthquakes for the testing set. The $theta$ array computed from the training set is applied in the hypothesis function $h_{\theta}$ for each earthquake in the testing set to determine the predicted outcome of lockstatus. The predicted value for lockloss is determined by rounding the predicted value, which is between 0 and 1, up or down to 1 and 0 respectively.
+
+Figure~\ref{fig:MLA} shows the efficiency curves using both earthquake parameter derived parameters only as well as one which includes observed ground velocity at the sites. Overall, the model predicts every one in two lockstatus outcomes correctly.	
+	
+\begin{figure}[h]
+ \includegraphics[width=3.5in]{LHO_mat_Z_all_efficiency_curves.pdf}
+ \centering
+ \caption{Efficiency curves using both earthquake parameter derived parameters only as well as one which includes observed ground velocity at the sites.}
+ \label{fig:MLA}
+\end{figure}
+	
 
 \section{Conclusion}
 \label{sec:conclusions}
