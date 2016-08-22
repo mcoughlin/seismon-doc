@@ -247,6 +247,7 @@ We provide an epics variable that contains the following information.
 The first is the amplitude prediction for any earthquake expected to be present.
 The second is the probability of lockloss, which is discussed in the next section.
 The third is when this earthquake is expected to arrive at the site.
+		
 
 \section{Performance}
 \label{sec:performance}
@@ -328,9 +329,10 @@ Given that \seismon is an early warning system, the only parameters available fo
 In addition, we can use the predicted ground velocity derived from these parameters.
 The goal is to predict the outcome of the interferometer lock status based on these parameters.
 
-In the following, we will use a Machine Learning Algorithm (MLA) to develop a lockloss prediction model. MLAs, which are useful for classifying and predicting outcomes for various data analysis problems, have been used in the past with great success in gravitational-wave data analysis \cite{BiBl2013,KyHa2015}. In this particular case, lock status, which is a binary output where the interferometer can only be locked or not locked, we can use a method called logistic regression to weight the importance of parameters in this problem. As lockloss is the only output parameter, this is a single-class classification problem.
+In the following, we will use a Machine Learning Algorithm (MLA) to develop a lockloss prediction model. MLAs, which are useful for classifying and predicting outcomes for various data analysis problems, have been used in the past with great success in gravitational-wave data analysis \cite{BiBl2013,KyHa2015}. We first compare the performance of different machine learning algorithms aimed at modelling lockloss prediction from the given input parameters.  All three classifiers : Logistic Regression\cite{mccullagh_glm}, Naive Bayes\cite{John_NaiveBayes}, Support Vector Machine\cite{Burges_SVM} yield comparable performance with logistic regression giving the best result as is evident from the  receiver operator characteristic (ROC) curve shown in Figure~\ref{fig:MLA_comparison}. Classifier with maximal the area under curve is usually chosen over  the others. True positive rate (TPR) is the ratio of sum of predicted positive condition actually being true to the sum of all actually positive conditions. Similarly false positive rate (FPR) is the ratio of sum of predicted positive condition being false to the sum of all actually negative conditions. Positive condition here refers to a lockloss prediction by the classifier which in general can be true or false. Classifier prediction about the detector being in lock  forms the negative condition. Threshold value on classifier output (usually a scaled number between 0 and 1 with value close to unity indicative of lockloss) is varied to generate the ROC curve. Seismon makes lockless predictions using the threshold value obtained from optimal operating point of the ROC curve. 	
 
-In this particular analysis, we seek to determine the array $\theta$ such that \begin{equation}
+
+We briefly describe how logistic regression can be used to weigh the input parameters to predict the lock status. As lockloss is the only output parameter, this is a single-class classification problem. In this particular analysis, we seek to determine the array $\theta$ such that \begin{equation}
 h_{\theta} = \theta x
 \label{eq:MLA}
 \end{equation}
@@ -351,6 +353,16 @@ LLO & -15.3 & 2.2 & $5.6 \times 10^{-8}$ & $-1.2 \times 10^{-3}$ & $4.2 \times 1
 \caption{Best fit parameters to the $\theta$ coefficients from equation~\ref{eq:MLA}.}
 \end{table}
 	
+	
+\begin{figure*}[t]
+\hspace*{-0.5cm}
+ \includegraphics[width=3.5in, trim = 0 4.5cm 0 4.5cm, clip=true]{lho_lockloss_ROC.pdf}
+  \includegraphics[width=3.5in, trim = 0 4.5cm 0 4.5cm, clip=true]{llo_lockloss_ROC.pdf}
+ \caption{Performance comparison of different machine learning classifiers}
+ \label{fig:MLA_comparison}
+\end{figure*}
+
+			
 To classify the performance of the function, we use plots of real outcomes vs. false alarm probability (FAP). The idea is that by setting the false alarm rate to a certain threshold, we can find a optimum point of efficiency for predicting the outcome.
 In the analysis that follows, we use $\frac{2}{3}$ of the earthquakes for training and  $\frac{1}{3}$ of the earthquakes for the testing set. The $theta$ array computed from the training set is applied in the hypothesis function $h_{\theta}$ for each earthquake in the testing set to determine the predicted outcome of lockstatus. The predicted value for lockloss is determined by rounding the predicted value, which is between 0 and 1, up or down to 1 and 0 respectively.
 
@@ -367,6 +379,8 @@ For example, if we adopt a false alarm probability threshold of 0.5, between 90-
  \label{fig:MLA}
 \end{figure}
 	
+	
+
 
 \section{Conclusion}
 \label{sec:conclusions}
@@ -382,7 +396,7 @@ In the future, this algorithm will be applied to the next science run. It will r
 \section{Acknowledgments}
 MC was supported by the National Science Foundation Graduate Research Fellowship
 Program, under NSF grant number DGE 1144152. 
-NM acknowledges Council for Science and Industrial Research (CSIR), India for providing financial support as Senior Reseach Fellow.  
+NM acknowledges Council for Scientific and Industrial Research (CSIR), India for providing financial support as Senior Research Fellow.  
 LIGO was constructed by the California Institute of Technology and Massachusetts Institute of Technology with funding from the National Science Foundation and operates under cooperative agreement PHY-0757058.
 This paper has been assigned LIGO document number LIGO-??????????.
 
