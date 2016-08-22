@@ -87,7 +87,7 @@ Second-generation ground-based gravitational wave interferometers such as the La
 
 Earthquakes are a significant issue for gravitational-wave detectors. In previous work \cite{CoSt2015}, we described how large-scale astronomical experiments, such as meter class telescopes and gravitational-wave interferometers, are susceptible to earthquakes. In the case of telescopes, the predominant concern was the potential for nearby, devastating earthquakes which will damage either the surrounding structure or the mirrors that make up the telescope. We argued that a regional early earthquake warning (EEW) \cite{Al2012,KuAl2013a,KuAl2013b,KuHe2014,CoLa2009a,CoLa2009b,BoAl2014,HoKa2008} system was important to minimize potential damage to telescopes. 
 Gravitational-wave detectors, on the other hand, are susceptible to teleseismic events from around the world \cite{MaFa2012}. 
-The Laser Interferometer Gravitational-wave Observatory (LIGO) \cite{aligo}, Virgo \cite{avirgo}, and GEO600 \cite{Gr2010} detectors are part of a network of gravitational-wave interferometers that have made the first direct observations of gravitational waves \cite{AbEA2016a,AbEA2016e}. These detectors can be destabilized by significant ground motion, despite seismic isolation systems designed to minimize such effects \cite{AbAd2002,StAb2009}.
+The Laser Interferometer Gravitational-wave Observatory (LIGO) \cite{aligo}, Virgo \cite{avirgo}, and GEO600 \cite{Gr2010} detectors are part of a network of gravitational-wave interferometers that have made the first direct observations of gravitational waves \cite{AbEA2016a,AbEA2016e}. These detectors can be destabilized by significant ground motion, despite seismic isolation systems designed to minimize such effects \cite{AbAd2002,StAb2009,MaLa2015}.
 
 During the last LIGO science run, large amplitude earthquakes from around the world would typically cause the detectors to fall out of lock \cite{CoSt2015}. Not only were the data around the time of the earthquake not useful for gravitational-wave detection, but it would also take hours of dead time for the detectors to return to the locked state. 
 We showed that there are potential gains to be made with an early warning system assuming that the incurred downtime could be reduced with sufficient advance notice of the earthquakes' arrivals.
@@ -162,7 +162,8 @@ This is a cross-platform Java based code that runs constantly on a dedicated mac
 
 \begin{figure}[t]
 \hspace*{-0.5cm}
-\includegraphics[width=3.5in]{timeseries.pdf}
+\centering
+\includegraphics[width=4in]{timeseries.pdf}
 \caption{Time-series of ground motion data from recent earthquake. The plot on the left is the ground motion from a seismometer at the LIGO Hanford site located in Washington, USA for the Nov 17, 2015 6.5 magnitude earthquake in Greece. The P, S, and surface waves all have distinctive arrivals in this case. The surface waves are shown to last tens of minutes.}
  \label{fig:timeseries}
  \end{figure}
@@ -175,7 +176,7 @@ The first is the time of seismic wave arrivals at the gravitational-wave detecto
 The second is the ground motion at the gravitational-wave detectors.
 Accurate prediction of the ground velocity amplitude based on earthquake magnitude and distance will be required to limit the false alarms. 
 This equation should account for physical effects with variable parameters used to fit to the seismic data currently available.
-P- and S-wave arrivals can be accurately determined given latitude, longitude, and depth information by calculating travel times using the iaspei-tau package wrapped by Obspy. We can approximate surface waves as having a constant 3.5\,km/s speed values. 
+P- and S-wave arrivals can be accurately determined given latitude, longitude, and depth information by calculating travel times using the iaspei-tau package \cite{Snoke2009} wrapped by Obspy. We can approximate surface waves as having a constant 3.5\,km/s speed values. 
 
 The second step is to make amplitude predictions for each site. 
 We estimate the peak amplitude of the surface waves, $Rf_{amp}$, at the sites using equation~\ref{eq:Rfamp}, which we describe below. This was developed as a fit to historical earthquakes at the gravitational-wave detectors.
@@ -304,7 +305,7 @@ For these reasons, the use of the early notices is not a major source of systema
 \hspace*{-0.5cm}
  \includegraphics[width=3.5in]{lockloss_vel_distance_LHO.pdf}
   \includegraphics[width=3.5in]{lockloss_vel_distance_LLO.pdf}
- \caption{Lock loss as a function of predicted peak velocity vs. earthquake distance for the gravitational-wave detectors.}
+ \caption{Lock loss as a function of predicted peak velocity vs. earthquake distance for the gravitational-wave detectors. Blue circles correspond to times when the detector was not locked, red when the detector lost lock, and green when the detector stayed locked.}
  \label{fig:lockloss}
 \end{figure*}
 
@@ -336,7 +337,7 @@ We briefly describe how logistic regression can be used to weigh the input param
 h_{\theta} = \theta x
 \label{eq:MLA}
 \end{equation}
-where $h$ is the lockloss parameter (1 for lockloss, 0 for locked) and $x$ is an array of numerical values corresponding to the input parameters (magnitude, depth, distance, predicted ground velocity). We use a hypothesis function $h= \frac{1}{(1+{\theta^{T}*x})}$ to minimize the difference between the observed and predicted lockloss values. This optimization results in a $theta$ array, giving a weight to each parameter in $x$.
+where $h$ is the lockloss parameter (1 for lockloss, 0 for locked) and $x$ is an array of numerical values corresponding to the input parameters (magnitude, depth, distance, predicted ground velocity). We use a hypothesis function $h=1/(1+E^{-\theta^{T}*x})$ to minimize the difference between the observed and predicted lockloss values. This optimization results in a $theta$ array, giving a weight to each parameter in $x$.
 These are shown for the gravitational-wave detectors in this study in Table~\ref{table:MLAfit}. 
 
 \begin{table}[]
