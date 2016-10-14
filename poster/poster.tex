@@ -170,13 +170,12 @@ An important quality for an earthquake monitor is the accuracy of the ground-mot
 
  \includegraphics[width=0.49\linewidth]{plots/earthquake_notice.pdf}
  \includegraphics[width=0.49\linewidth]{plots/lockloss_notice.pdf}
- On the left, we show the time delay between the earthquake and generation of the PDL client notification. In general, notices are generated within 5 minutes of the earthquake. On the right,
+ On the left is the time delay between the earthquake and PDL client notification. On the right,
 the cumulative probability distribution of time delays between the earthquake and approximate arrival of surface waves, assuming surface wave velocities of 3.5\,km/s. \\
 
 
-One of the most important qualities of an earthquake monitor is the notification latency, or the amount of warning time a detector has to respond to incoming seismic waves.
-In general, there is more than 10 minutes available between notification and surface wave arrivals.
-This is more than sufficient time for gravitational-wave detectors to respond by changing control configurations.
+%One of the most important qualities of an earthquake monitor is the notification latency, or the amount of warning time a detector has to respond to incoming seismic waves.
+%This is more than sufficient time for gravitational-wave detectors to respond by changing control configurations.
 
 }
 
@@ -187,21 +186,23 @@ This is more than sufficient time for gravitational-wave detectors to respond by
 
 We use the earliest available notices for making time-of-arrival and amplitude predictions.
 Because the earliest notices may only rely on a few seismometers, as well as the fact that large earthquakes do not fault all at once, the estimates for both magnitude, depth, location, and time can be off.
-On the left is the difference of predicted peak amplitudes seen at the interferometers (LHO and LLO) using the initial and final estimates. About 90\% of events are within a factor of 2 of the final predicted value. On the right is the difference between the initial and final estimates of the earthquake time. About 90\% of early estimates are within 4\,s of the final time.
+On the left is the difference of predicted peak amplitudes seen at the interferometers using the initial and final estimates. About 90\% of events are within a factor of 2 of the final predicted value. On the right is the difference between the initial and final estimates of the earthquake time. About 90\% of early estimates are within 4\,s of the final time.
 }
 
-\headerbox{Lockloss prediction performance}
-{name=lockloss,span=1,column=2,below=early,above=bottom}{
+\headerbox{Detector Lockloss}{name=lockloss,span=1,column=2,below=early}{
 
  \includegraphics[width=0.49\linewidth]{plots/lockloss_vel_distance_LHO.pdf}
   \includegraphics[width=0.49\linewidth]{plots/lockloss_vel_distance_LLO.pdf}
 We now measure the amplitude of the seismic ground motion that causes the detector to lose lock.
 We show these times, both for those times when lock losses occurred (red), when they did not (green), and when the detector was not locked (blue). 
 In general, the plot shows that while in general ground velocities greater than about 5\,$\mu$m/s lead to lock loss, the situation is complicated at lower ground velocities. \\
+}
+
+\headerbox{Lockloss prediction performance}{name=ML,span=1,column=2,below=lockloss,above=bottom}{
 
  \includegraphics[width=0.99\linewidth]{plots/lockloss_fap_errorbars.pdf}
 We use a Machine Learning Algorithm to develop a lockloss prediction model. 
-Above, we show the efficiency curves using the earthquake parameter derived parameters. 
+Above, we show the efficiency curves using the earthquake parameters from the PDL client.
 The curves which include the observed ground velocity at the sites are similar. 
 In general, there is a tradeoff between false alarm probability and efficiency standard probability.
 For example, if we adopt a false alarm probability threshold of 0.5, between 90-100\% of earthquakes can be caught.
