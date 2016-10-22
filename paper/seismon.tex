@@ -92,7 +92,7 @@ During the last LIGO science run, large amplitude earthquakes from around the wo
 We showed that there are potential gains to be made with an early warning system assuming that the incurred downtime could be reduced with sufficient advance notice of the earthquakes' arrivals.
 Detailed studies of earthquake response during S5 and S6 showed that there is about one teleseismic event each week producing ground motion at the sites too strong for the control system to be able to maintain lock. In most cases, it was then impossible to lock the interferometer for some hours. A scheme that would suppress disturbances of earthquakes early in the isolation system with the final goal to maintain lock during strong ground motion, even at the price of increased instrumental noise, could potentially lead to substantial increase of the duty cycle. This will likely be of greater importance even in high-power configurations of the advanced detectors, where thermalization of test masses during the locking procedure could potentially increase the time it takes to reach maximal sensitivity.
 
-For this reason, we have created an earthquake early warning client using a real-time event messaging system of the US Geological Survey. The messages contain information about the fault rupture such as location, depth, magnitude. They are received and processed in real time to estimate arrival times of the various seismic phases, and seismic amplitudes of the Rayleigh phase at the detector sites. In addition, it is important to investigate how the client can be implemented. Finally, further effort needs to be spent on investigating the effect of strong ground motion on the aLIGO control system, and to develop methods for adapting the controls as a means of ``riding out the earthquake''. \rednote{The last one or two sentences should go to the Conclusions if I understand correctly.}
+For this reason, we have created an earthquake early warning client using a real-time event messaging system of the US Geological Survey. The messages contain information about the fault rupture such as location, depth, magnitude. They are received and processed in real time to estimate arrival times of the various seismic phases, and seismic amplitudes of the Rayleigh phase at the detector sites.
 
 In this paper, we will describe Seismon, a code developed to mitigate the effects of teleseismic events on ground-based gravitational-wave detectors. It uses event notices received from USGS and makes time of arrival, and amplitude predictions for earthquake seismic phases at sites of current detectors. Using a combination of earthquake magnitude, distance, and depth information, a prediction of the likelihood of the earthquake causing data disruption at the sites is made.
 %In section~\ref{sec:algorithm}, we describe the algorithm.
@@ -125,7 +125,7 @@ Figure~\ref{fig:flowchart} shows the flowchart for the \emph{Seismon} pipeline, 
     \node [block, below of=Parse] (Traveltimes) {Calculate travel times};
     \node [block, below of=Traveltimes] (XML) {Produce XML files};
     \node [block, below of=PDL, node distance=9cm] (Plot) {Summary / Plot};
-    \node [block, below of=GeoJSON, node distance=9cm] (Epics) {Epics Channel};
+    \node [block, below of=GeoJSON, node distance=9cm] (Epics) {Site Notification};
     % Draw edges
     \path [line] (PDL) -- (Parse);
     \path [line] (GeoJSON) -- (Parse);
@@ -152,7 +152,7 @@ Figure~\ref{fig:flowchart} shows the flowchart for the \emph{Seismon} pipeline, 
 
 For distant epicenters, achievable warning times are mostly determined by the comparison of P-wave travel times relative to secondary or S-waves and surface waves. P-waves travel at about twice the speed of S-waves, and surface waves are delayed further since they are bound to travel along the surface. Surface and S-phases generally have a stronger effect on gravitational-wave detectors due to their higher amplitudes. Furthermore, P-waves produce predominantly vertical motion at the detector sites, S-waves predominantly horizontal motion, while surface Rayleigh waves cause vertical and horizontal ground motion with similar amplitudes. It is likely that these polarization-dependent effects also influence the impact of a seismic phase on the detector.
 
-The United States Geological Survey (USGS) provides a number of channels for information about earthquakes, on different time-scales. The earliest, which we will use in the pipeline, are automated pipelines, which use USGS-supported worldwide networks of seismometers to make earthquake identifications. The earliest solutions provide event source parameters, including both location and magnitude estimates. At later times, seismometer specific phase, amplitude and magnitude parameters are provided. \rednote{What does the last sentence mean?} Furthermore, moment tensor solutions and finite fault models are calculated from the array data. These solutions are distributed through USGS's Product Distribution Layer (PDL), which has been configured to receive all notifications of earthquakes worldwide. As all USGS-supported networks submit notices through this service, the pipeline is ensured to receive all relevant notices.
+The United States Geological Survey (USGS) provides a number of channels for information about earthquakes, on different time-scales. The earliest, which we will use in the pipeline, are automated pipelines, which use USGS-supported worldwide networks of seismometers to make earthquake identifications. The earliest solutions provide event source parameters, including both location and magnitude estimates. At later times, moment tensor solutions and finite fault models are calculated from the array data. These solutions are distributed through USGS's Product Distribution Layer (PDL), which has been configured to receive all notifications of earthquakes worldwide. As all USGS-supported networks submit notices through this service, the pipeline is ensured to receive all relevant notices.
 In particular, the notification messages are in the form of either EQXML or QuakeML Extensible Markup Language (XML) files, although the distribution also provides image files and other related content depending on the information. Each network that detects an earthquake provides time-tagged versions of their products, which will allow us to estimate the delay induced by the process of earthquake identification and product distribution. This is a cross-platform Java based code that runs constantly on a dedicated machine. 
 
 \begin{figure}[t]
@@ -173,7 +173,7 @@ Accurate prediction of the ground velocity amplitude based on earthquake magnitu
 This equation should account for physical effects with variable parameters used to fit to the seismic data currently available.
 P- and S-wave arrivals can be accurately determined given latitude, longitude, and depth information by calculating travel times using the iaspei-tau package \cite{Snoke2009} wrapped by Obspy. We can approximate surface waves as having a constant 3.5\,km/s speed value. 
 
-The second step is to make amplitude predictions for each site. We estimate the peak amplitude of the surface waves, $\rm Rf_{amp}$, at the sites using equation (\ref{eq:Rfamp}), which we describe below. This was developed as a fit to historical earthquakes at the gravitational-wave detectors. Choosing the peak amplitude was not an arbitrary choice, especially as compared to root-mean-squared (RMS) ground-motion. A RMS value depends on technical calculation choices, which to be effective will depend on the event in question. Eventually it would be appropriate to determine what observational quantity is best suited to lock loss for the detectors, but for now we adopt peak amplitude due to its relative simplicity. Below, we will show how the inclusion of measured displacement and acceleration, in addition to ground velocity, does not generate significant improvements in lockloss predictability. \rednote{Check if we actually do...} Both the time-of-arrival and amplitude are predicted as a function of distance. This allows users of the algorithm to interpolate these metrics for their locations of interest. In general, we generate the predictions for all currently operating gravitational-wave detectors.
+The second step is to make amplitude predictions for each site. We estimate the peak amplitude of the surface waves, $\rm Rf_{amp}$, at the sites using equation (\ref{eq:Rfamp}), which we describe below. This was developed as a fit to historical earthquakes at the gravitational-wave detectors. Choosing the peak amplitude was not an arbitrary choice, especially as compared to root-mean-squared (RMS) ground-motion. A RMS value depends on technical calculation choices, which to be effective will depend on the event in question. Eventually it would be appropriate to determine what observational quantity is best suited to lock loss for the detectors, but for now we adopt peak amplitude due to its relative simplicity. Both the time-of-arrival and amplitude are predicted as a function of distance. This allows users of the algorithm to interpolate these metrics for their locations of interest. In general, we generate the predictions for all currently operating gravitational-wave detectors.
 
 \begin{figure*}[t]
 \hspace*{-0.5cm}
@@ -183,26 +183,25 @@ The second step is to make amplitude predictions for each site. We estimate the 
  \label{fig:regression}
 \end{figure*}
 
-We now examine the historical earthquake record and predict the likely ground motion seen. We then use seismic data from on-site observations to predict how ground motion will affect the observatories. We have developed an equation attempting to account for physical effects with variable parameters used to fit to the data. Coupling strength of a source at a certain depth to Rayleigh waves, dissipation during propagation \rednote{it seems that we got rid of this, right?}, geometric amplitude evolution, and frequency-dependent scaling of the magnitude into ground displacement are taken into account. We estimate the amplitude of the surface waves, $\rm Rf_{amp}$, at the sites using the equation
+We now examine the historical earthquake record and predict the likely ground motion seen. We then use seismic data from on-site observations to predict how ground motion will affect the observatories. We have developed an equation attempting to account for physical effects with variable parameters used to fit to the data. Coupling strength of a source at a certain depth to Rayleigh waves, geometric amplitude evolution, and frequency-dependent scaling of the magnitude into ground displacement are taken into account. We estimate the amplitude of the surface waves, $\rm Rf_{amp}$, at the sites using the equation
 %Rf_{amp} = 10^{-3} *M*Af*e^{-2*pi*h*fc/cd}*e^{-2*pi*r*fc/ch/Q}/r^{rs}
 \begin{equation}
-{\rm Rf_{amp}} = M A e^{-2 \pi h f_{\rm c}/c}/r^{s_1}
+{\rm Rf_{amp}} = M \frac{\rm a}{f_c^{b}} \frac{e^{-2 \pi h f_{\rm c}/c}}{r^{d}}
 \label{eq:Rfamp} 
 \end{equation}
-where $f_{\rm c} = 10^{2.3-M/2}\,\rm Hz$ is the corner frequency of the earthquake, $A = {\rm A_0}/f_c^{s_2}$, $M$ is the magnitude of the earthquake, $h$ is the depth, and $c$ is the speed of the surface-waves. Another distance-dependent exponential damping term was included initially, but it did not lead to any improvement in the amplitude prediction. The values of the parameters $c,\,s_1,\,s_2$ are derived from minimizing the difference between the amplitude seen at the interferometer and that predicted by the equation. To do so, we use a Metropolis Hastings Multi-Chain, Monte-Carlo (MCMC) algorithm implementing adaptive simulated annealing (SA), which statistically guarantees obtaining solutions close to global minima \cite{KiGe1983,In2000}. These are summarized for the gravitational-wave detectors in this study in table~\ref{table:fit} assuming that all physical parameters are in SI units. The regression is shown in figure \ref{fig:regression} for both the LIGO Hanford (LHO) and LIGO Livingston (LLO) gravitational-wave interferometers. For LHO and LLO, the data were taken from November 2005 to October 2007 (Science Run 5) and July 2009 to October 2010 (Science Run 6). For Virgo, the data were taken from June to September 2011 (Virgo Science Run 4). \rednote{Do we need to update this part including O1?} For GEO\,600, the data were taken from July 2010 to June 2011 (GEO High Frequency). Figure~\ref{fig:MvsR} shows the peak ground velocity as a function of magnitude and distance for the models. Based on the above equations, we expect that earthquakes with magnitudes greater than 5 can exceed ground velocities of $1\,\mu$m/s.
+where $f_{\rm c} = 10^{2.3-M/2}\,\rm Hz$ is the corner frequency of the earthquake,  $M$ is the magnitude of the earthquake, $h$ is the depth, and $c$ is the speed of the surface-waves. Another distance-dependent exponential damping term was included initially, but it did not lead to any improvement in the amplitude prediction. The values of the parameters $a, b, c, d$ are derived from minimizing the difference between the amplitude seen at the interferometer and that predicted by the equation. To do so, we use a Metropolis Hastings Multi-Chain, Monte-Carlo (MCMC) algorithm implementing adaptive simulated annealing (SA), which statistically guarantees obtaining solutions close to global minima \cite{KiGe1983,In2000}. These are summarized for the gravitational-wave detectors in this study in table~\ref{table:fit} assuming that all physical parameters are in SI units. The regression is shown in figure \ref{fig:regression} for both the LIGO Hanford (LHO) and LIGO Livingston (LLO) gravitational-wave interferometers. For LHO and LLO, the data were taken from November 2005 to October 2007 (Science Run 5) and July 2009 to October 2010 (Science Run 6). We will validate these fits against the latest science run in the next section. For Virgo, the data were taken from June to September 2011 (Virgo Science Run 4). For GEO\,600, the data were taken from July 2010 to June 2011 (GEO High Frequency). Figure~\ref{fig:MvsR} shows the peak ground velocity as a function of magnitude and distance for the models. Based on the above equations, we expect that earthquakes with magnitudes greater than 5 can exceed ground velocities of $1\,\mu$m/s.
 %$Q = \frac{Q0}{fc^{Qs}}$, 
 \begin{table}[]
 \centering
-\label{table:fit}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
-Detector & $A_0$ & $s_2$ & $c$ & $s_1$ \\ \hline
+Detector & $a$ & $b$ & $c$ & $d$ \\ \hline
 LHO & $76.44\times 10^{-3}$ & 1.37 & 440.68 & 1.57 \\ \hline
 LLO & $0.43\times 10^{-3}$ & 1.40 & 739.18 & 0.95 \\ \hline
 VIRGO & $0.21\times 10^{-3}$ & 1.88 & 497.35 & 0.86 \\ \hline
 GEO & $4.45\times 10^{-3}$ & 1.14 & 351.85 & 1.13 \\ \hline
 \end{tabular}
-\caption{Best-fit parameters to the peak velocities seen at the interferometers to equation (\ref{eq:Rfamp}).}
+\caption{Best-fit parameters to the peak velocities seen at the interferometers to equation~\ref{eq:Rfamp}.}
 \label{table:fit}
 \end{table}
 
@@ -214,12 +213,10 @@ GEO & $4.45\times 10^{-3}$ & 1.14 & 351.85 & 1.13 \\ \hline
  \label{fig:MvsR}
 \end{figure*}
 
-\subsection{Epics}
-\rednote{We need to explain Epics or substitute it by something less specific throughout this section.}
-The final step of the process is to use the site amplitude and time-of-arrival predictions to create warnings (and possibly detector state changes) for the detectors. The algorithm analyzes the recent notifications and places a threshold on the predictions. We provide an epics variable that contains the following information. The first is the amplitude prediction for any earthquake expected to be present.
+\subsection{Site Notification}
+The final step of the process is to use the site amplitude and time-of-arrival predictions to create warnings (and possibly detector state changes) for the detectors. The algorithm analyzes the recent notifications and places a threshold on the predictions. We provide a set of site variables that contains the following information. The first is the amplitude prediction for any earthquake expected to be present.
 The second is the probability of lockloss, which is discussed in the next section. The third is when this earthquake is expected to arrive at the site.
 		
-
 \section{Performance}
 \label{sec:performance}
 
@@ -291,32 +288,6 @@ Given that \emph{Seismon} is an early warning system, the only parameters availa
 In addition, we can use the predicted ground velocity derived from these parameters.
 The goal is to predict the outcome of the interferometer lock status based on these parameters.
 
-In the following, we will use a machine learning algorithm (MLA) to develop a lockloss prediction model. MLAs, which are useful for classifying and predicting outcomes for various data analysis problems, have been used in the past with great success in gravitational-wave data analysis \cite{BiBl2013,KyHa2015}. We first compare the performance of different machine learning algorithms aimed at modelling lockloss prediction from the given input parameters.  All three classifiers : Logistic Regression\cite{mccullagh_glm}, Naive Bayes\cite{John_NaiveBayes}, Support Vector Machine\cite{Burges_SVM} yield comparable performance with logistic regression giving the best result as is evident from the  receiver operator characteristic (ROC) curve shown in Figure~\ref{fig:MLA_comparison}. Classifier with maximal the area under curve is usually chosen over  the others. True positive rate (TPR) is the ratio of sum of predicted positive condition actually being true to the sum of all actually positive conditions. Similarly false positive rate (FPR) is the ratio of sum of predicted positive condition being false to the sum of all actually negative conditions. Positive condition here refers to a lockloss prediction by the classifier which in general can be true or false. Classifier prediction about the detector being in lock  forms the negative condition. Threshold value on classifier output (usually a scaled number between 0 and 1 with value close to unity indicative of lockloss) is varied to generate the ROC curve. Seismon makes lockless predictions using the threshold value obtained from optimal operating point of the ROC curve. 	
-
-
-We briefly describe how logistic regression can be used to weigh the input parameters to predict the lock status. As lockloss is the only output parameter, this is a single-class classification problem. In this particular analysis, we seek to determine the vector $\vec\theta$ such that 
-\begin{equation}
-h_{\theta} = \vec\theta^{\,\top}\cdot\vec x
-\label{eq:MLA}
-\end{equation}
-where $h$ is the lockloss parameter (1 for lockloss, 0 for locked) and $\vec x$ is a vector of numerical values corresponding to the input parameters (magnitude, depth, distance, predicted ground velocity). We use a hypothesis function $h=1/(1+\exp(-\vec\theta^{\,\top}\cdot \vec x))$ to minimize the difference between the observed and predicted lockloss values. This optimization results in a vector $\vec\theta$, giving a weight to each parameter in $\vec x$. These are shown for the gravitational-wave detectors in this study in table \ref{table:MLAfit}. 
-
-\begin{table}[]
-\centering
-\label{table:MLAfit}
-\begin{tabular}{|p{2cm}|c|c|c|c|c|}
-\hline
-Detector & K & $M$ & $r$ & $h$ & $\rm Rf$  \\ \hline
-LHO \newline(USGS only) & -6.8 & 0.06 & $2.5 \times 10^{-7}$ & $2.1 \times 10^{-3}$ & $1.2 \times 10^{6}$ \\ \hline
-LHO & -24.1 & 3.4 & $2.9 \times 10^{-8}$ & $2.7 \times 10^{-3}$ & $9.2 \times 10^{5}$ \\ \hline
-LLO \newline(USGS only) & -6.6 & 0.28 & $2.8 \times 10^{-7}$ & $-1.5 \times 10^{-3}$ & $9.6 \times 10^{5}$ \\ \hline
-LLO & -15.3 & 2.2 & $5.6 \times 10^{-8}$ & $-1.2 \times 10^{-3}$ & $4.2 \times 10^{5}$\\ \hline
-\end{tabular}
-\caption{Best fit parameters to the $\vec\theta$ coefficients from equation (\ref{eq:MLA}). \rednote{We need to explain in much more detail what this table shows. I personally don't understand any of the parameters in this table... Brief names of parameters should be given in this caption. Extensive explanation in the text. Also, we don't write what USGS only means.}}
-\label{table:MLAfit}
-\end{table}
-	
-	
 \begin{figure*}[t]
 \hspace*{-0.5cm}
  \includegraphics[width=3.5in, trim = 0 4.5cm 0 4.5cm, clip=true]{lho_lockloss_ROC.pdf}
@@ -325,15 +296,23 @@ LLO & -15.3 & 2.2 & $5.6 \times 10^{-8}$ & $-1.2 \times 10^{-3}$ & $4.2 \times 1
  \label{fig:MLA_comparison}
 \end{figure*}
 
+In the following, we will use a machine learning algorithm (MLA) to develop a lockloss prediction model. MLAs, which are useful for classifying and predicting outcomes for various data analysis problems, have been used in the past with great success in gravitational-wave data analysis \cite{BiBl2013,KyHa2015}. We first compare the performance of different machine learning algorithms aimed at modelling lockloss prediction from the given input parameters.  All three classifiers : Logistic Regression\cite{mccullagh_glm}, Naive Bayes\cite{John_NaiveBayes}, Support Vector Machine\cite{Burges_SVM} yield comparable performance with logistic regression giving the best result as is evident from the  receiver operator characteristic (ROC) curve shown in Figure~\ref{fig:MLA_comparison}. Classifier with maximal the area under curve is usually chosen over  the others. True positive rate (TPR) is the ratio of sum of predicted positive condition actually being true to the sum of all actually positive conditions. Similarly false positive rate (FPR) is the ratio of sum of predicted positive condition being false to the sum of all actually negative conditions. Positive condition here refers to a lockloss prediction by the classifier which in general can be true or false. Classifier prediction about the detector being in lock  forms the negative condition. Threshold value on classifier output (usually a scaled number between 0 and 1 with value close to unity indicative of lockloss) is varied to generate the ROC curve. Seismon makes lockless predictions using the threshold value obtained from optimal operating point of the ROC curve. 	
+
+
+We briefly describe how logistic regression can be used to weigh the input parameters to predict the lock status. As lockloss is the only output parameter, this is a single-class classification problem. In this particular analysis, we seek to determine the vector $\vec\theta$ such that 
+\begin{equation}
+h_{\theta} = \vec\theta^{\,\top}\cdot\vec x
+\label{eq:MLA}
+\end{equation}
+where $h$ is the lockloss parameter (1 for lockloss, 0 for locked) and $\vec x$ is a vector of numerical values corresponding to the input parameters (magnitude, depth, distance, predicted ground velocity). We use a hypothesis function $h=1/(1+\exp(-\vec\theta^{\,\top}\cdot \vec x))$ to minimize the difference between the observed and predicted lockloss values. This optimization results in a vector $\vec\theta$, giving a weight to each parameter in $\vec x$.
 			
 To classify the performance of the function, we use plots of real outcomes vs. false-alarm probability (FAP). The idea is that by setting the false-alarm rate to a certain threshold, we can find an optimum point of efficiency for predicting the outcome. In the analysis that follows, we use $2/3$ of the earthquakes for training and  $1/3$ of the earthquakes for the testing set. The vector $\vec\theta$  computed from the training set is applied in the hypothesis function $h_{\theta}$ for each earthquake in the testing set to determine the predicted outcome of lock status. The predicted value for lockloss is determined by rounding the predicted value, which is between 0 and 1, up or down to 1 and 0 respectively.
-
-Figure~\ref{fig:MLA} shows the efficiency curves using the earthquake parameter derived parameters \rednote{What does EQ parameter derived parameters mean?}. The curves that include the observed ground velocity at the sites are similar. In general, there is a trade-off between false-alarm probability and efficiency standard probability. The more false alarms one is willing to accept, the higher the rate of earthquakes that will result in lockloss is possible. \rednote{This sentence needs polishing. We don't influence the nature of EQs and detector response by doing our analyses...} For example, if we adopt a false-alarm probability threshold of 0.5, between 90 -- 100\% of earthquakes can be caught.
+Figure~\ref{fig:MLA} shows the efficiency curves for a variety of classifiers using PDL client provided parameters. The curves that include the observed ground velocity at the sites are similar. In general, there is a trade-off between false-alarm probability and efficiency standard probability. The more false alarms one is willing to accept, the higher the rate of earthquakes that will result in lockloss will be caught. For example, if we adopt a false-alarm probability threshold of 0.5, between 90 -- 100\% of earthquakes can be caught.
 	
 \begin{figure}[h]
  \includegraphics[width=3.5in]{lockloss_fap_errorbars.pdf}
  \centering
- \caption{Efficiency curves using both earthquake parameter derived parameters only as well as one which includes observed ground velocity at the sites. \rednote{Again, what does EQ parameter derived parameters mean?}}
+ \caption{Efficiency curves using both PDL client provided parameters as well as one which includes observed ground velocity at the sites.}
  \label{fig:MLA}
 \end{figure}
 	
@@ -349,7 +328,9 @@ We have shown that the earthquake warning system can both predict likely earthqu
 
 A code that performs these steps is available at https://github.com/ligovirgo/seismon/ for public download. Hopefully, this will allow other researchers to easily use the fits. Required inputs are the latitude and longitude of the site and magnitude, latitude, longitude and depth of the source.
 
-In the future, this algorithm will be applied to the next science run. It will require coordination between the low-latency notification software and the detector control systems to maximize the utility of the system. This will include studies of the control configuration best for riding out times of large ground motion.
+In the future, this algorithm will be applied to the next science run. It will require coordination between the low-latency notification software and the detector control systems to maximize the utility of the system. 
+Further effort needs to be spent on investigating the effect of strong ground motion on the detector control system.
+This will include studies of the control configuration best for riding out times of large ground motion.
 
 \section{Acknowledgments}
 MC was supported by the National Science Foundation Graduate Research Fellowship
