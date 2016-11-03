@@ -75,7 +75,7 @@ Universit\`a degli Studi di Urbino ``Carlo Bo'', I-61029 Urbino, Italy}
 
 \begin{abstract}
 
-Ground-based gravitational wave interferometers such as the Laser Interferometer Gravitational-wave Observatory (LIGO) are susceptible to high-magnitude teleseismic events, which can interrupt their operation in science mode and significantly reduce the duty cycle. It can take several hours for a detector to stabilize enough to return to its nominal state for scientific observations. The down time can be reduced if advance warning of impending shaking is received and the impact is suppressed in the isolation system with the goal of maintaining stable operation even at the expense of increased instrumental noise. Here we describe an early warning system for modern gravitational-wave observatories. The system relies on near real-time earthquake alerts provided by the U.S. Geological Survey (USGS) and the National Oceanic and Atmospheric Administration (NOAA).  Hypocenter and magnitude information is generally available in 5 to 20 minutes of a significant earthquake depending on its magnitude and location.  The alerts are used to estimate arrival times and ground velocities at the gravitational-wave detectors.  In general, 94\% of the predictions for ground-motion amplitude are within a factor of 5 of measured values.  The error in both arrival time and ground-motion prediction introduced by using preliminary, rather than final, hypocenter and magnitude information is minimal with about 90\% of the events falling within a factor of 2 of the final predicted value \rednote{I would suggest to clarify the argument here and either only give the 94\% value using final estimates, or the corresponding percentage given preliminary (pre-arrival) estimates. The comparison between the two can be given in the main text, but is not worth having in the abstract.}.  By using a machine learning algorithm, we develop a prediction model that calculates the probability that a given earthquake will prevent a detector from taking data.   Our initial results indicate that by using detector control configuration changes, we could prevent interruption of operation from 40-100 earthquake events in a 6-month time-period.
+Ground-based gravitational wave interferometers such as the Laser Interferometer Gravitational-wave Observatory (LIGO) are susceptible to high-magnitude teleseismic events, which can interrupt their operation in science mode and significantly reduce the duty cycle. It can take several hours for a detector to stabilize enough to return to its nominal state for scientific observations. The down time can be reduced if advance warning of impending shaking is received and the impact is suppressed in the isolation system with the goal of maintaining stable operation even at the expense of increased instrumental noise. Here we describe an early warning system for modern gravitational-wave observatories. The system relies on near real-time earthquake alerts provided by the U.S. Geological Survey (USGS) and the National Oceanic and Atmospheric Administration (NOAA).  Hypocenter and magnitude information is generally available in 5 to 20 minutes of a significant earthquake depending on its magnitude and location.  The alerts are used to estimate arrival times and ground velocities at the gravitational-wave detectors.  In general, 90\% of the predictions for ground-motion amplitude are within a factor of 5 of measured values.  The error in both arrival time and ground-motion prediction introduced by using preliminary, rather than final, hypocenter and magnitude information is minimal. By using a machine learning algorithm, we develop a prediction model that calculates the probability that a given earthquake will prevent a detector from taking data.   Our initial results indicate that by using detector control configuration changes, we could prevent interruption of operation from 40-100 earthquake events in a 6-month time-period.
 
 \end{abstract}
 
@@ -145,7 +145,7 @@ Figure~\ref{fig:flowchart} shows the flowchart for the \emph{Seismon} pipeline, 
 \begin{figure}[t]
 \hspace*{-0.5cm}
 \centering
-\includegraphics[width=4in]{initial_vs_final_mag.pdf}
+\includegraphics[width=4in]{AverageChange.pdf}
 \caption{Comparison of initial versus final magnitude estimates of earthquakes. Magnitudes of strong earthquakes are typically underestimated in preliminary analyses since associated fault ruptures can last up to minutes, and precise information is obtained from slow surface displacements. Estimates of magnitudes for weak earthquakes are less biased in this way when fault ruptures only last for a couple of seconds.}
  \label{fig:initialfinal}
  \end{figure}
@@ -209,7 +209,7 @@ GEO & $4.45\times 10^{-3}$ & 1.14 & 351.85 & 1.13 \\ \hline
 \hspace*{-0.5cm}
  \includegraphics[width=3.5in]{LHO_M_r.pdf}
  \includegraphics[width=3.5in]{LLO_M_r.pdf}
- \caption{The predicted peak ground acceleration as a function of magnitude and distance for LHO (left) and LLO (right). \rednote{Interesting. I wonder why this is so different. Must be related to site effects.}}
+ \caption{The predicted peak ground acceleration as a function of magnitude and distance for LHO (left) and LLO (right). The differences are likely related to site effects.}
  \label{fig:MvsR}
 \end{figure*}
 
@@ -238,24 +238,25 @@ One of the most important qualities of an earthquake monitor is the notification
 
 \begin{figure}[t]
 \hspace*{-0.5cm}
- \includegraphics[width=3.5in]{pred_diff.pdf}
- \caption{Performance of estimation of peak velocities seen during O1 at the interferometers (LHO and LLO) using fit parameters estimated from S5-S6 data. About 87\% (LHO) and 94\% (LLO) of events are within a factor of 5 of the predicted value.}
+ \includegraphics[width=3.5in]{initial_final_vs_real.pdf}
+ \caption{Performance of estimation of peak velocities seen during O1 at the interferometers (LHO and LLO) using fit parameters estimated from S5-S6 data. About 90\% (LHO) and 90\% (LLO) of events are within a factor of 5 of the predicted value. The difference in fit parameters due to use of preliminary notices is minimal.}
  \label{fig:regressionperf}
 \end{figure}
 
 Another important quality for an earthquake monitor is the accuracy of the ground-motion amplitude prediction and the time-of-arrival.
-The ground-motion amplitude performance is evaluated against the most recent science run (Observing Run 1) from September 2015 to January 2016, in figure \ref{fig:regressionperf}. About 94\% of events are within a factor of 5, while those that are not are almost exclusively events that are due to the overlap of many events. This occurs often during aftershocks of large earthquakes. As the largest event is the important one, these are unimportant for predictions. 
+The ground-motion amplitude performance is evaluated against the most recent science run (Observing Run 1) from September 2015 to January 2016, in figure \ref{fig:regressionperf}. About 90\% of events are within a factor of 5, while those that are not are almost exclusively events that are due to the overlap of many events. This occurs often during aftershocks of large earthquakes. As the largest event is the important one, these are unimportant for predictions. 
 
-\begin{figure*}[t]
-\hspace*{-0.5cm}
- \includegraphics[width=3.5in]{initial_vs_final.pdf}
- \includegraphics[width=3.5in]{lockloss_est_timediff.pdf}
- \caption{On the left is the difference of predicted peak velocities seen during O1 at the interferometers (LHO and LLO) using the initial and final estimates. About 90\% of events are within a factor of 2 of the final predicted value. On the right is the difference between the initial and final estimates of the earthquake time. About 90\% of early estimates are within 4\,s of the final time.}
- \label{fig:initialvsfinal}
-\end{figure*}
+As mentioned above, \emph{Seismon} uses the earliest available notices for making time-of-arrival and amplitude predictions. Because the earliest notices may only rely on a few seismometers, as well as the fact that large earthquakes do not fault all at once, the estimates for both magnitude, depth, location, and time can be off. In figure \ref{fig:regressionperf}, we show the difference of arrival times and predicted peak velocities seen during O1 at the interferometers (LHO and LLO) using the initial and final estimates. This is a smaller error than from the regression. 
 
-As mentioned above, \emph{Seismon} uses the earliest available notices for making time-of-arrival and amplitude predictions. Because the earliest notices may only rely on a few seismometers, as well as the fact that large earthquakes do not fault all at once, the estimates for both magnitude, depth, location, and time can be off. In figure \ref{fig:initialvsfinal}, we show the difference of arrival times and predicted peak velocities seen during O1 at the interferometers (LHO and LLO) using the initial and final estimates. About 90\% of events are within a factor of 2 of the final predicted value. This is a smaller error than from the regression. In addition, we show the difference between the initial and final estimates of the earthquake time. About 90\% of early estimates are within 3\,s of the final time, which is much smaller than the latency from the generation of the notice itself.
+In figure~\ref{fig:initialvsfinal}, we show the difference between the initial and final estimates of the earthquake time. About 90\% of early estimates are within 3\,s of the final time, which is much smaller than the latency from the generation of the notice itself.
 For these reasons, the use of the early notices is not a major source of systematic error for \emph{Seismon}.
+
+\begin{figure}[t]
+\hspace*{-0.5cm}
+ \includegraphics[width=3.5in]{lockloss_est_timediff.pdf}
+ \caption{Difference between the initial and final estimates of the earthquake time. About 90\% of early estimates are within 4\,s of the final time.}
+ \label{fig:initialvsfinal}
+\end{figure}
 
 \subsection{Gravitational-wave detector lockloss prediction performance}
 
@@ -307,14 +308,7 @@ h_{\theta} = \vec\theta^{\,\top}\cdot\vec x
 where $h$ is the lockloss parameter (1 for lockloss, 0 for locked) and $\vec x$ is a vector of numerical values corresponding to the input parameters (magnitude, depth, distance, predicted ground velocity). We use a hypothesis function $h=1/(1+\exp(-\vec\theta^{\,\top}\cdot \vec x))$ to minimize the difference between the observed and predicted lockloss values. This optimization results in a vector $\vec\theta$, giving a weight to each parameter in $\vec x$.
 			
 To classify the performance of the function, we use plots of real outcomes vs. false-alarm probability (FAP). The idea is that by setting the false-alarm rate to a certain threshold, we can find an optimum point of efficiency for predicting the outcome. In the analysis that follows, we use $2/3$ of the earthquakes for training and  $1/3$ of the earthquakes for the testing set. The vector $\vec\theta$  computed from the training set is applied in the hypothesis function $h_{\theta}$ for each earthquake in the testing set to determine the predicted outcome of lock status. The predicted value for lockloss is determined by rounding the predicted value, which is between 0 and 1, up or down to 1 and 0 respectively.
-Figure~\ref{fig:MLA} shows the efficiency curves for a variety of classifiers using PDL client provided parameters. The curves that include the observed ground velocity at the sites are similar. In general, there is a trade-off between false-alarm probability and efficiency standard probability. The more false alarms one is willing to accept, the higher the rate of earthquakes that will result in lockloss will be caught. For example, if we adopt a false-alarm probability threshold of 0.5, between 90 -- 100\% of earthquakes can be caught.
-	
-\begin{figure}[h]
- \includegraphics[width=3.5in]{lockloss_fap_errorbars.pdf}
- \centering
- \caption{Efficiency curves using both PDL client provided parameters as well as one which includes observed ground velocity at the sites.}
- \label{fig:MLA}
-\end{figure}
+Figure~\ref{fig:MLA_comparison} shows the efficiency curves for a variety of classifiers using PDL client provided parameters. The curves that include the observed ground velocity at the sites are similar. In general, there is a trade-off between false-alarm probability and efficiency standard probability. The more false alarms one is willing to accept, the higher the rate of earthquakes that will result in lockloss will be caught. For example, if we adopt a false-alarm probability threshold of 0.5, between 90 -- 100\% of earthquakes can be caught.
 	
 	
 
