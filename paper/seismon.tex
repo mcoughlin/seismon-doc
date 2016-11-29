@@ -72,7 +72,7 @@ Universit\`a degli Studi di Urbino ``Carlo Bo'', I-61029 Urbino, Italy}
 \affiliation{United States Geological Survey, Golden, CO 80401, USA}
 
 \author{Nikhil Mukund}
-\affiliation{Inter-University Centre for Astronomy and Astrophysics, Ganeshkhind, Pune University Campus Pune 411 007, India}
+\affiliation{Inter-University Centre for Astronomy and Astrophysics (IUCAA), Post Bag 4, Ganeshkhind,  Pune 411 007, India}
 
 \author{Matthew Perry}
 \affiliation{Planetary Science Institute, Lakewood, CO 80401, USA}
@@ -173,8 +173,8 @@ The second step is to make amplitude predictions for each site. We estimate the 
 
 \begin{figure*}[t]
 \hspace*{-0.5cm}
- \includegraphics[width=3.5in]{Prediction_LHO_S5_S6.pdf}
- \includegraphics[width=3.5in]{Prediction_LLO_S5_S6.pdf}
+ \includegraphics[width=3.5in,trim = 2.5cm 1.5cm 2.5cm 1.5cm, clip=true]{Prediction_LHO_S5_S6.pdf}
+ \includegraphics[width=3.5in,trim = 2.5cm 1.5cm 2.5cm 1.5cm, clip=true]{Prediction_LLO_S5_S6.pdf}
  \caption{Fit of peak velocities seen during S5-S6 at the interferometers (LHO and LLO) to equation \ref{eq:Rfamp}.  Fit parameters are estimated from S5-S6 data using final event parameter estimates. The events have been ordered by their measured peak ground velocity (in blue) and the green crosses correspond to the prediction from the equation. About 90\% (LHO and LLO) of events are within a factor of 5 of the predicted value.}
  \label{fig:regression}
 \end{figure*}
@@ -280,8 +280,8 @@ The goal is to predict the outcome of the interferometer lock status based on th
 
 \begin{figure*}[t]
 \hspace*{-0.5cm}
- \includegraphics[width=3.5in, trim = 0 4.5cm 0 4.5cm, clip=true]{lho_lockloss_ROC.pdf}
-  \includegraphics[width=3.5in, trim = 0 4.5cm 0 4.5cm, clip=true]{llo_lockloss_ROC.pdf}
+ \includegraphics[width=3.5in, trim = 2.5cm 1.5cm 2.5cm 1.5cm, clip=true]{lho_lockloss_ROC.pdf}
+  \includegraphics[width=3.5in, trim = 2.5cm 1.5cm 2.5cm 1.5cm, clip=true]{llo_lockloss_ROC.pdf}
  \caption{Performance comparison of different machine learning classifiers. True positive rate is the ratio of sum of predicted positive condition actually being true to the sum of all actually positive conditions. Positive condition here refers to a lockloss prediction by the classifier which in general can be true or false. False positive rate is the ratio of sum of predicted positive condition being false to the sum of all actually negative conditions. Classifier prediction about the detector being in lock forms the negative condition. A threshold value on classifier output (usually a scaled number between 0 and 1 with value close to unity indicative of lockloss) is varied to generate the receiver operator characteristic curve (ROC).
  }
  \label{fig:MLA_comparison}
