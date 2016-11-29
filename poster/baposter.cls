@@ -473,7 +473,7 @@
   eyecatcher=true,
   columns={},
   % Colours
-  bgColorOne=baposter@silver,
+  bgColorOne=green,
   bgColorTwo=green,
   %
   colspacing=1em,
