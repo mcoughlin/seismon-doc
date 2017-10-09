@@ -118,6 +118,7 @@ One source of ground motion that destabilizes the detectors are earthquakes
 Many seismic and geodetic (GPS) sensor arrays exist that are producing rapid earthquake information products, from magnitude and location estimates to regional centroid moment tensors (CMTs) and advanced slip inversions.
 With wide-ranging public warning systems in Mexico and Japan and smaller-scale systems in many other countries, warnings from seconds to minutes are now available to reduce the impact of earthquakes on society \cite{StAl2016}.
 The short warning times arise out of the physical processes that drive the earthquake rupture, where warning is given by seismometers measuring P-waves ($\approx$\,8\,km/s) and S-waves ($\approx$\,4\,km/s).
+Reliability of these estimates are one of the most important aspects of EEW systems, and their improvements generally rely on increasing the number of stations involved in the warning decisions as well as increasing alarm thresholds on ground motion, both seeking to limit the number of false positives \cite{KuCo2015}. Both of these strategies come at the cost of decreasing the warning time.
 
 The main goal of EEW methods is generating reliable relations (sometimes called source-scaling laws) between and earthquake source parameters and ground motion metrics. Examples in the time domain include peak ground acceleration, effective peak ground acceleration, peak ground velocity, and peak
 ground displacement, while in the frequency domain, spectral accelerations, velocities, and displacements as well as predominant periods \cite{Do2003}. These source-scaling laws are applied to early portions of seismograms to make predictions about the magnitude for EEW \cite{AlGa2009}, important for hypocenter and magnitude computations in tsunamis \cite{MeCr2015}, hazard computations in engineering seismology \cite{PaMu2012}, and computation of the elastic response spectrum \cite{Ch2007}.
@@ -136,6 +137,7 @@ We showed that about 90\% of events had a measured ground velocity within a fact
 
 Machine learning has recently become an important aspect of EEW and machine learning algorithms in general.
 The \emph{MyShake} EEW system uses artificial neural networks to differentiate earthquake and human motions, with 98\% of earthquake records within 10\,km correctly identified, and only 7\% of people-induced transients appearing to be earthquakes to the algorithm  \cite{KoAl2016}.
+Machine learning algorithms are also used to differentiate earthquakes from other seismic transients \cite{KuYi2011}.
 
 \begin{figure*}[t]
 \hspace*{-0.5cm}
@@ -182,6 +184,9 @@ NM acknowledges Council for Scientific and Industrial Research (CSIR), India, fo
 LIGO was constructed by the California Institute of Technology and Massachusetts Institute of Technology with funding from the National Science Foundation and operates under cooperative agreement PHY-0757058.
 This paper has been assigned LIGO document number LIGO-?.
 
+Global Seismographic Network (GSN) is a cooperative scientific facility operated jointly by the Incorporated Research Institutions for Seismology (IRIS), the United States Geological Survey (USGS), and the National Science Foundation (NSF), under Cooperative Agreement EAR-1261681.
+The facilities of IRIS Data Services, and specifically the IRIS Data Management Center, were used for access to waveforms, related metadata, and/or derived products used in this study. IRIS Data Services are funded through the Seismological Facilities for the Advancement of Geoscience and EarthScope (SAGE) Proposal of the National Science Foundation under Cooperative Agreement EAR-1261681.
+
 %\raggedright
 \bibliographystyle{unsrt}
 \bibliography{references}
@@ -190,8 +195,36 @@ This paper has been assigned LIGO document number LIGO-?.
 
 \textbf{Gravitational-wave detectors.}
 
-\textbf{Sources of seismic data.}
+The Advanced LIGO \cite{aligo} and the Advanced Virgo  \cite{avirgo}  detectors are multi-kilometer Michelson-based interferometers.
+Gravitational waves induce small displacements in the detectors, which are designed to be free from environmental disturbances and limited only by processes of fundamental physics.
+These detectors are subject to non-Gaussian noise transients due to either internal behavior of the instrument or interactions between the detector and its environment.
 
+In order to minimize the effect of the environment, the LIGO detectors contain 200,000 auxiliary channels which are designed to monitor both the behavior of the instrument and the environment conditions.
+A subset of these sensors are physical environment monitor sensors dedicated to monitoring the environment, including seismometers, magnetometers, microphones, and many others.
+The LIGO and Virgo detectors contain arrays of seismometers, from which we take a seismometer in each of the central buildings \cite{AbEA2016f}. These are useful for measuring any source of ground motion that can couple into the interferometers.
+Gravitational-wave detectors have driven the development of both seismic \cite{BeCa2016} and rotation \cite{VeHa2014} sensors.
+
+Earthquakes are one of the main sources of transient seismic motion for these gravitational-wave detectors. The surface waves, the highest amplitude component from earthquakes with the longest duration, adversely affect the detectors. This occurs by making it impossible to keep the detectors operable or induce higher frequency noise by upconverting low-frequency optical motion.
+
+\textbf{Seismic data.}
+
+We use multiple sources of seismic data.
+We perform an analysis of seismic timeseries that were made available through IRIS, covering the last 10 years, and LIGO, covering the last 2 years. 
+These stations have time-series with response between 10\,mHz to 10\,Hz.
+The noise for these instruments are determined by a variety of sources including anthropogenic and atmospheric disturbances, earthquakes and ocean waves \cite{BCB2006}. 
+Seismic noise models are developed using global seismometer arrays  \cite{Pet1993,BDE2004,McEA2009}.
+We use stations across the world to explore the effects of a variety of different sites, which can have noise spectra that have significant variation, due to location aspects such as topography and proximity to urban settlements.
+One source present across the world is the oceanic microseism around 0.3\,Hz that dominatex seismic ground spectra everywhere on Earth \cite{HMS1963,ToLa1968,Ces1994,FKK1998}. 
+
+The peak ground velocities are calculated as follows.
+Time-series are chosen to encompass the P-wave arrival to surface waves calculated assuming a ground velocity of 2\,km/s.
+We take the vertical component of broadband (velocity) data that is filtered using an acausal 0.1\,Hz low-pass Butterworth filter.
+The data is calibrated into ground velocity using a constant V to m/s value appropriate for each seismometer.
+
+We systematically downloaded and processed data from all stations with channel names BH?. Stations are supplied with Nanometrics T240, Streckeisen STS-1/STS-2, G\"uralp CMG-3T, and Geotech KS-54000 broadband seismometers. 
+IRIS contains data for some stations as far back as the early 1970's, and we analyze data from 2005 -- 2017.
+We analyze data from \rednote{21412} earthquakes from \rednote{January 2005 to May 2017}.
+The magnitudes range from \rednote{6.0} to \rednote{9.2}, chosen so as to cover the range of earthquake magnitudes likely to significantly effect the gravitational-wave detectors.
 
 \textbf{Ground velocity predictions.}
 
