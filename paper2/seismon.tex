@@ -204,7 +204,9 @@ A subset of these sensors are physical environment monitor sensors dedicated to 
 The LIGO and Virgo detectors contain arrays of seismometers, from which we take a seismometer in each of the central buildings \cite{AbEA2016f}. These are useful for measuring any source of ground motion that can couple into the interferometers.
 Gravitational-wave detectors have driven the development of both seismic \cite{BeCa2016} and rotation \cite{VeHa2014} sensors.
 
-Earthquakes are one of the main sources of transient seismic motion for these gravitational-wave detectors. The surface waves, the highest amplitude component from earthquakes with the longest duration, adversely affect the detectors. This occurs by making it impossible to keep the detectors operable or induce higher frequency noise by upconverting low-frequency optical motion.
+Earthquakes are one of the main sources of transient seismic motion for these gravitational-wave detectors. 
+The surface waves, the highest amplitude component from earthquakes with the longest duration, adversely affect the detectors. 
+This occurs by making it impossible to keep the detectors operable or induce higher frequency noise by upconverting low-frequency optical motion.
 
 \textbf{Seismic data.}
 
@@ -228,5 +230,9 @@ The magnitudes range from \rednote{6.0} to \rednote{9.2}, chosen so as to cover 
 
 \textbf{Ground velocity predictions.}
 
+We use the earthquake parameters to make peak ground velocity predictions. We use historical earthquakes to train our machine learning algorithms. The parameters that enter the predictions are $M$, the magnitude of the earthquake, $h$, the depth, $r$, the distance to the detectors, $\theta$ and $\phi$, the latitude and longitude, the earthquake slip inversion, strike, rake, and dip, and the moment tensor values, $M_{rt}$, $M_{tp}$, $M_{rp}$, $M_{tt}$, $M_{rr}$, and $M_{pp}$.
+We take the peak ground velocities measured for each earthquake and use a machine learning algorithm to make predictions of that velocity.
+
+\rednote{MLA description}
 
 \end{document} 
