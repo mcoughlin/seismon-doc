@@ -1,6 +1,6 @@
-\documentclass[twocolumn, aps, superscriptaddress]{revtex4}
+%\documentclass[twocolumn, aps, superscriptaddress]{revtex4}
 %\documentclass[reprint, prl, aps, showpacs]{revtex4-1}
-%\documentclass[preprint, aps, showpacs]{revtex4-1}
+\documentclass[preprint, aps, showpacs]{revtex4-1}
 
 \usepackage{graphicx}
 \usepackage{amsmath,amssymb}
@@ -38,10 +38,10 @@
 \graphicspath{{./plots/}}
 \begin{document}
 
-\title{Limiting the effects of earthquakes on gravitational-wave interferometers}
+\title{Prediction of surface wave velocities with historical seismic data}
 
 \author{Michael Coughlin}
-\affiliation{Department of Physics, Harvard University, Cambridge, MA 02138, USA}
+\affiliation{Division of Physics, Math, and Astronomy, California Institute of Technology, Pasadena, CA 91125, USA}
 
 \author{Nicolas Arnaud}
 \affiliation{LAL, Univ. Paris-Sud, CNRS/IN2P3, Universit\'e Paris-Saclay, F-91898 Orsay, France}
@@ -99,35 +99,43 @@ Universit\`a degli Studi di Urbino ``Carlo Bo'', I-61029 Urbino, Italy}
 \author{Jim Warner}
 \affiliation{LIGO Hanford Observatory, Richland, WA 99352, USA}
 
-
-\begin{abstract}
-
-\end{abstract}
-
 \maketitle
 
-\section{Introduction}
-\label{sec:Intro}
+\textbf{Earthquake early warning (EEW) is a burgeoning field dedicated to the rapid detection and characterization of earthquakes as well as the dissemination of that information to people and infrastructure in their path \cite{Al2012,KuAl2013a,KuAl2013b,KuHe2014,CoLa2009a,CoLa2009b,BoAl2014,HoKa2008,HoEA2011c,StAl2016}.
+As these systems minimize the time required to calculate the source parameters of earthquakes (i.e. their location and magnitude), it becomes important to predict the ground motion that the earthquakes will cause as a function of location and distance with high accuracy.
+In this analysis, we leverage the power of machine learning algorithms to improve both the ground velocity predictions as well as the lockloss predictions of \emph{Seismon}. We demonstrate an improvement from a factor of 5 to a factor of 3 in scatter of the error in the predicted ground velocity.
+The idea of the analysis is to compare historical ground velocity measurements 
+to predictions made using a machine learning algorithm. 
+To access the accuracy and utility of our approach, we compare the estimates based only on rapid magnitude and location estimates to the amplitudes observed.
+We find agreement within a factor of 3 by this metric.
+Further, we compare measurements that include the less timely earthquake slip inversion and CMT information to the original amplitudes observed, resulting in a factor of 2 agreement.}
 
 With the advent of gravitational-wave astronomy, it is essential to maximize the duty cycle of second generation gravitational-wave detectors such as the Laser Interferometer Gravitational-wave Observatory (LIGO) \cite{aligo}, Virgo \cite{avirgo}, and GEO600 \cite{Gr2010} detectors.
 Any increase in duty cycle increases the sensitivity of gravitational-wave searches, including the observations of binary black hole mergers \cite{AbEA2016a,AbEA2016e}.
 One source of ground motion that destabilizes the detectors are earthquakes
 \cite{CoSt2015,CoEa2017}, despite seismic isolation systems designed to minimize such effects \cite{AbAd2002,StAb2009,MaLa2015}.
 
-In previous work \cite{CoEa2017}, Coughlin et al. used advances in early earthquake warning \cite{Al2012,KuAl2013a,KuAl2013b,KuHe2014,CoLa2009a,CoLa2009b,BoAl2014,HoKa2008,HoEA2011c,StAl2016} to develop a low-latency earthquake early warning client named \emph{Seismon}, which uses a real-time event messaging system of the U.S. Geological Survey (USGS) to mitigate the effects of teleseismic events on ground-based gravitational-wave detectors. 
+Many seismic and geodetic (GPS) sensor arrays exist that are producing rapid earthquake information products, from magnitude and location estimates to regional centroid moment tensors (CMTs) and advanced slip inversions.
+With wide-ranging public warning systems in Mexico and Japan and smaller-scale systems in many other countries, warnings from seconds to minutes are now available to reduce the impact of earthquakes on society \cite{StAl2016}.
+The short warning times arise out of the physical processes that drive the earthquake rupture, where warning is given by seismometers measuring P-waves ($\approx$\,8\,km/s) and S-waves ($\approx$\,4\,km/s).
+
+The main goal of EEW methods is generating reliable relations (sometimes called source-scaling laws) between and earthquake source parameters and ground motion metrics. Examples in the time domain include peak ground acceleration, effective peak ground acceleration, peak ground velocity, and peak
+ground displacement, while in the frequency domain, spectral accelerations, velocities, and displacements as well as predominant periods \cite{Do2003}. These source-scaling laws are applied to early portions of seismograms to make predictions about the magnitude for EEW \cite{AlGa2009}, important for hypocenter and magnitude computations in tsunamis \cite{MeCr2015}, hazard computations in engineering seismology \cite{PaMu2012}, and computation of the elastic response spectrum \cite{Ch2007}.
+
+Early estimates of magnitudes tend to underestimate the energy released due to the non-instantaneous pattern of slip.
+\cite{MeCr2015} showed that real-time GPS waveforms can rapidly determine the magnitude within the first minute of rupture and in many cases before rupture is complete.
+real-time GPS seismic waveforms can be used to rapidly determine magnitude, typically within the first minute of rupture initiation and in many cases before the rupture is complete. 
+For this reason, the early estimates of the ground velocity amplitudes are not as accurate as later values. 
+The effects of these errors are particularly pronounced for larger earthquakes, where the estimates of the fault lengths become more important.
+Thus, these larger earthquakes tend to have their amplitudes underpredicted.
+The loss of performance that results from use of the rapid estimates is acceptable to use as rapid warnings.
+
+In previous work \cite{CoEa2017}, Coughlin et al. used advances in early earthquake warning to develop a low-latency earthquake early warning client named \emph{Seismon}, which uses a real-time event messaging system of the U.S. Geological Survey (USGS) to mitigate the effects of teleseismic events on ground-based gravitational-wave detectors. 
 Using information about the earthquake source characteristics such as time, location, depth, and magnitude, predictions as to the arrival time and ground velocity induced by the earthquakes were predicted.
 We showed that about 90\% of events had a measured ground velocity within a factor of 5 of the predicted value.
 
-In this analysis, we leverage the power of machine learning algorithms to improve both the ground velocity predictions as well as the lockloss predictions of \emph{Seismon}. We demonstrate an improvement from a factor of 5 to a factor of 3 in scatter of the error in the predicted ground velocity.
-
-In section~\ref{sec:algorithm}, we describe recent improvements to the algorithm.
-In section~\ref{sec:performance}, we describe a case-study on a recent earthquake to demonstrate the benefits of low-latency earthquake notification as well as the challenges that still lie ahead.
-In section~\ref{sec:conclusions}, we offer concluding remarks and suggest directions for future research.
-
-\section{Algorithm}
-\label{sec:algorithm}
-
-\subsection{Ground Velocity Prediction Performance}
+Machine learning has recently become an important aspect of EEW and machine learning algorithms in general.
+The \emph{MyShake} EEW system uses artificial neural networks to differentiate earthquake and human motions, with 98\% of earthquake records within 10\,km correctly identified, and only 7\% of people-induced transients appearing to be earthquakes to the algorithm  \cite{KoAl2016}.
 
 \begin{figure*}[t]
 \hspace*{-0.5cm}
@@ -155,8 +163,6 @@ This improves on the equation in a few ways.
 First of all, the algorithm leverages the power of machine learning algorithms, which is not reliant on a functional form.
 Second, it trivially includes more parameters, such as latitude, longitude, and earthquake azimuth relative to the detector.
 
-\subsection{Gravitational-wave detector lockloss prediction performance}
-
 \begin{figure*}[t]
 \hspace*{-0.5cm}
  \includegraphics[width=3.5in,trim = 2.5cm 1.5cm 2.5cm 1.5cm, clip=true]{lockloss_histogram_H1O1O2_GPR.pdf}
@@ -170,24 +176,24 @@ In addition to the parameters that go into the ground velocity prediction model,
 In previous work \cite{CoEa2017}, we found comparable performance among machine learning algorithms, and for this work use Support Vector Machines \cite{Burges_SVM}.
 Figure~\ref{fig:lockloss} shows the distribution of the lockloss probabilities for O1 and O2 for both LHO and LLO. 
 
-\section{Performance}
-\label{sec:performance}
-
-\section{Conclusion}
-\label{sec:conclusions}
-
-
-\section{Acknowledgments}
-MC was supported by the National Science Foundation Graduate Research Fellowship
-Program, under NSF grant number DGE 1144152. 
+\textbf{Acknowledgments.}
+MC was supported by the David and Ellen Lee Postdoctoral Fellowship at the California Institute of Technology.
 NM acknowledges Council for Scientific and Industrial Research (CSIR), India, for providing financial support as Senior Research Fellow.  
 LIGO was constructed by the California Institute of Technology and Massachusetts Institute of Technology with funding from the National Science Foundation and operates under cooperative agreement PHY-0757058.
-This paper has been assigned LIGO document number LIGO-P1600321.
-The authors would like to thank Dr. Jenne Driggers for a detailed reading of an early version of the manuscript.
+This paper has been assigned LIGO document number LIGO-?.
 
 %\raggedright
 \bibliographystyle{unsrt}
 \bibliography{references}
+
+\textbf{Methods.}
+
+\textbf{Gravitational-wave detectors.}
+
+\textbf{Sources of seismic data.}
+
+
+\textbf{Ground velocity predictions.}
 
 
 \end{document} 
