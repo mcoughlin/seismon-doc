@@ -40,6 +40,9 @@
 
 \title{Prediction of surface wave velocities with historical seismic data}
 
+\author{Nikhil Mukund}
+\affiliation{Inter-University Centre for Astronomy and Astrophysics (IUCAA), Post Bag 4, Ganeshkhind,  Pune 411 007, India}
+
 \author{Michael Coughlin}
 \affiliation{Division of Physics, Math, and Astronomy, California Institute of Technology, Pasadena, CA 91125, USA}
 
@@ -81,8 +84,6 @@
 \affiliation{INFN, Sezione di Firenze, Sesto Fiorentino, 50019, Italy\\
 Universit\`a degli Studi di Urbino ``Carlo Bo'', I-61029 Urbino, Italy}
 
-\author{Nikhil Mukund}
-\affiliation{Inter-University Centre for Astronomy and Astrophysics (IUCAA), Post Bag 4, Ganeshkhind,  Pune 411 007, India}
 
 \author{Matthew Perry}
 \affiliation{Planetary Science Institute, Lakewood, CO 80401, USA}
@@ -142,15 +143,6 @@ In addition, they have been used to discriminate between deep and shallow microe
 It can also be used to add to undersampled or missing traces \cite{JiMa2017}.
 In addition, they have been used to make full-wave tomography images \cite{DiLe2011}.
 
-\begin{figure*}[t]
-\hspace*{-0.5cm}
- \includegraphics[width=3.5in,trim = 2.5cm 1.5cm 2.5cm 1.5cm, clip=true]{prediction_H1O1O2_GPR.pdf}
- \includegraphics[width=3.5in,trim = 2.5cm 1.5cm 2.5cm 1.5cm, clip=true]{prediction_L1O1O2_GPR.pdf}
- \includegraphics[width=3.5in,trim = 2.5cm 1.5cm 2.5cm 1.5cm, clip=true]{prediction_V1O1O2_GPR.pdf}
- \caption{Fit of peak velocities seen during O1-O2 at the interferometers (LHO, LLO, and Virgo) using Gaussian Process Regression. The events have been ordered by their measured peak ground velocity (in blue) and gray error bar corresponds to a factor of 3 within the predicted value. About 90\% of events are within a factor of 3 of the predicted value.}
- \label{fig:regression}
-\end{figure*}
-
 One of the key aspects of \emph{Seismon} is the ground velocity predictions, $\rm Rf_{amp}$, for each site. These predictions have two purposes. 
 First of all, they provide a meaningful metric which on-site-staff at the detectors can use to plan the response to the incoming earthquake. 
 The predictions also serve as inputs to the algorithms which make lockloss predictions, which we will describe in the following.
@@ -170,16 +162,13 @@ Second, it trivially includes more parameters, such as latitude, longitude, and 
 
 \begin{figure*}[t]
 \hspace*{-0.5cm}
- \includegraphics[width=3.5in,trim = 2.5cm 1.5cm 2.5cm 1.5cm, clip=true]{lockloss_histogram_H1O1O2_GPR.pdf}
- \includegraphics[width=3.5in,trim = 2.5cm 1.5cm 2.5cm 1.5cm, clip=true]{lockloss_histogram_L1O1O2_GPR.pdf}
- \caption{Histogram of lockloss probabilities predicted in O1-O2 at the interferometers (LHO and LLO) using Support Vector Machines.}
- \label{fig:lockloss}
+ \includegraphics[width=3.5in,trim = 2.5cm 1.5cm 2.5cm 1.5cm, clip=true]{maps_vel_pred_vs_measured.pdf}
+ \caption{The plot shows the location of the \rednote{?} seismic stations with available data from IRIS in the United States during the \rednote{?} earthquake. The color indicates the fractional error between the measured peak ground velocity and that predicted by the algorithm. The inset shows the location of the earthquake.}
+ \label{fig:map}
 \end{figure*}
 
-It is useful to determine which earthquakes cause the loss of data and which will not affect the detector in a significant way.
-In addition to the parameters that go into the ground velocity prediction model, we also use the prediction for the ground velocity to include when predicting the outcome of the interferometer lock status.
-In previous work \cite{CoEa2017}, we found comparable performance among machine learning algorithms, and for this work use Support Vector Machines \cite{Burges_SVM}.
-Figure~\ref{fig:lockloss} shows the distribution of the lockloss probabilities for O1 and O2 for both LHO and LLO. 
+We can use these parameter fits that go into the ground velocity prediction model to make predictions across the United States.
+Figure \ref{fig:map} shows the location of seismic stations that had data during the \rednote{?} earthquake. The colors indicate the fractional difference between the measured and predicted peak ground velocities.  
 
 \textbf{Acknowledgments.}
 MC was supported by the David and Ellen Lee Postdoctoral Fellowship at the California Institute of Technology.
@@ -232,6 +221,15 @@ We analyze data from \rednote{21412} earthquakes from \rednote{January 2005 to M
 The magnitudes range from \rednote{6.0} to \rednote{9.2}, chosen so as to cover the range of earthquake magnitudes likely to significantly effect the gravitational-wave detectors.
 
 \textbf{Ground velocity predictions.}
+
+\begin{figure*}[t]
+\hspace*{-0.5cm}
+ \includegraphics[width=3.5in,trim = 2.5cm 1.5cm 2.5cm 1.5cm, clip=true]{prediction_H1O1O2_GPR.pdf}
+ \includegraphics[width=3.5in,trim = 2.5cm 1.5cm 2.5cm 1.5cm, clip=true]{prediction_L1O1O2_GPR.pdf}
+ \includegraphics[width=3.5in,trim = 2.5cm 1.5cm 2.5cm 1.5cm, clip=true]{prediction_V1O1O2_GPR.pdf}
+ \caption{Fit of peak velocities seen during O1-O2 at the interferometers (LHO, LLO, and Virgo) using Gaussian Process Regression. The events have been ordered by their measured peak ground velocity (in blue) and gray error bar corresponds to a factor of 3 within the predicted value. About 90\% of events are within a factor of 3 of the predicted value.}
+ \label{fig:regression}
+\end{figure*}
 
 We use the earthquake parameters to make peak ground velocity predictions. We use historical earthquakes to train our machine learning algorithms. The parameters that enter the predictions are $M$, the magnitude of the earthquake, $h$, the depth, $r$, the distance to the detectors, $\theta$ and $\phi$, the latitude and longitude, the earthquake slip inversion, strike, rake, and dip, and the moment tensor values, $M_{rt}$, $M_{tp}$, $M_{rp}$, $M_{tt}$, $M_{rr}$, and $M_{pp}$.
 We take the peak ground velocities measured for each earthquake and use a machine learning algorithm to make predictions of that velocity.
