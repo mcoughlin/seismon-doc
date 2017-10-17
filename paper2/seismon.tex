@@ -13,6 +13,7 @@
 %\usepackage[latin1]{inputenc}
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows}
+\usepackage{hyperref}
 
 \newcommand{\braket}[2]{\left\langle#1\, |\,#2\,\right\rangle}  %  < #1 | #2 >
 \newcommand{\expec}[1]{\langle#1\rangle}  %  < #1 >
@@ -222,11 +223,11 @@ The magnitudes range from \rednote{6.0} to \rednote{9.2}, chosen so as to cover 
 
 \textbf{Ground velocity predictions.}
 
-\begin{figure*}[t]
+\begin{figure*}[!htb]
 \hspace*{-0.5cm}
- \includegraphics[width=3.5in,trim = 2.5cm 1.5cm 2.5cm 1.5cm, clip=true]{prediction_H1O1O2_GPR.pdf}
- \includegraphics[width=3.5in,trim = 2.5cm 1.5cm 2.5cm 1.5cm, clip=true]{prediction_L1O1O2_GPR.pdf}
- \includegraphics[width=3.5in,trim = 2.5cm 1.5cm 2.5cm 1.5cm, clip=true]{prediction_V1O1O2_GPR.pdf}
+ \includegraphics[width=0.3\textwidth]{prediction_H1O1O2_GPR.pdf}
+ \includegraphics[width=0.3\textwidth]{prediction_L1O1O2_GPR.pdf}
+ \includegraphics[width=0.3\textwidth]{prediction_V1O1O2_GPR.pdf}
  \caption{Fit of peak velocities seen during O1-O2 at the interferometers (LHO, LLO, and Virgo) using Gaussian Process Regression. The events have been ordered by their measured peak ground velocity (in blue) and gray error bar corresponds to a factor of 3 within the predicted value. About 90\% of events are within a factor of 3 of the predicted value.}
  \label{fig:regression}
 \end{figure*}
@@ -234,6 +235,21 @@ The magnitudes range from \rednote{6.0} to \rednote{9.2}, chosen so as to cover 
 We use the earthquake parameters to make peak ground velocity predictions. We use historical earthquakes to train our machine learning algorithms. The parameters that enter the predictions are $M$, the magnitude of the earthquake, $h$, the depth, $r$, the distance to the detectors, $\theta$ and $\phi$, the latitude and longitude, the earthquake slip inversion, strike, rake, and dip, and the moment tensor values, $M_{rt}$, $M_{tp}$, $M_{rp}$, $M_{tt}$, $M_{rr}$, and $M_{pp}$.
 We take the peak ground velocities measured for each earthquake and use a machine learning algorithm to make predictions of that velocity.
 
+
+
+
 \rednote{MLA description}
+
+In a previous work, authors had developed an empirical equation to predict the Rayleigh wave amplitude based magnitude, depth and distance to the earthquake. The model was able to capture 90\% of the observational data within a factor of 5. To improve the accuracy further, we required more complex models that incorporate the physical mechanism of the fault rupture and along with the directional information of the earthquake. 
+In this work, we employ a deep neural networks (DNN) to carry out the nonlinear regression. The network with topology is inspired from generalized regression neural networks but we back-propagate the errors and update the weights by training it through several epochs.  Results of applying the trained network to unseen data ( Fig. \ref{fig:DNN_regression} )show the improvement in prediction accuracy as compared to  traditional regression techniques.  The model accurately predicts  90\% of the observational data within a factor of 3. DNNs require larger data sets to learn the underlying function without overfitting the data. As the observed data could possibly have measurement uncertaiities, we boosted our data set by drawing additional samples from a normal distribution centered around each observation. This step prevented the early stopping during the training period and avoided the network to memorize the data.  The trained network is able to capture the radiation pattern associated with the fault rupture making it a good candidate for earthquake warning systems.
+
+\begin{figure*}[!htb]
+\hspace*{-0.5cm}
+ \includegraphics[scale = 0.27]{DNN_Rfamp_results_L1O1O2_CMT.png}
+  \includegraphics[scale=0.27]{DNN_Rfamp_results_H1O1O2_CMT.png}
+ \caption{}
+ \label{fig:DNN_regression}
+\end{figure*}
+
 
 \end{document} 
