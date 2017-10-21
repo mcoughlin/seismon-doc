@@ -105,10 +105,8 @@ Universit\`a degli Studi di Urbino ``Carlo Bo'', I-61029 Urbino, Italy}
 
 \textbf{Earthquake early warning (EEW) is a burgeoning field dedicated to the rapid detection and characterization of earthquakes as well as the dissemination of that information to people and infrastructure in their path \cite{Al2012,KuAl2013a,KuAl2013b,KuHe2014,CoLa2009a,CoLa2009b,BoAl2014,HoKa2008,HoEA2011c,StAl2016}.
 As these systems minimize the time required to calculate the source parameters of earthquakes (i.e. their location and magnitude), it becomes important to predict the ground motion that the earthquakes will cause as a function of location and distance with high accuracy.
-In this analysis, we leverage the power of machine learning algorithms to improve both the ground velocity predictions as well as the lockloss predictions of \emph{Seismon}. We demonstrate an improvement from a factor of 5 to a factor of 3 in scatter of the error in the predicted ground velocity.
-The idea of the analysis is to compare historical ground velocity measurements 
-to predictions made using a machine learning algorithm. 
-To access the accuracy and utility of our approach, we compare the estimates based only on rapid magnitude and location estimates to the amplitudes observed.
+In this analysis, we leverage the power of machine learning algorithms to make both ground velocity predictions and gravitational-wave detector lockloss predictions. We demonstrate an improvement from a factor of 5 to a factor of 3 in scatter of the error in the predicted ground velocity over a previous model fitting based approach.
+To assess the accuracy and utility of our approach, we compare the estimates based only on rapid magnitude and location estimates to the amplitudes observed.
 We find agreement within a factor of 3 by this metric.
 Further, we compare measurements that include the less timely earthquake slip inversion and CMT information to the original amplitudes observed, resulting in a factor of 2 agreement.}
 
@@ -122,29 +120,29 @@ With wide-ranging public warning systems in Mexico and Japan and smaller-scale s
 The short warning times arise out of the physical processes that drive the earthquake rupture, where warning is given by seismometers measuring P-waves ($\approx$\,8\,km/s) and S-waves ($\approx$\,4\,km/s).
 Reliability of these estimates are one of the most important aspects of EEW systems, and their improvements generally rely on increasing the number of stations involved in the warning decisions as well as increasing alarm thresholds on ground motion, both seeking to limit the number of false positives \cite{KuCo2015}. Both of these strategies come at the cost of decreasing the warning time.
 
-The main goal of EEW methods is generating reliable relations (sometimes called source-scaling laws) between and earthquake source parameters and ground motion metrics. Examples in the time domain include peak ground acceleration, effective peak ground acceleration, peak ground velocity, and peak
-ground displacement, while in the frequency domain, spectral accelerations, velocities, and displacements as well as predominant periods \cite{Do2003}. These source-scaling laws are applied to early portions of seismograms to make predictions about the magnitude for EEW \cite{AlGa2009}, important for hypocenter and magnitude computations in tsunamis \cite{MeCr2015}, hazard computations in engineering seismology \cite{PaMu2012}, and computation of the elastic response spectrum \cite{Ch2007}.
+The main goal of EEW methods is to generate reliable relations (sometimes called source-scaling laws) between and earthquake source parameters and ground motion metrics. Examples in the time domain include peak ground acceleration, peak ground velocity, and peak
+ground displacement, while in the frequency domain there are spectral accelerations, velocities, and displacements as well as predominant periods \cite{Do2003}. These source-scaling laws are applied to early portions of seismograms to make predictions about the magnitude for EEW \cite{AlGa2009}, important for hypocenter and magnitude computations in tsunamis \cite{MeCr2015}, hazard computations in engineering seismology \cite{PaMu2012}, and computation of the elastic response spectrum \cite{Ch2007}.
 
 Early estimates of magnitudes tend to underestimate the energy released due to the non-instantaneous pattern of slip.
-\cite{MeCr2015} showed that real-time GPS waveforms can rapidly determine the magnitude within the first minute of rupture and in many cases before rupture is complete.
-real-time GPS seismic waveforms can be used to rapidly determine magnitude, typically within the first minute of rupture initiation and in many cases before the rupture is complete. 
 For this reason, the early estimates of the ground velocity amplitudes are not as accurate as later values. 
 The effects of these errors are particularly pronounced for larger earthquakes, where the estimates of the fault lengths become more important.
 Thus, these larger earthquakes tend to have their amplitudes underpredicted.
 The loss of performance that results from use of the rapid estimates is acceptable to use as rapid warnings.
+\cite{MeCr2015} showed that real-time GPS waveforms can rapidly determine the magnitude within the first minute of rupture and in many cases before rupture is complete.
+Real-time GPS seismic waveforms can be used to rapidly determine magnitude, typically within the first minute of rupture initiation and in many cases before the rupture is complete. 
 
-In previous work, \cite{CoEa2017}, used advances in early earthquake warning to develop a low-latency earthquake early warning client named \emph{Seismon}, which uses a real-time event messaging system of the U.S. Geological Survey (USGS) to mitigate the effects of teleseismic events on ground-based gravitational-wave detectors. 
+In previous work, \cite{CoEa2017} used advances in early earthquake warning to develop a low-latency earthquake early warning client named \emph{Seismon}. This system uses a real-time event messaging system of the U.S. Geological Survey (USGS) to mitigate the effects of teleseismic events on ground-based gravitational-wave detectors. 
 Using information about the earthquake source characteristics such as time, location, depth, and magnitude, predictions as to the arrival time and ground velocity induced by the earthquakes were predicted.
-We showed that about 90\% of events had a measured ground velocity within a factor of 5 of the predicted value.
+It was shown that about 90\% of events had a measured ground velocity within a factor of 5 of the predicted value.
 
-Machine learning has recently become an important aspect of EEW and machine learning algorithms in general.
+Machine learning has recently become an important aspect of EEW and seismology in general.
 The \emph{MyShake} EEW system uses artificial neural networks to differentiate earthquake and human motions, with 98\% of earthquake records within 10\,km correctly identified, and only 7\% of people-induced transients appearing to be earthquakes to the algorithm  \cite{KoAl2016}.
 Machine learning algorithms are also used to differentiate earthquakes from other seismic transients \cite{KuYi2011,KoUs2016,PeGh2017}.
 In addition, they have been used to discriminate between deep and shallow microearthquakes \cite{MoHo2016}.
 It can also be used to add to undersampled or missing traces \cite{JiMa2017}.
 In addition, they have been used to make full-wave tomography images \cite{DiLe2011}.
 
-One of the key aspects of \emph{Seismon} is the ground velocity predictions, $\rm Rf_{amp}$, for each site. These predictions have two purposes. 
+One of the key aspects of the system is the ground velocity predictions, $\rm Rf_{amp}$, for each site. These predictions have two purposes. 
 First of all, they provide a meaningful metric which on-site-staff at the detectors can use to plan the response to the incoming earthquake. 
 The predictions also serve as inputs to the algorithms which make lockloss predictions, which we will describe in the following.
 
@@ -152,9 +150,11 @@ In the initial version of the algorithm \cite{CoEa2017}, we used an empirical fi
 There were a few downsides to this empirical fit.
 First of all, while it was derived with physical effects in mind, it was predominantly an empirical construction.
 It was also found that the parameters in the model were quite degenerate, which meant that parameters derived to be physically meaningful quantities showed significant differences from site to site which were unlikely to actually be very different.
-Finally, to be useful to the detectors, there is a goal of a factor of 2 in error, which is much smaller than the factor of 5 scatter seen.
+Finally, to be useful to the detectors, there is a goal of a factor of 2 in relative error in the ground velocity predictions, which is much smaller than the factor of 5 scatter seen.
 
-We now depend on a machine learning algorithm to make the ground velocity predictions. In particular, we use the scikit-learn implementation of Gaussian Process Regression (GPR) to make the predictions.
+The idea of this analysis is to compare historical ground velocity measurements 
+to predictions made using a machine learning algorithm. 
+In particular, we use the Tensorflow implementation of deep neural networks (DNN) to make the predictions.
 The inputs to the algorithm are the earthquake magnitude, latitude, longitude, distance, depth, and azimuth. 
 The target output is the measured ground velocity.
 This improves on the equation in a few ways.
@@ -163,7 +163,7 @@ Second, it trivially includes more parameters, such as latitude, longitude, and 
 
 \begin{figure*}[t]
 \hspace*{-0.5cm}
- \includegraphics[width=3.5in,trim = 2.5cm 1.5cm 2.5cm 1.5cm, clip=true]{maps_vel_pred_vs_measured.pdf}
+ \includegraphics[width=5.0in]{maps_vel_pred_vs_measured.pdf}
  \caption{The plot shows the location of the \rednote{?} seismic stations with available data from IRIS in the United States during the \rednote{?} earthquake. The color indicates the fractional error between the measured peak ground velocity and that predicted by the algorithm. The inset shows the location of the earthquake.}
  \label{fig:map}
 \end{figure*}
@@ -235,12 +235,9 @@ The magnitudes range from \rednote{6.0} to \rednote{9.2}, chosen so as to cover 
 We use the earthquake parameters to make peak ground velocity predictions. We use historical earthquakes to train our machine learning algorithms. The parameters that enter the predictions are $M$, the magnitude of the earthquake, $h$, the depth, $r$, the distance to the detectors, $\theta$ and $\phi$, the latitude and longitude, the earthquake slip inversion, strike, rake, and dip, and the moment tensor values, $M_{rt}$, $M_{tp}$, $M_{rp}$, $M_{tt}$, $M_{rr}$, and $M_{pp}$.
 We take the peak ground velocities measured for each earthquake and use a machine learning algorithm to make predictions of that velocity.
 
+\textbf{MLA description}
 
-
-
-\rednote{MLA description}
-
-In a previous work, authors had developed an empirical equation to predict the Rayleigh wave amplitude based magnitude, depth and distance to the earthquake. The model was able to capture 90\% of the observational data within a factor of 5. To improve the accuracy further, we required more complex models that incorporate the physical mechanism of the fault rupture and along with the directional information of the earthquake. 
+In a previous work, \cite{CoEa2017} had developed an empirical equation to predict the Rayleigh wave amplitude based magnitude, depth and distance to the earthquake. The model was able to capture 90\% of the observational data within a factor of 5. To improve the accuracy further, we required more complex models that incorporate the physical mechanism of the fault rupture and along with the directional information of the earthquake. 
 In this work, we employ a deep neural networks (DNN) to carry out the nonlinear regression. The network with topology is inspired from generalized regression neural networks but we back-propagate the errors and update the weights by training it through several epochs.  Results of applying the trained network to unseen data ( Fig. \ref{fig:DNN_regression} )show the improvement in prediction accuracy as compared to  traditional regression techniques.  The model accurately predicts  90\% of the observational data within a factor of 3. DNNs require larger data sets to learn the underlying function without overfitting the data. As the observed data could possibly have measurement uncertaiities, we boosted our data set by drawing additional samples from a normal distribution centered around each observation. This step prevented the early stopping during the training period and avoided the network to memorize the data.  The trained network is able to capture the radiation pattern associated with the fault rupture making it a good candidate for earthquake warning systems.
 
 \begin{figure*}[!htb]
