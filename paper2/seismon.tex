@@ -6,7 +6,7 @@
 \usepackage{amsmath,amssymb}
 %\usepackage[usenames,dvipsnames]{color}
 %\usepackage[colorlinks=true, citecolor=blue, linkcolor=WildStrawberry]{hyperref}
-%\usepackage[citecolor=blue]{hyperref}
+\usepackage[citecolor=blue]{hyperref}
 %\usepackage[justification=centerfirst]{caption}
 \usepackage{epstopdf}
 
@@ -29,6 +29,19 @@
 \newcommand{\SNR}{\textnormal{SNR}}
 \newcommand{\rednote}[1]{{\color{red} (#1)}}
 \newcommand{\fixme}[1]{\textcolor{green}{\textbf{\textit{{#1}}}}}
+
+
+% For table
+\usepackage[utf8]{inputenc}
+\usepackage{array}
+\usepackage{diagbox}
+\usepackage{caption}
+\usepackage{siunitx}
+\usepackage{mathtools}
+\newcommand*{\ethanol}{EtOH}
+\newcommand*{\MBC}[2]{\text{#1}_{\mathrm{#2}}}
+
+
 
 \DeclareFontFamily{OT1}{pzc}{}
 \DeclareFontShape{OT1}{pzc}{m}{it}{<-> s * [1.10] pzcmi7t}{}
@@ -143,23 +156,22 @@ It can also be used to add to undersampled or missing traces \cite{JiMa2017}.
 In addition, they have been used to make full-wave tomography images \cite{DiLe2011}.
 
 One of the key aspects of the system is the ground velocity predictions, $\rm Rf_{amp}$, for each site. These predictions have two purposes. 
-First of all, they provide a meaningful metric which on-site-staff at the detectors can use to plan the response to the incoming earthquake. 
-The predictions also serve as inputs to the algorithms which make lockloss predictions, which we will describe in the following.
+First of all, they provide a meaningful metric which on-site-staff at the detectors can use to plan the response to the incoming earthquake. Response could be in the form of switching seismic isolation loops to steer the interferometer to a more robust configuration keeping it locked although with a lesser sensitivity. The predictions also serve as inputs to the algorithms which make lockloss predictions, which we will describe in the following. Any such information about upcoming downtime can be utilized to perform opportunistic maintenance to rectify problems typically scheduled for weekly maintenance period.
 
 In the initial version of the algorithm \cite{CoEa2017}, we used an empirical fit to an equation derived to account for physical effects. This equation succeeded in predicting peak ground velocity such that 90\% of events had a measured ground velocity within a factor of 5 of the predicted value.
 There were a few downsides to this empirical fit.
 First of all, while it was derived with physical effects in mind, it was predominantly an empirical construction.
 It was also found that the parameters in the model were quite degenerate, which meant that parameters derived to be physically meaningful quantities showed significant differences from site to site which were unlikely to actually be very different.
-Finally, to be useful to the detectors, there is a goal of a factor of 2 in relative error in the ground velocity predictions, which is much smaller than the factor of 5 scatter seen.
+Finally, to be useful to the detectors, there is a goal of a factor of 2 in relative error in the ground velocity predictions, which is much smaller than the factor of 5 scatter seen. 
 
 The idea of this analysis is to compare historical ground velocity measurements 
 to predictions made using a machine learning algorithm. 
-In particular, we use the Tensorflow implementation of deep neural networks (DNN) to make the predictions.
+In particular, we use the two different machine learning approaches to to make the predictions: Tensorflow implementation of deep neural networks (DNN) and stacked ensemble classifier.
 The inputs to the algorithm are the earthquake magnitude, latitude, longitude, distance, depth, and azimuth. 
 The target output is the measured ground velocity.
 This improves on the equation in a few ways.
 First of all, the algorithm leverages the power of machine learning algorithms, which is not reliant on a functional form.
-Second, it trivially includes more parameters, such as latitude, longitude, and earthquake azimuth relative to the detector.
+Second, it trivially includes more parameters, such as latitude, longitude, and earthquake azimuth relative to the detector. We observe a performance improvement in prediction accuracy from a factor of five to three for both the implementations. Inclusion of moment tensor parameters further improve the performance by a factor of \rednote{?}
 
 \begin{figure*}[t]
 \hspace*{-0.5cm}
@@ -170,6 +182,8 @@ Second, it trivially includes more parameters, such as latitude, longitude, and 
 
 We can use these parameter fits that go into the ground velocity prediction model to make predictions across the United States.
 Figure \ref{fig:map} shows the location of seismic stations that had data during the \rednote{?} earthquake. The colors indicate the fractional difference between the measured and predicted peak ground velocities.  
+
+
 
 \textbf{Acknowledgments.}
 MC was supported by the David and Ellen Lee Postdoctoral Fellowship at the California Institute of Technology.
@@ -221,6 +235,12 @@ IRIS contains data for some stations as far back as the early 1970's, and we ana
 We analyze data from \rednote{21412} earthquakes from \rednote{January 2005 to May 2017}.
 The magnitudes range from \rednote{6.0} to \rednote{9.2}, chosen so as to cover the range of earthquake magnitudes likely to significantly effect the gravitational-wave detectors.
 
+\textbf{Data Augmentation.}
+To improve the learning and prevent early stopping, we augment the data by artificially adding noise (or jitter) to the predictor and response variables in a controlled fashion. The presence of noise enhances the ability of the ML algorithm to better learn and generalize to the the underlying smooth nonlinear function. New samples are generated from each of the original dataset by creating a gaussian jitter distribution centred around the parameter value followed by random draw of samples from these distributions.
+
+
+
+
 \textbf{Ground velocity predictions.}
 
 \begin{figure*}[!htb]
@@ -228,7 +248,7 @@ The magnitudes range from \rednote{6.0} to \rednote{9.2}, chosen so as to cover 
  \includegraphics[width=0.3\textwidth]{prediction_H1O1O2_GPR.pdf}
  \includegraphics[width=0.3\textwidth]{prediction_L1O1O2_GPR.pdf}
  \includegraphics[width=0.3\textwidth]{prediction_V1O1O2_GPR.pdf}
- \caption{Fit of peak velocities seen during O1-O2 at the interferometers (LHO, LLO, and Virgo) using Gaussian Process Regression. The events have been ordered by their measured peak ground velocity (in blue) and gray error bar corresponds to a factor of 3 within the predicted value. About 90\% of events are within a factor of 3 of the predicted value.}
+ \caption{Fit of peak velocities seen during O1-O2 at the interferometers (LHO, LLO, and Virgo) using Gaussian Process Regression. The events have been ordered by their measured peak ground velocity (in blue) and grey error bar corresponds to a factor of 3 within the predicted value. About 90\% of events are within a factor of 3 of the predicted value.}
  \label{fig:regression}
 \end{figure*}
 
@@ -238,7 +258,27 @@ We take the peak ground velocities measured for each earthquake and use a machin
 \textbf{MLA description}
 
 In a previous work, \cite{CoEa2017} had developed an empirical equation to predict the Rayleigh wave amplitude based magnitude, depth and distance to the earthquake. The model was able to capture 90\% of the observational data within a factor of 5. To improve the accuracy further, we required more complex models that incorporate the physical mechanism of the fault rupture and along with the directional information of the earthquake. 
-In this work, we employ a deep neural networks (DNN) to carry out the nonlinear regression. The network with topology is inspired from generalized regression neural networks but we back-propagate the errors and update the weights by training it through several epochs.  Results of applying the trained network to unseen data ( Fig. \ref{fig:DNN_regression} )show the improvement in prediction accuracy as compared to  traditional regression techniques.  The model accurately predicts  90\% of the observational data within a factor of 3. DNNs require larger data sets to learn the underlying function without overfitting the data. As the observed data could possibly have measurement uncertaiities, we boosted our data set by drawing additional samples from a normal distribution centered around each observation. This step prevented the early stopping during the training period and avoided the network to memorize the data.  The trained network is able to capture the radiation pattern associated with the fault rupture making it a good candidate for earthquake warning systems.
+In this work, we employ a deep neural networks (DNN) to carry out the nonlinear regression. The network with topology is inspired from generalized regression neural networks but we back-propagate the errors and update the weights by training it through several epochs.  Results of applying the trained network to unseen data ( Fig. \ref{fig:DNN_regression} )show the improvement in prediction accuracy as compared to  traditional regression techniques.  The model accurately predicts  90\% of the observational data within a factor of 3. DNNs require larger data sets to learn the underlying function without overfitting the data. As the observed data could possibly have measurement uncertainties, we boosted our data set by drawing additional samples from a normal distribution centered around each observation. This step prevented the early stopping during the training period and avoided the network to memorize the data.  The trained network is able to capture the radiation pattern associated with the fault rupture making it a good candidate for earthquake warning systems. 
+
+Recently stacked ensemble regressors have gained much prominence and are consistently outperforming others in several datasets hosted at Kaggle. First level consists of set of base learners who are individually trained and cross-validated. Their predictions form input to second level meta-learner regressor which is further trained to generate the final ensemble prediction.  Such systems are theoretically guaranteed to present be the optimal learners in the asymptotic sense\rednote({superLearner 2007}). 
+
+
+
+
+    \begin{table}[h!]
+        \centering
+            \renewcommand\arraystretch{1.2}         
+            \caption[ML Performance Table]{Rf amplitude prediction performance of different ML algorithms in different scenarios }
+            \begin{tabular}{|*{5}{c|}}\cline{2-5}
+                \multicolumn{1}{c|}{}& Deep Neural Nets & Stacked Ensemble & Model 3 & Model 4 \\
+                \hline              
+                $LIGO \; Livingston $ & \diagbox[]{$85 \%$}{$89 \%$}& \diagbox[]{$89 \%$}{$93 \%$} &\diagbox[]{$--$}{$--$}&\diagbox[]{$--$}{$--$}\\ 
+                \hline              
+                $LIGO \; Hanford $ & \diagbox[]{$84 \%$}{$86 \%$}& \diagbox[]{$88 \%$}{$91 \%$} &\diagbox[]{$--$}{$--$}&\diagbox[]{$--$}{$--$}\\          
+                \hline
+            \end{tabular}
+    \end{table} 
+
 
 \begin{figure*}[!htb]
 \hspace*{-0.5cm}
@@ -248,5 +288,6 @@ In this work, we employ a deep neural networks (DNN) to carry out the nonlinear 
  \label{fig:DNN_regression}
 \end{figure*}
 
+\bibliography{references}
 
 \end{document} 
