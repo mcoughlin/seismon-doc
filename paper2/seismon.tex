@@ -217,6 +217,14 @@ This occurs by making it impossible to keep the detectors operable or induce hig
 
 \textbf{Seismic data.}
 
+
+\begin{figure*}[!htb]
+\hspace*{-0.5cm}
+ \includegraphics[width=\textwidth]{./plots/EQ_Distribution.pdf}
+ \caption{Impact of earthquakes happening worldwide on GW Inteferometers}
+ \label{fig:regression}
+\end{figure*}
+
 We use multiple sources of seismic data.
 We perform an analysis of seismic timeseries that were made available through IRIS, covering the last 10 years, and LIGO, covering the last 2 years. 
 These stations have time-series with response between 10\,mHz to 10\,Hz.
@@ -235,8 +243,9 @@ IRIS contains data for some stations as far back as the early 1970's, and we ana
 We analyze data from \rednote{21412} earthquakes from \rednote{January 2005 to May 2017}.
 The magnitudes range from \rednote{6.0} to \rednote{9.2}, chosen so as to cover the range of earthquake magnitudes likely to significantly effect the gravitational-wave detectors.
 
-\textbf{Data Augmentation.}
-To improve the learning and prevent early stopping, we augment the data by artificially adding noise (or jitter) to the predictor and response variables in a controlled fashion. The presence of noise enhances the ability of the ML algorithm to better learn and generalize to the the underlying smooth nonlinear function. New samples are generated from each of the original dataset by creating a gaussian jitter distribution centred around the parameter value followed by random draw of samples from these distributions.
+\textbf{Data Augmentation via SMOTE}
+
+To improve the learning and prevent early stopping, we augment the data by artificially adding noise (or jitter) to the predictor and response variables in a controlled fashion. We employ \textbf{S}ynthetic \textbf{M}inority \textbf{O}versampling \textbf{TE}chnique (SMOTE) to augment the data. The presence of noise enhances the ability of the ML algorithm to better learn and generalize to the the underlying smooth nonlinear function. New samples are generated from each of the original dataset by creating a gaussian jitter distribution centred around the parameter value followed by random draw of samples from these distributions. Selective boosting is done so that the imbalances in the dataset is minimized. 
 
 
 
@@ -245,10 +254,8 @@ To improve the learning and prevent early stopping, we augment the data by artif
 
 \begin{figure*}[!htb]
 \hspace*{-0.5cm}
- \includegraphics[width=0.3\textwidth]{prediction_H1O1O2_GPR.pdf}
- \includegraphics[width=0.3\textwidth]{prediction_L1O1O2_GPR.pdf}
- \includegraphics[width=0.3\textwidth]{prediction_V1O1O2_GPR.pdf}
- \caption{Fit of peak velocities seen during O1-O2 at the interferometers (LHO, LLO, and Virgo) using Gaussian Process Regression. The events have been ordered by their measured peak ground velocity (in blue) and grey error bar corresponds to a factor of 3 within the predicted value. About 90\% of events are within a factor of 3 of the predicted value.}
+ \includegraphics[width=\textwidth]{./plots/GPR_Matlab_O1O2.pdf}
+ \caption{Fit of peak velocities seen during O1-O2 at the interferometers (LHO, LLO, and Virgo) using Gaussian Process Regression. The events have been ordered by their measured peak ground velocity (in grey) and yellow error bar corresponds to a factor of 2 within the predicted value. About 90\% of events are within a factor of 2 of the predicted value.}
  \label{fig:regression}
 \end{figure*}
 
@@ -270,11 +277,11 @@ Recently stacked ensemble regressors have gained much prominence and are consist
             \renewcommand\arraystretch{1.2}         
             \caption[ML Performance Table]{Rf amplitude prediction performance of different ML algorithms in different scenarios }
             \begin{tabular}{|*{5}{c|}}\cline{2-5}
-                \multicolumn{1}{c|}{}& Deep Neural Nets & Stacked Ensemble & Model 3 & Model 4 \\
+                \multicolumn{1}{c|}{}& Deep Neural Nets & Stacked Ensemble & GPR & Model 4 \\
                 \hline              
-                $LIGO \; Livingston $ & \diagbox[]{$85 \%$}{$89 \%$}& \diagbox[]{$89 \%$}{$93 \%$} &\diagbox[]{$--$}{$--$}&\diagbox[]{$--$}{$--$}\\ 
+                $LIGO \; Livingston $ & \diagbox[]{$85 \%$}{$89 \%$}& \diagbox[]{$89 \%$}{$93 \%$} &\diagbox[]{$98 \%$}{$--$}&\diagbox[]{$--$}{$--$}\\ 
                 \hline              
-                $LIGO \; Hanford $ & \diagbox[]{$84 \%$}{$86 \%$}& \diagbox[]{$88 \%$}{$91 \%$} &\diagbox[]{$--$}{$--$}&\diagbox[]{$--$}{$--$}\\          
+                $LIGO \; Hanford $ & \diagbox[]{$84 \%$}{$86 \%$}& \diagbox[]{$88 \%$}{$91 \%$} &\diagbox[]{$93 \%$}{$--$}&\diagbox[]{$--$}{$--$}\\          
                 \hline
             \end{tabular}
     \end{table} 
