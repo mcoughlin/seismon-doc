@@ -1,0 +1,288 @@
+\begin{thebibliography}{10}
+
+\bibitem{Al2012}
+{RM. Allen}.
+\newblock Transforming earthquake detection?
+\newblock {\em Science}, 335:297--298, 2012.
+
+\bibitem{KuAl2013a}
+{Kuyuk, H.S. and RM. Allen}.
+\newblock A global approach to provide magnitude estimates for earthquake early
+  warning.
+\newblock {\em Geophysical Research Letters}, 40, 2013.
+
+\bibitem{KuAl2013b}
+{Kuyuk, H.S. and RM. Allen}.
+\newblock Optimal seismic network density for earthquake early warning: A case
+  study from {C}alifornia.
+\newblock {\em Seismological Research Letters}, 84(6):946--954, 2013.
+
+\bibitem{KuHe2014}
+{Kuyuk, H.S. et al}.
+\newblock {Designing a network-based earthquake early warning system for
+  California: ElarmS-2}.
+\newblock {\em Bulletin of Seismological Society of America}, 104(1), 2014.
+
+\bibitem{CoLa2009a}
+{Cochran E., Lawrence J., Christensen C., and Chung A.}
+\newblock A novel strong-motion seismic network for community participation in
+  earthquake monitoring.
+\newblock {\em IEEE Inst and Meas}, 12(6):8--15, 2009.
+
+\bibitem{CoLa2009b}
+{Cochran E., Lawrence J., Christensen C., and Jakka R.}
+\newblock The quake-catcher network: Citizen science expanding seismic
+  horizons.
+\newblock {\em Seismological Research Letters}, 80:26--30, 2009.
+
+\bibitem{BoAl2014}
+M.~Bose, R.~Allen, H.~Brown, G.~Gua, M.~Fischer, E.~Hauksson, T.~Heaten,
+  M.~Hellweg, M.~Liukis, D.~Neuhauser, P.~Maechling, K.~Solanki, M.~Vinci,
+  I.~Henson, O.~Khainovski, S.~Kuyuk, M.~Carpio, M.-A. Meier, and T.~Jordan.
+\newblock {CISN ShakeAlert: An Earthquake Early Warning Demonstration System
+  for California}.
+\newblock In Friedemann Wenzel and Jochen Zschau, editors, {\em Early Warning
+  for Geological Disasters}, Advanced Technologies in Earth Sciences, pages
+  49--69. Springer Berlin Heidelberg, 2014.
+
+\bibitem{HoKa2008}
+Mitsuyuki Hoshiba, Osamu Kamigaichi, Makoto Saito, Shin'ya Tsukada, and Nobuo
+  Hamada.
+\newblock Earthquake early warning starts nationwide in japan.
+\newblock {\em Eos, Transactions American Geophysical Union}, 89(8):73--74,
+  2008.
+
+\bibitem{HoEA2011c}
+Mitsuyuki Hoshiba, Kazuhiro Iwakiri, Naoki Hayashimoto, Toshihiro Shimoyama,
+  Kazuyuki Hirano, Yasuyuki Yamada, Yuzo Ishigaki, and Haruyuki Kikuta.
+\newblock {Outline of the 2011 off the Pacific coast of Tohoku Earthquake (Mw
+  9.0) ---Earthquake Early Warning and observed seismic intensity---}.
+\newblock {\em Earth, Planets and Space}, 63(7):7, 2011.
+
+\bibitem{StAl2016}
+Jennifer~A. Strauss and Richard~M. Allen.
+\newblock {Benefits and Costs of Earthquake Early Warning}.
+\newblock {\em Seismological Research Letters}, 87(3):765--772, 2016.
+
+\bibitem{aligo}
+{J Aasi et al.}
+\newblock Advanced ligo.
+\newblock {\em Classical and Quantum Gravity}, 32(7):074001, 2015.
+
+\bibitem{avirgo}
+{F Acernese et al}.
+\newblock Advanced virgo: a second-generation interferometric gravitational
+  wave detector.
+\newblock {\em Classical and Quantum Gravity}, 32(2):024001, 2015.
+
+\bibitem{Gr2010}
+{Grote H. for the LIGO Scientific Collaboration}.
+\newblock {The GEO 600 status}.
+\newblock {\em Class. Quantum Grav.}, 27:084003, 2010.
+
+\bibitem{AbEA2016a}
+{Abbott, B. P. et al.}
+\newblock Observation of gravitational waves from a binary black hole merger.
+\newblock {\em Phys. Rev. Lett.}, 116:061102, Feb 2016.
+
+\bibitem{AbEA2016e}
+{Abbott, B. P. et al.}
+\newblock Gw151226: Observation of gravitational waves from a 22-solar-mass
+  binary black hole coalescence.
+\newblock {\em Phys. Rev. Lett.}, 116:241103, Jun 2016.
+
+\bibitem{CoSt2015}
+Michael Coughlin, Christopher Stubbs, Sergio Barrientos, Chuck Claver, Jan
+  Harms, R.~Chris~Smith, and Michael Warner.
+\newblock Real-time earthquake warning for astronomical observatories.
+\newblock {\em Experimental Astronomy}, 39(2):387--404, 2015.
+
+\bibitem{CoEa2017}
+Michael Coughlin, Paul Earle, Jan Harms, Sebastien Biscans, Christopher
+  Buchanan, Eric Coughlin, Fred Donovan, Jeremy Fee, Hunter Gabbard, Michelle
+  Guy, Nikhil Mukund, and Matthew Perry.
+\newblock Limiting the effects of earthquakes on gravitational-wave
+  interferometers.
+\newblock {\em Classical and Quantum Gravity}, 34(4):044004, 2017.
+
+\bibitem{AbAd2002}
+R~Abbott, R~Adhikari, et~al.
+\newblock Seismic isolation for advanced ligo.
+\newblock {\em Classical and Quantum Gravity}, 19(7):1591, 2002.
+
+\bibitem{StAb2009}
+Alberto Stochino, Benjamin Abbot, Yoichi Aso, Mark Barton, Alessandro
+  Bertolini, Valerio Boschi, Dennis Coyne, Riccardo DeSalvo, Carlo Galli, Yumei
+  Huang, Alex Ivanov, Szabolcs Marka, David Ottaway, Virginio Sannibale, Chiara
+  Vanni, Hiroaki Yamamoto, and Sanichiro Yoshida.
+\newblock The seismic attenuation system (sas) for the advanced {LIGO}
+  gravitational wave interferometric detectors.
+\newblock {\em Nuclear Instruments and Methods in Physics Research Section A:
+  Accelerators, Spectrometers, Detectors and Associated Equipment}, 598(3):737
+  -- 753, 2009.
+
+\bibitem{MaLa2015}
+F~Matichard, B~Lantz, R~Mittleman, K~Mason, J~Kissel, B~Abbott, S~Biscans,
+  J~McIver, R~Abbott, S~Abbott, E~Allwine, S~Barnum, J~Birch, C~Celerier,
+  D~Clark, D~Coyne, D~DeBra, R~DeRosa, M~Evans, S~Foley, P~Fritschel, J~A
+  Giaime, C~Gray, G~Grabeel, J~Hanson, C~Hardham, M~Hillard, W~Hua,
+  C~Kucharczyk, M~Landry, A~Le Roux, V~Lhuillier, D~Macleod, M~Macinnis,
+  R~Mitchell, B~O’Reilly, D~Ottaway, H~Paris, A~Pele, M~Puma, H~Radkins,
+  C~Ramet, M~Robinson, L~Ruet, P~Sarin, D~Shoemaker, A~Stein, J~Thomas,
+  M~Vargas, K~Venkateswara, J~Warner, and S~Wen.
+\newblock Seismic isolation of advanced ligo: Review of strategy,
+  instrumentation and performance.
+\newblock {\em Classical and Quantum Gravity}, 32(18):185003, 2015.
+
+\bibitem{KuCo2015}
+H.~S. Kuyuk, S.~Colombelli, A.~Zollo, R.~M. Allen, and M.~O. Erdik.
+\newblock Automatic earthquake confirmation for early warning system.
+\newblock {\em Geophysical Research Letters}, 42(13):5266--5273, 2015.
+\newblock 2015GL063881.
+
+\bibitem{Do2003}
+J.~{Douglas}.
+\newblock {Earthquake ground motion estimation using strong-motion records: a
+  review of equations for the estimation of peak ground acceleration and
+  response spectral ordinates}.
+\newblock {\em Earth Science Reviews}, 61:43--104, April 2003.
+
+\bibitem{AlGa2009}
+Richard~M. Allen, Paolo Gasparini, Osamu Kamigaichi, and Maren B{\"o}se.
+\newblock The status of earthquake early warning around the world: An
+  introductory overview.
+\newblock {\em Seismological Research Letters}, 80(5):682--693, 2009.
+
+\bibitem{MeCr2015}
+Diego Melgar, Brendan~W. Crowell, Jianghui Geng, Richard~M. Allen, Yehuda Bock,
+  Sebastian Riquelme, Emma~M. Hill, Marino Protti, and Athanassios Ganas.
+\newblock Earthquake magnitude calculation without saturation from the scaling
+  of peak ground displacement.
+\newblock {\em Geophysical Research Letters}, 42(13):5197--5205, 2015.
+\newblock 2015GL064278.
+
+\bibitem{PaMu2012}
+G.~F. {Panza}, C.~L. {Mura}, A.~{Peresan}, F.~{Romanelli}, and F.~{Vaccari}.
+\newblock {Seismic Hazard Scenarios as Preventive Tools for a Disaster
+  Resilient Society}.
+\newblock {\em Advances in Geophysics}, 53:93--165, 2012.
+
+\bibitem{Ch2007}
+Anil~K. Chopra.
+\newblock Elastic response spectrum: a historical note.
+\newblock {\em Earthquake Engineering \& Structural Dynamics}, 36(1):3--12,
+  2007.
+
+\bibitem{KoAl2016}
+Qingkai Kong, Richard~M. Allen, Louis Schreier, and Young-Woo Kwon.
+\newblock Myshake: A smartphone seismic network for earthquake early warning
+  and beyond.
+\newblock {\em Science Advances}, 2(2), 2016.
+
+\bibitem{KuYi2011}
+H.~S. {Kuyuk}, E.~{Yildirim}, E.~{Dogan}, and G.~{Horasan}.
+\newblock {An unsupervised learning algorithm: application to the
+  discrimination of seismic events and quarry blasts in the vicinity of
+  Istanbul}.
+\newblock {\em Natural Hazards and Earth System Sciences}, 11:93--100, January
+  2011.
+
+\bibitem{KoUs2016}
+Jari Kortström, Marja Uski, and Timo Tiira.
+\newblock Automatic classification of seismic events within a regional
+  seismograph network.
+\newblock {\em Computers \& Geosciences}, 87(Supplement C):22 -- 30, 2016.
+
+\bibitem{PeGh2017}
+T.~{Perol}, M.~{Gharbi}, and M.~{Denolle}.
+\newblock {Convolutional Neural Network for Earthquake Detection and Location}.
+\newblock {\em ArXiv e-prints}, February 2017.
+
+\bibitem{MoHo2016}
+S.~Mostafa Mousavi, Stephen~P. Horton, Charles~A. Langston, and Borhan Samei.
+\newblock Seismic features and automatic discrimination of deep and shallow
+  induced-microearthquakes using neural network and logistic regression.
+\newblock {\em Geophysical Journal International}, 207(1):29--46, 2016.
+
+\bibitem{JiMa2017}
+Yongna Jia and Jianwei Ma.
+\newblock What can machine learning do for seismic data processing? an
+  interpolation application.
+\newblock {\em GEOPHYSICS}, 82(3):V163--V177, 2017.
+
+\bibitem{DiLe2011}
+Steve Diersen, En-Jui Lee, Diana Spears, Po~Chen, and Liqiang Wang.
+\newblock Classification of seismic windows using artificial neural networks.
+\newblock {\em Procedia Computer Science}, 4(Supplement C):1572 -- 1581, 2011.
+\newblock Proceedings of the International Conference on Computational Science,
+  ICCS 2011.
+
+\bibitem{AbEA2016f}
+{The LIGO Scientific Collaboration and Virgo Collaboration}.
+\newblock Characterization of transient noise in advanced ligo relevant to
+  gravitational wave signal gw150914.
+\newblock {\em Classical and Quantum Gravity}, 33(13):134001, 2016.
+
+\bibitem{BeCa2016}
+Mark Beker, Xander Campman, Julesvan Oven, Wim Walk, Jack Levell, Zijian Tang,
+  Mike Danilouchkine, Dirk Smit, Johannesvan den Brand, Soumen Koley, and Maria
+  Bader.
+\newblock Innovations in seismic sensors driven by the search for gravitational
+  waves.
+\newblock {\em The Leading Edge}, 35(7):590--593, 2016.
+
+\bibitem{VeHa2014}
+Krishna Venkateswara, Charles~A. Hagedorn, Matthew~D. Turner, Trevor Arp, and
+  Jens~H. Gundlach.
+\newblock A high-precision mechanical absolute-rotation sensor.
+\newblock {\em Review of Scientific Instruments}, 85(1):015005, 2014.
+
+\bibitem{BCB2006}
+S.~Bonnefoy-Claudet, F.~Cotton, and P.-Y. Bard.
+\newblock {The nature of noise wavefield and its applications for site effects
+  studies; A literature review}.
+\newblock {\em Earth-Science Rev.}, 79:205, 2006.
+
+\bibitem{Pet1993}
+J.~Peterson.
+\newblock Observation and modeling of seismic background noise.
+\newblock {\em Open-file report}, 93-322, 1993.
+
+\bibitem{BDE2004}
+J.~Berger, P.~Davis, and G.~Ekstr{\"o}m.
+\newblock {Ambient Earth Noise: A survey of the Global Seismographic Network}.
+\newblock {\em Journal of Geophysical Research}, 109:B11307, 2004.
+
+\bibitem{McEA2009}
+D.~E. McNamara, C.~R. Hutt, L.~S. Gee, H.~M. Benz, and R.~P. Buland.
+\newblock {A Method to Establish Seismic Noise Baselines for Automated Station
+  Assessment}.
+\newblock {\em Seism.~Res.~Lett.}, 80:628, 2009.
+
+\bibitem{HMS1963}
+R.~A. Haubrich, W.~H. Munk, and F.~E. Snodgrass.
+\newblock Comparative spectra of microseisms and swell.
+\newblock {\em BSSA}, 53:27, 1963.
+
+\bibitem{ToLa1968}
+M.~N. {Toks\"oz} and R.~T. Lacoss.
+\newblock {Microseisms: Mode Structure and Sources}.
+\newblock {\em Science}, 159:872, 1968.
+
+\bibitem{Ces1994}
+R.~K. Cessaro.
+\newblock {Sources of Primary and Secondary Microseisms}.
+\newblock {\em BSSA}, 84:142, 1994.
+
+\bibitem{FKK1998}
+A.~Friedrich, F.~{Kr\"uger}, and K.~Klinge.
+\newblock Oceangenerated microseismic noise located with the {Gr\"afenberg}
+  array.
+\newblock {\em J.~Seism.}, 2:47, 1998.
+
+\bibitem{2011arXiv1106.1813C}
+N.~V. {Chawla}, K.~W. {Bowyer}, L.~O. {Hall}, and W.~P. {Kegelmeyer}.
+\newblock {SMOTE: Synthetic Minority Over-sampling Technique}.
+\newblock {\em ArXiv e-prints}, June 2011.
+
+\end{thebibliography}

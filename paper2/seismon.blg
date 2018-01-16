@@ -1,0 +1,52 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: seismon.aux
+Illegal, another \bibdata command---line 107 of file seismon.aux
+ : \bibdata
+ :         {seismonNotes,references}
+I'm skipping whatever remains of this command
+The style file: unsrt.bst
+Database file #1: seismonNotes.bib
+Database file #2: references.bib
+You've used 45 entries,
+            1791 wiz_defined-function locations,
+            761 strings with 13044 characters,
+and the built_in function-call counts, 11332 in all, are:
+= -- 863
+> -- 766
+< -- 1
++ -- 275
+- -- 230
+* -- 977
+:= -- 1981
+add.period$ -- 139
+call.type$ -- 45
+change.case$ -- 45
+chr.to.int$ -- 0
+cite$ -- 45
+duplicate$ -- 410
+empty$ -- 972
+format.name$ -- 230
+if$ -- 2371
+int.to.chr$ -- 0
+int.to.str$ -- 45
+missing$ -- 45
+newline$ -- 231
+num.names$ -- 47
+pop$ -- 49
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 151
+stack$ -- 0
+substring$ -- 714
+swap$ -- 52
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 96
+width$ -- 47
+write$ -- 503
+(There was 1 error message)

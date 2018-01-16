@@ -118,9 +118,9 @@ Universit\`a degli Studi di Urbino ``Carlo Bo'', I-61029 Urbino, Italy}
 
 \textbf{Earthquake early warning (EEW) is a burgeoning field dedicated to the rapid detection and characterization of earthquakes as well as the dissemination of that information to people and infrastructure in their path \cite{Al2012,KuAl2013a,KuAl2013b,KuHe2014,CoLa2009a,CoLa2009b,BoAl2014,HoKa2008,HoEA2011c,StAl2016}.
 As these systems minimize the time required to calculate the source parameters of earthquakes (i.e. their location and magnitude), it becomes important to predict the ground motion that the earthquakes will cause as a function of location and distance with high accuracy.
-In this analysis, we leverage the power of machine learning algorithms to make both ground velocity predictions and gravitational-wave detector lockloss predictions. We demonstrate an improvement from a factor of 5 to a factor of 3 in scatter of the error in the predicted ground velocity over a previous model fitting based approach.
+In this analysis, we leverage the power of machine learning algorithms to make both ground velocity predictions and gravitational-wave detector lockloss predictions. We demonstrate an improvement from a factor of 5 to a factor of 2 in scatter of the error in the predicted ground velocity over a previous model fitting based approach.
 To assess the accuracy and utility of our approach, we compare the estimates based only on rapid magnitude and location estimates to the amplitudes observed.
-We find agreement within a factor of 3 by this metric.
+We find agreement within a factor of 2 by this metric.
 Further, we compare measurements that include the less timely earthquake slip inversion and CMT information to the original amplitudes observed, resulting in a factor of 2 agreement.}
 
 With the advent of gravitational-wave astronomy, it is essential to maximize the duty cycle of second generation gravitational-wave detectors such as the Laser Interferometer Gravitational-wave Observatory (LIGO) \cite{aligo}, Virgo \cite{avirgo}, and GEO600 \cite{Gr2010} detectors.
@@ -156,7 +156,7 @@ It can also be used to add to undersampled or missing traces \cite{JiMa2017}.
 In addition, they have been used to make full-wave tomography images \cite{DiLe2011}.
 
 One of the key aspects of the system is the ground velocity predictions, $\rm Rf_{amp}$, for each site. These predictions have two purposes. 
-First of all, they provide a meaningful metric which on-site-staff at the detectors can use to plan the response to the incoming earthquake. Response could be in the form of switching seismic isolation loops to steer the interferometer to a more robust configuration keeping it locked although with a lesser sensitivity. The predictions also serve as inputs to the algorithms which make lockloss predictions, which we will describe in the following. Any such information about upcoming downtime can be utilized to perform opportunistic maintenance to rectify problems typically scheduled for weekly maintenance period.
+First of all, they provide a meaningful metric which on-site-staff at the detectors can use to plan the response to the incoming earthquake. Response could be in the form of switching seismic isolation loops to steer the interferometer to a more robust configuration keeping it locked although with a lesser sensitivity \cite{10.1088/1361-6382/aaa4aa}. The predictions also serve as inputs to the algorithms which make lockloss predictions, which we will describe in the following. Any such information about upcoming downtime can be utilized to perform opportunistic maintenance to rectify problems typically scheduled for weekly maintenance period.
 
 In the initial version of the algorithm \cite{CoEa2017}, we used an empirical fit to an equation derived to account for physical effects. This equation succeeded in predicting peak ground velocity such that 90\% of events had a measured ground velocity within a factor of 5 of the predicted value.
 There were a few downsides to this empirical fit.
@@ -245,7 +245,7 @@ The magnitudes range from \rednote{6.0} to \rednote{9.2}, chosen so as to cover 
 
 \textbf{Data Augmentation via SMOTE}
 
-To improve the learning and prevent early stopping, we augment the data by artificially adding noise (or jitter) to the predictor and response variables in a controlled fashion. We employ \textbf{S}ynthetic \textbf{M}inority \textbf{O}versampling \textbf{TE}chnique (SMOTE) to augment the data. The presence of noise enhances the ability of the ML algorithm to better learn and generalize to the the underlying smooth nonlinear function. New samples are generated from each of the original dataset by creating a gaussian jitter distribution centred around the parameter value followed by random draw of samples from these distributions. Selective boosting is done so that the imbalances in the dataset is minimized. 
+To improve the learning and prevent early stopping, we augment the data by artificially adding noise (or jitter) to the predictor and response variables in a controlled fashion. We employ \textbf{S}ynthetic \textbf{M}inority \textbf{O}versampling \textbf{TE}chnique (SMOTE) to augment the data \cite{2011arXiv1106.1813C}. The presence of noise enhances the ability of the ML algorithm to better learn and generalize to the the underlying smooth nonlinear function. New samples are generated from each of the original dataset by creating a gaussian jitter distribution centred around the parameter value followed by random draw of samples from these distributions. Selective boosting is done so that the imbalances in the dataset are minimized. 
 
 
 
