@@ -74,9 +74,6 @@ Universit\`a degli Studi di Urbino ``Carlo Bo'', I-61029 Urbino, Italy}
 \author{Sebastien Biscans}
 \affiliation{LIGO Laboratory, Massachusetts Institute of Technology, Cambridge, MA 02138, USA}
 
-\author{Christopher Buchanan}
-\affiliation{Department of Physics and Astronomy, Louisiana State University, Baton Rouge, LA 70803-4001, USA}
-
 \author{Eric Coughlin}
 \affiliation{Department of Computer Science, Luther College, 700 College Dr, Decorah, IA 52101, USA}
 
@@ -107,9 +104,6 @@ Universit\`a degli Studi di Urbino ``Carlo Bo'', I-61029 Urbino, Italy}
 \author{Arnaud Pele}
 \affiliation{LIGO Livingston Observatory, Livingston, LA 70754, USA}
 
-\author{Matthew Perry}
-\affiliation{Planetary Science Institute, Lakewood, CO 80401, USA}
-
 \author{Hugh Radkins}
 \affiliation{LIGO Hanford Observatory, Richland, WA 99352, USA}
 
@@ -132,9 +126,11 @@ We find agreement within a factor of 2 by this metric.
 Further, we compare measurements that include the less timely earthquake slip inversion and CMT information to the original amplitudes observed, resulting in a factor of 2 agreement.}
 
 With the advent of gravitational-wave astronomy, it is essential to maximize the duty cycle of second generation gravitational-wave detectors such as the Laser Interferometer Gravitational-wave Observatory (LIGO) \cite{aligo}, Virgo \cite{avirgo}, and GEO600 \cite{Gr2010} detectors.
-Any increase in duty cycle increases the sensitivity of gravitational-wave searches, including the observations of binary black hole mergers \cite{AbEA2016a,AbEA2016e}.
+Any increase in duty cycle increases the sensitivity of gravitational-wave searches, including the observations of binary black hole mergers \cite{AbEA2016a,AbEA2016e,AbEA2017a,AbEA2017c} and binary neutron stars \cite{AbEA2017b}.
 One source of ground motion that destabilizes the detectors are earthquakes
 \cite{CoSt2015,CoEa2017}, despite seismic isolation systems designed to minimize such effects \cite{AbAd2002,StAb2009,MaLa2015}.
+The surface waves, the highest amplitude component from earthquakes with the longest duration, adversely affect the detectors. 
+This occurs by making it impossible to keep the detectors operable or induce higher frequency noise by upconverting low-frequency optical motion.
 
 Many seismic and geodetic (GPS) sensor arrays exist that are producing rapid earthquake information products, from magnitude and location estimates to regional centroid moment tensors (CMTs) and advanced slip inversions.
 With wide-ranging public warning systems in Mexico and Japan and smaller-scale systems in many other countries, warnings from seconds to minutes are now available to reduce the impact of earthquakes on society \cite{StAl2016}.
@@ -145,16 +141,11 @@ The main goal of EEW methods is to generate reliable relations (sometimes called
 ground displacement, while in the frequency domain there are spectral accelerations, velocities, and displacements as well as predominant periods \cite{Do2003}. These source-scaling laws are applied to early portions of seismograms to make predictions about the magnitude for EEW \cite{AlGa2009}, important for hypocenter and magnitude computations in tsunamis \cite{MeCr2015}, hazard computations in engineering seismology \cite{PaMu2012}, and computation of the elastic response spectrum \cite{Ch2007}.
 
 Early estimates of magnitudes tend to underestimate the energy released due to the non-instantaneous pattern of slip.
-For this reason, the early estimates of the ground velocity amplitudes are not as accurate as later values. 
+For this reason, the early estimates of the ground velocity amplitudes are often not as accurate as later values. 
 The effects of these errors are particularly pronounced for larger earthquakes, where the estimates of the fault lengths become more important.
 Thus, these larger earthquakes tend to have their amplitudes underpredicted.
 The loss of performance that results from use of the rapid estimates is acceptable to use as rapid warnings.
 \cite{MeCr2015} showed that real-time GPS waveforms can rapidly determine the magnitude within the first minute of rupture and in many cases before rupture is complete.
-Real-time GPS seismic waveforms can be used to rapidly determine magnitude, typically within the first minute of rupture initiation and in many cases before the rupture is complete. 
-
-In previous work, \cite{CoEa2017} used advances in early earthquake warning to develop a low-latency earthquake early warning client named \emph{Seismon}. This system uses a real-time event messaging system of the U.S. Geological Survey (USGS) to mitigate the effects of teleseismic events on ground-based gravitational-wave detectors. 
-Using information about the earthquake source characteristics such as time, location, depth, and magnitude, predictions as to the arrival time and ground velocity induced by the earthquakes were predicted.
-It was shown that about 90\% of events had a measured ground velocity within a factor of 5 of the predicted value.
 
 Machine learning has recently become an important aspect of EEW and seismology in general.
 The \emph{MyShake} EEW system uses artificial neural networks to differentiate earthquake and human motions, with 98\% of earthquake records within 10\,km correctly identified, and only 7\% of people-induced transients appearing to be earthquakes to the algorithm  \cite{KoAl2016}.
@@ -164,22 +155,49 @@ It can also be used to add to undersampled or missing traces \cite{JiMa2017}.
 In addition, they have been used to make full-wave tomography images \cite{DiLe2011}.
 
 One of the key aspects of the system is the ground velocity predictions, $\rm Rf_{amp}$, for each site. These predictions have two purposes. 
-First of all, they provide a meaningful metric which on-site-staff at the detectors can use to plan the response to the incoming earthquake. Response could be in the form of switching seismic isolation loops to steer the interferometer to a more robust configuration keeping it locked although with a lesser sensitivity \cite{10.1088/1361-6382/aaa4aa}. The predictions also serve as inputs to the algorithms which make lockloss predictions, which we will describe in the following. Any such information about upcoming downtime can be utilized to perform opportunistic maintenance to rectify problems typically scheduled for weekly maintenance period.
+First of all, they provide a meaningful metric which on-site-staff at the detectors can use to plan the response to the incoming earthquake. Response could be in the form of switching seismic isolation loops to steer the interferometer to a more robust configuration keeping it locked although with a lesser sensitivity \cite{BiWa2018}. The predictions also serve as inputs to the algorithms which make lockloss predictions, which we will describe in the following. Any such information about upcoming downtime can be utilized to perform opportunistic maintenance to rectify problems typically scheduled for weekly maintenance periods.
 
-In the initial version of the algorithm \cite{CoEa2017}, we used an empirical fit to an equation derived to account for physical effects. This equation succeeded in predicting peak ground velocity such that 90\% of events had a measured ground velocity within a factor of 5 of the predicted value.
+In previous work, we used advances in early earthquake warning to develop a low-latency earthquake early warning client named \emph{Seismon} \cite{CoEa2017}. This system uses a real-time event messaging system of the U.S. Geological Survey (USGS) to mitigate the effects of teleseismic events on ground-based gravitational-wave detectors. 
+Using information about the earthquake source characteristics such as time, location, depth, and magnitude, predictions as to the arrival time and ground velocity induced by the earthquakes were predicted.
+In the initial version of the algorithm, we used an empirical fit to an equation derived to account for physical effects. This equation succeeded in predicting peak ground velocity such that 90\% of events had a measured ground velocity within a factor of 5 of the predicted value.
 There were a few downsides to this empirical fit.
 First of all, while it was derived with physical effects in mind, it was predominantly an empirical construction.
 It was also found that the parameters in the model were quite degenerate, which meant that parameters derived to be physically meaningful quantities showed significant differences from site to site which were unlikely to actually be very different.
-Finally, to be useful to the detectors, there is a goal of a factor of 2 in relative error in the ground velocity predictions, which is much smaller than the factor of 5 scatter seen. 
+Finally, to be useful to the detectors, there is a goal of a factor of 2 in relative error in the ground velocity predictions in order to make accurate assessments of whether the gravitational-wave detectors will be affected, which is much smaller than the factor of 5 scatter seen. 
 
 The idea of this analysis is to compare historical ground velocity measurements 
 to predictions made using a machine learning algorithm. 
-In particular, we use the two different machine learning approaches to to make the predictions: Tensorflow implementation of deep neural networks (DNN) and stacked ensemble classifier.
-The inputs to the algorithm are the earthquake magnitude, latitude, longitude, distance, depth, and azimuth. 
+The inputs to the algorithm are the earthquake magnitude, latitude, longitude, distance, depth, and earthquake azimuth relative to the detector. 
 The target output is the measured ground velocity.
 This improves on the equation in a few ways.
 First of all, the algorithm leverages the power of machine learning algorithms, which is not reliant on a functional form.
-Second, it trivially includes more parameters, such as latitude, longitude, and earthquake azimuth relative to the detector. We observe a performance improvement in prediction accuracy from a factor of five to three for both the implementations. Inclusion of moment tensor parameters further improve the performance by a factor of \rednote{?}
+Second, it trivially includes more parameters, such as latitude, longitude, and earthquake azimuth relative to the detector above and beyond the initial analytical formalism. 
+
+In particular, we use the two different machine learning approaches to to make the predictions: Tensorflow implementation of deep neural networks (DNN) and stacked ensemble classifier.
+We expand on the specific implementations in the Supplementary Materials.
+We use historical earthquakes to train our machine learning algorithms. The parameters that enter the predictions are $M$, the magnitude of the earthquake, $h$, the depth, $r$, the distance to the detectors, $\theta$ and $\phi$, the latitude and longitude, and $\alpha$, the earthquake azimuth relative to the detector.
+All of these variables are available in low latency from the USGS.
+On longer timescales, the earthquake slip inversion, strike, rake, and dip, and the moment tensor values, $M_{rt}$, $M_{tp}$, $M_{rp}$, $M_{tt}$, $M_{rr}$, and $M_{pp}$ are also available.
+These variables correspond to the inputs for the machine learning algorithms.
+The target variables correspond to peak ground velocities measured using seismometers.
+Time-series are chosen to encompass the P-wave arrival to surface waves calculated assuming a ground velocity of 2\,km/s.
+We take the vertical component of broadband (velocity) data that is filtered using an acausal 0.1\,Hz low-pass Butterworth filter.
+The data is calibrated into ground velocity using a constant V to m/s value appropriate for each seismometer.
+We take the peak ground velocities measured for each earthquake and use a machine learning algorithm to make predictions of that velocity.
+
+To improve the learning and prevent early stopping, we augment the data by artificially adding noise (or jitter) to the predictor and response variables in a controlled fashion. We employ \textbf{S}ynthetic \textbf{M}inority \textbf{O}versampling \textbf{TE}chnique (SMOTE) to augment the data \cite{ChBo2011}. The presence of noise enhances the ability of the MLA to better learn and generalize to the the underlying smooth, non-linear function. New samples are generated from each of the original datasets by creating a Gaussian jitter distribution centered around the parameter value followed by random draw of samples from these distributions. Selective boosting is done so that the imbalances in the dataset are minimized. 
+
+\begin{figure*}[!htb]
+\hspace*{-0.5cm}
+ \includegraphics[width=\textwidth]{./plots/GPR_Matlab_O1O2.pdf}
+ \caption{Fit of peak velocities seen during O1-O2 at the interferometers (LHO, LLO, and Virgo) using Gaussian Process Regression. The events have been ordered by their measured peak ground velocity (in grey) and yellow error bar corresponds to a factor of 2 within the predicted value. About 90\% of events are within a factor of 2 of the predicted value.}
+ \label{fig:regression}
+\end{figure*}
+
+We show the results of applying the trained network to unseen data in figure~\ref{fig:regression}.
+This shows the improvement in prediction accuracy as compared to traditional regression techniques.  The model accurately predicts  90\% of the observational data within a factor of two.
+This is a performance improvement in prediction accuracy from a factor of five to two for both the implementations. 
+Inclusion of moment tensor parameters further improves the performance by a factor of \rednote{?}
 
 \begin{figure*}[t]
 \hspace*{-0.5cm}
@@ -190,8 +208,33 @@ Second, it trivially includes more parameters, such as latitude, longitude, and 
 
 We can use these parameter fits that go into the ground velocity prediction model to make predictions across the United States.
 Figure \ref{fig:map} shows the location of seismic stations that had data during the \rednote{?} earthquake. The colors indicate the fractional difference between the measured and predicted peak ground velocities.  
+The performance shows that these predictions can be used beyond just the individual gravitational-wave detector sites and used in relatively nearby seismometers.
 
+\begin{figure*}[!htb]
+\hspace*{-0.5cm}
+ \includegraphics[width=\textwidth]{./plots/EQ_Distribution.pdf}
+ \caption{Impact of earthquakes happening worldwide on GW Inteferometers}
+ \label{fig:lockloss_distribution}
+\end{figure*}
 
+The main benefit of ground velocity predictions for gravitational-wave detectors is to inform predictions of whether an earthquake will cause the loss of data for the detector.
+We have previously developed techniques for preventing earthquakes from causing the loss of data taking if advanced notice is given \cite{BiWa2018}.
+In the following, we will use a MLA to develop a lockloss prediction model as well. 
+We use the same set of inputs to the algorithm as in the ground velocity prediction case, but also include the ground velocity predictions themselves as inputs.
+To generate the target variable, we take times when the gravitational-wave detectors lost the ability to take data during an earthquake and assign a value of 1, and a 0 otherwise.
+In figure~\ref{fig:lockloss_distribution}, we show world maps of earthquakes that both caused and did not cause the 
+We use the same MLAs as applied for the ground velocity predictions.
+Acknowledging that there is a trade-off between false-alarm probability and efficiency standard probability, we demand a false-alarm probability threshold of 10\,\%.
+The best algorithm is able to accurately predict \rednote{?}\,\% of losses of data taking ability.
+
+In conclusion, we have used MLAs to predict peak ground velocities from teleseismic earthquakes.
+We use the peak ground velocity predictions to predict the potential effect of earthquakes on gravitational-wave detectors.
+Given the significant interest in accurate ground velocity predictions for EEW systems in general, we believe the techniques here are beneficial beyond the gravitational-wave community.
+While we focus on the prediction of peak ground velocity here, another possibility is to use other seismometers to predict the time-series themselves.
+This would provide a way to directly measure transfer functions between ground motion very near the earthquake source and those in areas of significant seismological hazard, such as in the Los Angeles basin.
+
+\textbf{Code availability.}
+The code to reproduce the analysis is open-source and available at https://github.com/ligovirgo/seismon/ for public download.
 
 \textbf{Acknowledgments.}
 MC was supported by the David and Ellen Lee Postdoctoral Fellowship at the California Institute of Technology.
@@ -208,76 +251,34 @@ The facilities of IRIS Data Services, and specifically the IRIS Data Management 
 
 \textbf{Methods.}
 
-\textbf{Gravitational-wave detectors.}
-
-The Advanced LIGO \cite{aligo} and the Advanced Virgo  \cite{avirgo}  detectors are multi-kilometer Michelson-based interferometers.
-Gravitational waves induce small displacements in the detectors, which are designed to be free from environmental disturbances and limited only by processes of fundamental physics.
-These detectors are subject to non-Gaussian noise transients due to either internal behavior of the instrument or interactions between the detector and its environment.
-
-In order to minimize the effect of the environment, the LIGO detectors contain 200,000 auxiliary channels which are designed to monitor both the behavior of the instrument and the environment conditions.
-A subset of these sensors are physical environment monitor sensors dedicated to monitoring the environment, including seismometers, magnetometers, microphones, and many others.
-The LIGO and Virgo detectors contain arrays of seismometers, from which we take a seismometer in each of the central buildings \cite{AbEA2016f}. These are useful for measuring any source of ground motion that can couple into the interferometers.
-Gravitational-wave detectors have driven the development of both seismic \cite{BeCa2016} and rotation \cite{VeHa2014} sensors.
-
-Earthquakes are one of the main sources of transient seismic motion for these gravitational-wave detectors. 
-The surface waves, the highest amplitude component from earthquakes with the longest duration, adversely affect the detectors. 
-This occurs by making it impossible to keep the detectors operable or induce higher frequency noise by upconverting low-frequency optical motion.
-
 \textbf{Seismic data.}
 
-
-\begin{figure*}[!htb]
-\hspace*{-0.5cm}
- \includegraphics[width=\textwidth]{./plots/EQ_Distribution.pdf}
- \caption{Impact of earthquakes happening worldwide on GW Inteferometers}
- \label{fig:regression}
-\end{figure*}
-
 We use multiple sources of seismic data.
-We perform an analysis of seismic timeseries that were made available through IRIS, covering the last 10 years, and LIGO, covering the last 2 years. 
+We perform an analysis of seismic timeseries that were made available through IRIS, covering the last 10 years.
 These stations have time-series with response between 10\,mHz to 10\,Hz.
 The noise for these instruments are determined by a variety of sources including anthropogenic and atmospheric disturbances, earthquakes and ocean waves \cite{BCB2006}. 
 Seismic noise models are developed using global seismometer arrays  \cite{Pet1993,BDE2004,McEA2009}.
 We use stations across the world to explore the effects of a variety of different sites, which can have noise spectra that have significant variation, due to location aspects such as topography and proximity to urban settlements.
-One source present across the world is the oceanic microseism around 0.3\,Hz that dominatex seismic ground spectra everywhere on Earth \cite{HMS1963,ToLa1968,Ces1994,FKK1998}. 
-
-The peak ground velocities are calculated as follows.
-Time-series are chosen to encompass the P-wave arrival to surface waves calculated assuming a ground velocity of 2\,km/s.
-We take the vertical component of broadband (velocity) data that is filtered using an acausal 0.1\,Hz low-pass Butterworth filter.
-The data is calibrated into ground velocity using a constant V to m/s value appropriate for each seismometer.
+One source present across the world is the oceanic microseism around 0.3\,Hz that dominate seismic ground spectra everywhere on Earth \cite{HMS1963,ToLa1968,Ces1994,FKK1998}. 
 
 We systematically downloaded and processed data from all stations with channel names BH?. Stations are supplied with Nanometrics T240, Streckeisen STS-1/STS-2, G\"uralp CMG-3T, and Geotech KS-54000 broadband seismometers. 
 IRIS contains data for some stations as far back as the early 1970's, and we analyze data from 2005 -- 2017.
 We analyze data from \rednote{21412} earthquakes from \rednote{January 2005 to May 2017}.
 The magnitudes range from \rednote{6.0} to \rednote{9.2}, chosen so as to cover the range of earthquake magnitudes likely to significantly effect the gravitational-wave detectors.
 
-\textbf{Data Augmentation via SMOTE}
-
-To improve the learning and prevent early stopping, we augment the data by artificially adding noise (or jitter) to the predictor and response variables in a controlled fashion. We employ \textbf{S}ynthetic \textbf{M}inority \textbf{O}versampling \textbf{TE}chnique (SMOTE) to augment the data \cite{2011arXiv1106.1813C}. The presence of noise enhances the ability of the ML algorithm to better learn and generalize to the the underlying smooth nonlinear function. New samples are generated from each of the original dataset by creating a gaussian jitter distribution centred around the parameter value followed by random draw of samples from these distributions. Selective boosting is done so that the imbalances in the dataset are minimized. 
-
-
-
-
-\textbf{Ground velocity predictions.}
-
-\begin{figure*}[!htb]
-\hspace*{-0.5cm}
- \includegraphics[width=\textwidth]{./plots/GPR_Matlab_O1O2.pdf}
- \caption{Fit of peak velocities seen during O1-O2 at the interferometers (LHO, LLO, and Virgo) using Gaussian Process Regression. The events have been ordered by their measured peak ground velocity (in grey) and yellow error bar corresponds to a factor of 2 within the predicted value. About 90\% of events are within a factor of 2 of the predicted value.}
- \label{fig:regression}
-\end{figure*}
-
-We use the earthquake parameters to make peak ground velocity predictions. We use historical earthquakes to train our machine learning algorithms. The parameters that enter the predictions are $M$, the magnitude of the earthquake, $h$, the depth, $r$, the distance to the detectors, $\theta$ and $\phi$, the latitude and longitude, the earthquake slip inversion, strike, rake, and dip, and the moment tensor values, $M_{rt}$, $M_{tp}$, $M_{rp}$, $M_{tt}$, $M_{rr}$, and $M_{pp}$.
-We take the peak ground velocities measured for each earthquake and use a machine learning algorithm to make predictions of that velocity.
+We also use seismic data from gravitational-wave detectors covering the last 2 years.
+The Advanced LIGO \cite{aligo} and the Advanced Virgo \cite{avirgo}  detectors are multi-kilometer Michelson-based interferometers which have driven the development of both seismic \cite{BeCa2016} and rotation \cite{VeHa2014} sensors.
+Gravitational waves induce small displacements in the detectors, which are designed to be free from environmental disturbances and limited only by processes of fundamental physics.
+These detectors are subject to non-Gaussian noise transients due to either internal behavior of the instrument or interactions between the detector and its environment. In order to minimize the effect of the environment, the LIGO detectors contain 200,000 auxiliary channels which are designed to monitor both the behavior of the instrument and the environment conditions.
+A subset of these sensors are physical environmental monitor sensors dedicated to monitoring the environment, including seismometers, magnetometers, microphones, and many others.
+The LIGO and Virgo detectors contain arrays of seismometers, from which we take a seismometer in each of the central buildings \cite{AbEA2016f}. These are useful for measuring any source of ground motion that can couple into the interferometers.
 
 \textbf{MLA description}
 
 In a previous work, \cite{CoEa2017} had developed an empirical equation to predict the Rayleigh wave amplitude based magnitude, depth and distance to the earthquake. The model was able to capture 90\% of the observational data within a factor of 5. To improve the accuracy further, we required more complex models that incorporate the physical mechanism of the fault rupture and along with the directional information of the earthquake. 
-In this work, we employ a deep neural networks (DNN) to carry out the nonlinear regression. The network with topology is inspired from generalized regression neural networks but we back-propagate the errors and update the weights by training it through several epochs.  Results of applying the trained network to unseen data ( Fig. \ref{fig:DNN_regression} )show the improvement in prediction accuracy as compared to  traditional regression techniques.  The model accurately predicts  90\% of the observational data within a factor of 3. DNNs require larger data sets to learn the underlying function without overfitting the data. As the observed data could possibly have measurement uncertainties, we boosted our data set by drawing additional samples from a normal distribution centered around each observation. This step prevented the early stopping during the training period and avoided the network to memorize the data.  The trained network is able to capture the radiation pattern associated with the fault rupture making it a good candidate for earthquake warning systems. 
+In this work, we employ a deep neural networks (DNN) to carry out the nonlinear regression. The network with topology is inspired from generalized regression neural networks but we back-propagate the errors and update the weights by training it through several epochs.   DNNs require larger data sets to learn the underlying function without overfitting the data. As the observed data could possibly have measurement uncertainties, we boosted our data set by drawing additional samples from a normal distribution centered around each observation. This step prevented the early stopping during the training period and avoided the network to memorize the data.  The trained network is able to capture the radiation pattern associated with the fault rupture making it a good candidate for earthquake warning systems. 
 
-Recently stacked ensemble regressors have gained much prominence and are consistently outperforming others in several datasets hosted at Kaggle. First level consists of set of base learners who are individually trained and cross-validated. Their predictions form input to second level meta-learner regressor which is further trained to generate the final ensemble prediction.  Such systems are theoretically guaranteed to present be the optimal learners in the asymptotic sense\rednote({superLearner 2007}). 
-
-
+Recently stacked ensemble regressors have gained much prominence and are consistently outperforming others in several datasets hosted at Kaggle. First level consists of set of base learners who are individually trained and cross-validated. Their predictions form input to second level meta-learner regressor which is further trained to generate the final ensemble prediction.  Such systems are theoretically guaranteed to present be the optimal learners in the asymptotic sense \rednote{superLearner 2007}. 
 
 
     \begin{table}[h!]
@@ -293,16 +294,5 @@ Recently stacked ensemble regressors have gained much prominence and are consist
                 \hline
             \end{tabular}
     \end{table} 
-
-
-\begin{figure*}[!htb]
-\hspace*{-0.5cm}
- \includegraphics[scale = 0.27]{DNN_Rfamp_results_L1O1O2_CMT.png}
-  \includegraphics[scale=0.27]{DNN_Rfamp_results_H1O1O2_CMT.png}
- \caption{}
- \label{fig:DNN_regression}
-\end{figure*}
-
-\bibliography{references}
 
 \end{document} 

@@ -81,7 +81,7 @@ Jennifer~A. Strauss and Richard~M. Allen.
 \newblock {\em Class. Quantum Grav.}, 27:084003, 2010.
 
 \bibitem{AbEA2016a}
-{Abbott, B. P. et al.}
+{Abbott, B. P. et al}.
 \newblock Observation of gravitational waves from a binary black hole merger.
 \newblock {\em Phys. Rev. Lett.}, 116:061102, Feb 2016.
 
@@ -90,6 +90,24 @@ Jennifer~A. Strauss and Richard~M. Allen.
 \newblock Gw151226: Observation of gravitational waves from a 22-solar-mass
   binary black hole coalescence.
 \newblock {\em Phys. Rev. Lett.}, 116:241103, Jun 2016.
+
+\bibitem{AbEA2017a}
+{Abbott, B. P. et al.}
+\newblock Gw170104: Observation of a 50-solar-mass binary black hole
+  coalescence at redshift 0.2.
+\newblock {\em Phys. Rev. Lett.}, 118:221101, Jun 2017.
+
+\bibitem{AbEA2017c}
+{Abbott, B. P. et al.}
+\newblock Gw170814: A three-detector observation of gravitational waves from a
+  binary black hole coalescence.
+\newblock {\em Phys. Rev. Lett.}, 119:141101, Oct 2017.
+
+\bibitem{AbEA2017b}
+{Abbott, B. P. et al.}
+\newblock Gw170817: Observation of gravitational waves from a binary neutron
+  star inspiral.
+\newblock {\em Phys. Rev. Lett.}, 119:161101, Oct 2017.
 
 \bibitem{CoSt2015}
 Michael Coughlin, Christopher Stubbs, Sergio Barrientos, Chuck Claver, Jan
@@ -217,25 +235,19 @@ Steve Diersen, En-Jui Lee, Diana Spears, Po~Chen, and Liqiang Wang.
 \newblock Proceedings of the International Conference on Computational Science,
   ICCS 2011.
 
-\bibitem{AbEA2016f}
-{The LIGO Scientific Collaboration and Virgo Collaboration}.
-\newblock Characterization of transient noise in advanced ligo relevant to
-  gravitational wave signal gw150914.
-\newblock {\em Classical and Quantum Gravity}, 33(13):134001, 2016.
+\bibitem{BiWa2018}
+Sebastien Biscans, Jim Warner, Richard Mittleman, Christopher Buchanan,
+  Michael~W Coughlin, Matthew Evans, Hunter Gabbard, Jan Harms, Brian Lantz,
+  Nikhil Mukund, Arnaud Pele, Charles Pezerat, Pascal Picart, Hugh Radkins, and
+  Thomas Shaffer.
+\newblock Control strategy to limit duty cycle impact of earthquakes on the
+  ligo gravitational-wave detectors.
+\newblock {\em Classical and Quantum Gravity}, 2018.
 
-\bibitem{BeCa2016}
-Mark Beker, Xander Campman, Julesvan Oven, Wim Walk, Jack Levell, Zijian Tang,
-  Mike Danilouchkine, Dirk Smit, Johannesvan den Brand, Soumen Koley, and Maria
-  Bader.
-\newblock Innovations in seismic sensors driven by the search for gravitational
-  waves.
-\newblock {\em The Leading Edge}, 35(7):590--593, 2016.
-
-\bibitem{VeHa2014}
-Krishna Venkateswara, Charles~A. Hagedorn, Matthew~D. Turner, Trevor Arp, and
-  Jens~H. Gundlach.
-\newblock A high-precision mechanical absolute-rotation sensor.
-\newblock {\em Review of Scientific Instruments}, 85(1):015005, 2014.
+\bibitem{ChBo2011}
+N.~V. {Chawla}, K.~W. {Bowyer}, L.~O. {Hall}, and W.~P. {Kegelmeyer}.
+\newblock {SMOTE: Synthetic Minority Over-sampling Technique}.
+\newblock {\em ArXiv e-prints}, June 2011.
 
 \bibitem{BCB2006}
 S.~Bonnefoy-Claudet, F.~Cotton, and P.-Y. Bard.
@@ -280,9 +292,24 @@ A.~Friedrich, F.~{Kr\"uger}, and K.~Klinge.
   array.
 \newblock {\em J.~Seism.}, 2:47, 1998.
 
-\bibitem{2011arXiv1106.1813C}
-N.~V. {Chawla}, K.~W. {Bowyer}, L.~O. {Hall}, and W.~P. {Kegelmeyer}.
-\newblock {SMOTE: Synthetic Minority Over-sampling Technique}.
-\newblock {\em ArXiv e-prints}, June 2011.
+\bibitem{BeCa2016}
+Mark Beker, Xander Campman, Julesvan Oven, Wim Walk, Jack Levell, Zijian Tang,
+  Mike Danilouchkine, Dirk Smit, Johannesvan den Brand, Soumen Koley, and Maria
+  Bader.
+\newblock Innovations in seismic sensors driven by the search for gravitational
+  waves.
+\newblock {\em The Leading Edge}, 35(7):590--593, 2016.
+
+\bibitem{VeHa2014}
+Krishna Venkateswara, Charles~A. Hagedorn, Matthew~D. Turner, Trevor Arp, and
+  Jens~H. Gundlach.
+\newblock A high-precision mechanical absolute-rotation sensor.
+\newblock {\em Review of Scientific Instruments}, 85(1):015005, 2014.
+
+\bibitem{AbEA2016f}
+{The LIGO Scientific Collaboration and Virgo Collaboration}.
+\newblock Characterization of transient noise in advanced ligo relevant to
+  gravitational wave signal gw150914.
+\newblock {\em Classical and Quantum Gravity}, 33(13):134001, 2016.
 
 \end{thebibliography}
