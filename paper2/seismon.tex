@@ -217,7 +217,15 @@ The performance shows that these predictions can be used beyond just the individ
  \label{fig:lockloss_distribution}
 \end{figure*}
 
-The main benefit of ground velocity predictions for gravitational-wave detectors is to inform predictions of whether an earthquake will cause the loss of data for the detector.
+
+\begin{figure*}[!htb]
+  \includegraphics[width=\textwidth]{./plots/Lockloss_Sensitivity.pdf}
+ \caption{Plot shows the lockloss rate associated with earthquake magnitude and Rayleigh wave amplitude at both the LIGO detectors.}
+ \label{fig:lockloss_sensitivity}
+\end{figure*}
+
+
+The main benefit of ground velocity predictions for gravitational-wave detectors is to inform predictions of whether an earthquake will cause the loss of data for the detector. Figure \ref{fig:lockloss_sensitivity} shows the sensitivity of the interferometers to earthquake magnitude and Rayleigh wave amplitude.
 We have previously developed techniques for preventing earthquakes from causing the loss of data taking if advanced notice is given \cite{BiWa2018}.
 In the following, we will use a MLA to develop a lockloss prediction model as well. 
 We use the same set of inputs to the algorithm as in the ground velocity prediction case, but also include the ground velocity predictions themselves as inputs.
