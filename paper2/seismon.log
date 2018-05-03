@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.1.24)  30 APR 2018 14:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.1.24)  4 MAY 2018 00:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1523,7 +1523,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: ./plots/GPR_Matlab_O1O2.pdf Graphic file (type pdf)
 
 <use ./plots/GPR_Matlab_O1O2.pdf>
-Package pdftex.def Info: ./plots/GPR_Matlab_O1O2.pdf used on input line 192.
+Package pdftex.def Info: ./plots/GPR_Matlab_O1O2.pdf used on input line 191.
 (pdftex.def)             Requested size: 468.0pt x 194.16359pt.
 
 <./plots/maps_vel_pred_vs_measured.pdf, id=97, 578.16pt x 433.62pt>
@@ -1531,51 +1531,53 @@ File: ./plots/maps_vel_pred_vs_measured.pdf Graphic file (type pdf)
 
 <use ./plots/maps_vel_pred_vs_measured.pdf>
 Package pdftex.def Info: ./plots/maps_vel_pred_vs_measured.pdf used on input li
-ne 204.
+ne 203.
 (pdftex.def)             Requested size: 361.34999pt x 271.01183pt.
- [6]
-<./plots/EQ_Distribution.pdf, id=107, 903.0881pt x 314.13742pt>
+
+
+LaTeX Warning: Reference `fig: map' on page 6 undefined on input line 209.
+
+[6] <./plots/EQ_Distribution.pdf, id=106, 903.0881pt x 314.13742pt>
 File: ./plots/EQ_Distribution.pdf Graphic file (type pdf)
 
 <use ./plots/EQ_Distribution.pdf>
-Package pdftex.def Info: ./plots/EQ_Distribution.pdf used on input line 215.
+Package pdftex.def Info: ./plots/EQ_Distribution.pdf used on input line 214.
 (pdftex.def)             Requested size: 468.0pt x 162.79636pt.
 
-<./plots/Lockloss_Sensitivity.pdf, id=108, 954.37688pt x 379.0414pt>
+<./plots/Lockloss_Sensitivity.pdf, id=107, 954.37688pt x 379.0414pt>
 File: ./plots/Lockloss_Sensitivity.pdf Graphic file (type pdf)
 
 <use ./plots/Lockloss_Sensitivity.pdf>
 Package pdftex.def Info: ./plots/Lockloss_Sensitivity.pdf used on input line 22
-2.
+1.
 (pdftex.def)             Requested size: 468.0pt x 185.8765pt.
  [7 <./plots/GPR_Matlab_O1O2.pdf>]
 [8 <./plots/maps_vel_pred_vs_measured.pdf> <./plots/EQ_Distribution.pdf>]
 [9 <./plots/Lockloss_Sensitivity.pdf>] (./seismon.bbl [10] [11] [12] [13])
-[14] [15] <./plots/SEISMON_flowchart.pdf, id=295, 371.3875pt x 488.82625pt>
+[14] [15] <./plots/SEISMON_flowchart.pdf, id=294, 371.3875pt x 488.82625pt>
 File: ./plots/SEISMON_flowchart.pdf Graphic file (type pdf)
 
 <use ./plots/SEISMON_flowchart.pdf>
-Package pdftex.def Info: ./plots/SEISMON_flowchart.pdf used on input line 307.
+Package pdftex.def Info: ./plots/SEISMON_flowchart.pdf used on input line 306.
 (pdftex.def)             Requested size: 259.96947pt x 342.17603pt.
  [16] [17 <./plots/SEISMON_flowchart.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 312.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 311.
 
 (./seismon.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 312.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 312.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 311.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 311.
 Package rerunfilecheck Info: File `seismon.out' has not changed.
 (rerunfilecheck)             Checksum: D9A3FAF2EBEB6709D5284C0A78A12539;158.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right .
-
+LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 31331 strings out of 493089
- 631869 string characters out of 6134842
- 692524 words of memory out of 5000000
- 34277 multiletter control sequences out of 15000+600000
+ 31332 strings out of 493089
+ 631879 string characters out of 6134842
+ 692581 words of memory out of 5000000
+ 34278 multiletter control sequences out of 15000+600000
  13323 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,15n,67p,10396b,1080s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1590,10 +1592,10 @@ al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/
 texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/t
 exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/te
 xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on seismon.pdf (17 pages, 1646992 bytes).
+Output written on seismon.pdf (17 pages, 1647003 bytes).
 PDF statistics:
- 362 PDF objects out of 1000 (max. 8388607)
- 301 compressed objects within 4 object streams
+ 360 PDF objects out of 1000 (max. 8388607)
+ 300 compressed objects within 3 object streams
  75 named destinations out of 1000 (max. 500000)
  54 words of extra memory for PDF output out of 10000 (max. 10000000)
 
