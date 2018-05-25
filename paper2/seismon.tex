@@ -14,6 +14,7 @@
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows}
 \usepackage{hyperref}
+\usepackage[normalem]{ulem}
 
 \newcommand{\braket}[2]{\left\langle#1\, |\,#2\,\right\rangle}  %  < #1 | #2 >
 \newcommand{\expec}[1]{\langle#1\rangle}  %  < #1 >
@@ -120,7 +121,7 @@ Universit\`a degli Studi di Urbino ``Carlo Bo'', I-61029 Urbino, Italy}
 
 \textbf{Earthquake early warning (EEW) is a burgeoning field dedicated to the rapid detection and characterization of earthquakes as well as the dissemination of that information to people and infrastructure in their path \cite{Al2012,KuAl2013a,KuAl2013b,KuHe2014,CoLa2009a,CoLa2009b,BoAl2014,HoKa2008,HoEA2011c,StAl2016}.
 As these systems minimize the time required to calculate the source parameters of earthquakes (i.e. their location and magnitude), it becomes important to predict the ground motion that the earthquakes will cause as a function of location and distance with high accuracy.
-In this analysis, we leverage the power of machine learning algorithms to make both ground velocity predictions and gravitational-wave detector lockloss predictions. We demonstrate an improvement from a factor of 5 to a factor of 2 in scatter of the error in the predicted ground velocity over a previous model fitting based approach.
+In this analysis, we leverage the power of machine learning algorithms to make both ground velocity predictions and gravitational-wave detector lockloss predictions. We demonstrate an improvement from a factor of 5 to a factor of 2.5  in scatter of the error in the predicted ground velocity over a previous model fitting based approach.
 To assess the accuracy and utility of our approach, we compare the estimates based only on a rapid magnitude and location estimates to the amplitudes observed.
 We find agreement within a factor of 2 by this metric.
 Further, we compare measurements that include the less timely earthquake slip inversion and CMT information to the original amplitudes observed, resulting in a factor of 2 agreement.}
@@ -165,38 +166,33 @@ First of all, while it was derived with physical effects in mind, it was predomi
 It was also found that the parameters in the model were quite degenerate, which meant that parameters derived to be physically meaningful quantities showed significant differences from site to site which were unlikely to actually be very different.
 Finally, to be useful to the detectors, there is a goal of a factor of 2 in relative error in the ground velocity predictions in order to make accurate assessments of whether the gravitational-wave detectors will be affected, which is much smaller than the factor of 5 scatter seen. 
 
-The idea of this analysis is to compare historical ground velocity measurements to predictions made using a machine learning algorithm. 
+The idea of this analysis is to compare historical ground velocity measurements to predictions made using different machine learning algorithm techniques. 
 The inputs to the algorithm are the earthquake magnitude, latitude, longitude, distance, depth, and earthquake azimuth relative to the detector. 
 The target output is the measured ground velocity.
 This improves on the equation in a few ways.
 First of all, the algorithm leverages the power of machine learning algorithms, which is not reliant on a functional form.
 Second, it trivially includes more parameters, such as latitude, longitude, and earthquake azimuth relative to the detector above and beyond the initial analytical formalism. 
 
-In particular, we use the two different machine learning approaches to make the predictions: Tensorflow implementation of deep neural networks (DNN) and stacked ensemble classifier.
+In particular, we compare the efficiency as the two different machine learning approaches: regression and clustering. Within regression we check the performance of tensorflow implementation of deep neural networks (DNN) \citep{Abadi:2016:TSL:3026877.3026899}, stacked ensemble regressor \citep{wolpert1992stacked,van2007super} and Gaussian Process Regression (GPR) \citep{rasmussen2006gaussian} while in clustering we use Mahalanobis distance \citep{Mahalanobis} based similarity search to make the predictions.
 We expand on the specific implementations in the Supplementary Materials.
 We use historical earthquakes to train our machine learning algorithms. The parameters that enter the predictions are $M$, the magnitude of the earthquake, $h$, the depth, $r$, the distance to the detectors, $\theta$ and $\phi$, the latitude and longitude, and $\alpha$, the earthquake azimuth relative to the detector.
 All of these variables are available in low latency from the USGS.
-On longer timescales, the earthquake slip inversion, strike, rake, and dip, and the moment tensor values, $M_{rt}$, $M_{tp}$, $M_{rp}$, $M_{tt}$, $M_{rr}$, and $M_{pp}$ are also available.
-These variables correspond to the inputs for the machine learning algorithms.
-The target variables correspond to peak ground velocities measured using seismometers.
+On longer timescales, the earthquake slip inversion, strike, rake, and dip, and the moment tensor values, $M_{rt}$, $M_{tp}$, $M_{rp}$, $M_{tt}$, $M_{rr}$, and $M_{pp}$ are also available., serving as additional parameter to the machine learning algorithms. The target variables correspond to peak ground velocities measured using seismometers.
 Time-series are chosen to encompass the P-wave arrival to surface waves calculated assuming a ground velocity of 2\, km/s.
 We take the vertical component of broadband (velocity) data that is filtered using an acausal 0.1\, Hz low-pass Butterworth filter.
 The data is calibrated into ground velocity using a constant V to m/s value appropriate for each seismometer.
 We take the peak ground velocities measured for each earthquake and use a machine learning algorithm to make predictions of that velocity.
 
-To improve the learning and prevent early stopping, we augment the data by artificially adding noise (or jitter) to the predictor and response variables in a controlled fashion. We employ \textbf{S}ynthetic \textbf{M}inority \textbf{O}versampling \textbf{TE}chnique (SMOTE) to augment the data \cite{ChBo2011}. The presence of noise enhances the ability of the MLA to better learn and generalize to the underlying smooth, non-linear function. New samples are generated from each of the original datasets by creating a Gaussian jitter distribution centered around the parameter value followed by random draw of samples from these distributions. Selective boosting is done so that the imbalances in the dataset are minimized. 
+To improve the learning and prevent early stopping, we augment the training data by artificially adding noise (or jitter) to the predictor and response variables in a controlled fashion. The presence of noise enhances the ability of the MLA to better learn and generalize to the underlying smooth, non-linear function. New samples are generated from each of the original datasets by creating a Gaussian jitter distribution centered around the parameter value followed by random draw of samples from these distributions. Selective boosting is done to minimize the imbalances in the dataset using \textbf{S}ynthetic \textbf{M}inority \textbf{O}versampling \textbf{TE}chnique (SMOTE) \cite{ChBo2011}. 
 
 \begin{figure*}[!htb]
 \hspace*{-0.5cm}
- \includegraphics[width=\textwidth]{./plots/GPR_Matlab_O1O2.pdf}
- \caption{Fit of peak velocities seen during O1-O2 at the interferometers (LHO, LLO, and Virgo) using Gaussian Process Regression. The events have been ordered by their measured peak ground velocity (in grey) and yellow error bar corresponds to a factor of 2 within the predicted value. About 90\% of events are within a factor of 2 of the predicted value.}
+ \includegraphics[width=\textwidth]{./plots/ClusteringPrediction.pdf}
+ \caption{Fit of peak velocities seen during O1-O2 at the interferometers (LHO, LLO) using Mahalanobis distance based clustering. Results on simulated and real data are respectively shown in the top and bottom rows. The events have been ordered by their measured peak ground velocity (in grey) and yellow error bar corresponds to a factor of 2.5 within the predicted value. More than 90\% of events are within a factor of 2 of the predicted value.}
  \label{fig:regression}
 \end{figure*}
 
-We show the results of applying the trained network to unseen data in figure~\ref{fig:regression}.
-This shows the improvement in prediction accuracy as compared to traditional regression techniques.  The model accurately predicts  90\% of the observational data within a factor of two.
-This is a performance improvement in prediction accuracy from a factor of five to two for both the implementations. 
-Inclusion of moment tensor parameters further improves the performance by a factor of \rednote{?}
+Figure~\ref{fig:regression} shows the prediction results from applying Mahalanobis based clustering on the simulated and real earthquake data. We obtain an accuracy above 90\% in both the cases. This performance improvement in prediction accuracy from a factor of five to 2.5 can be attributed to increased availability of data, inclusion of more earthquake parameters and the usage of robust algorithms.
 
 \iffalse
 \begin{figure*}[t]
@@ -209,18 +205,18 @@ Inclusion of moment tensor parameters further improves the performance by a fact
 
 \begin{figure*}[!htb]
  \includegraphics[width=\textwidth]{./plots/USArray_with_HeatMap}
- \caption{The plot shows the location of the \rednote{?} seismic stations with available data from IRIS in the United States during the \rednote{?} earthquake. The color indicates the fractional error between the measured peak ground velocity and that predicted by the algorithm. The inset shows the location of the earthquake.}
+ \caption{Figure to the left shows the locations of seismometer array used to collect the earthquake data. Heatmap on the right shows the ground motion prediction accuracy within each state making use of archival data from the same as well as every other state.}
  \label{fig:map}
 \end{figure*}
 
-We can use these parameter fits that go into the ground velocity prediction model to make predictions across the United States.
-Figure \ref{fig: map} shows the location of seismic stations that had data during the \rednote{?} earthquake. The colors indicated the fractional difference between the measured and predicted peak ground velocities.  
-The performance shows that these predictions can be used beyond just the individual gravitational-wave detector sites and used in relatively nearby seismometers.
+We also demonstrate the resourcefulness  of the above scheme by making predictions across the United States using the data recorded by the IRIS transportable array network. For ground motion recorded in each state, we perform the similarity search using archival data from the same state as well as the other states and compare the prediction accuracy as shown in Figure \ref{fig:map}.  For at-least 24 states the accuracy is seen to be above 90\%. The variation seen in predictability along the diagonal might be due to the differences in local geology across the US. This observation of unpredictability could be beneficial for future site selection surveys looking for suitable locations for next generation interferometers. The fact that nearby states observe similar levels of ground motion for a given earthquake is evident from the corresponding off-diagonal terms.  
+
+The performance shows that the archival data based prediction scheme can be extended beyond the individual gravitational-wave detector sites to issue state specific early warning alerts.
 
 \begin{figure*}[!htb]
 \hspace*{-0.5cm}
  \includegraphics[width=\textwidth]{./plots/EQ_Distribution.pdf}
- \caption{Impact of earthquakes happening worldwide on GW Inteferometers}
+ \caption{Impact of earthquakes happening worldwide on GW inteferometers. Points marked in red indicate the instances when the resulting ground motion caused the interferometer to go out of lock.}
  \label{fig:lockloss_distribution}
 \end{figure*}
 
@@ -237,16 +233,63 @@ We have previously developed techniques for preventing earthquakes from causing 
 In the following, we will use a MLA to develop a lockloss prediction model as well. 
 We use the same set of inputs to the algorithm as in the ground velocity prediction case, but also include the ground velocity predictions themselves as inputs.
 To generate the target variable, we take times when the gravitational-wave detectors lost the ability to take data during an earthquake and assign a value of 1, and a 0 otherwise.
-In figure~\ref{fig:lockloss_distribution}, we showed world maps of earthquakes that both caused and did not cause the 
-We use the same MLAs as applied for the ground velocity predictions.
-Acknowledging that there is a trade-off between false-alarm probability and efficiency standard probability, we demand a false-alarm probability threshold of 10\,\%.
-The best algorithm can accurately predict \rednote{?}\,\% of losses of data taking ability.
+In figure~\ref{fig:lockloss_distribution}, we showed world maps of earthquakes that both caused and did not cause the lockloss. We use the same clustering based algorithm as applied for the ground velocity predictions and allows for outlier detection.
+Acknowledging that there is a trade-off between false-alarm probability and efficiency standard, 
+we are able to make predictions for the inliers with an accuracy above 92\%, keeping the associated false-alarm probability to be less than 10\,\%.
 
 In conclusion, we have used MLAs to predict peak ground velocities from teleseismic earthquakes.
-We use the peak ground velocity predictions to predict the potential effect of earthquakes on gravitational-wave detectors.
+We use the peak ground velocity predictions to predict the potential effect of earthquakes on gravitational-wave detectors and issue near realtime alerts at the site \ref{fig:flowchart}.
 Given the significant interest in accurate ground velocity predictions for EEW systems in general, we believe the techniques here are beneficial beyond the gravitational-wave community.
 While we focus on the prediction of peak ground velocity here, another possibility is to use other seismometers to predict the time-series themselves.
 This would provide a way to directly measure transfer functions between ground motion very near the earthquake source and those in areas of significant seismological hazard, such as in the Los Angeles basin.
+
+
+\begin{table}[!htb]
+    \centering
+    \begin{minipage}{.45\textwidth}
+
+        \centering
+
+ \begin{tabular}{  | l | c | c | r   } 
+ \hline 
+\textbf{LHO} & In Lock & Lockloss  \\ 
+\hline 
+True Positives           & 39 & 10  \\ 
+False Positives            & 1 & 3 \\ 
+True Negatives          & 3 & 1  \\ 
+ False Negatives          & 10 & 39   \\ 
+  \hline 
+Precision      & 0.97 & 0.77 \\  
+Sensitivity     & 0.93& 0.91 \\   
+Specificity    & 0.91 & 0.93 \\   
+\hline                 
+\end{tabular} 
+ 
+%         \caption{LHO}
+    \end{minipage}%
+    \begin{minipage}{0.45\textwidth}
+        \centering
+
+\begin{tabular}{  | l | c | c | r   } 
+ \hline 
+\textbf{LLO} & In Lock & Lockloss  \\ 
+\hline 
+True Positives           & 49 & 16  \\ 
+False Positives           & 3 & 2 \\ 
+True Negatives          & 2 & 3  \\ 
+ False Negatives          & 16 & 49   \\ 
+   \hline 
+Precision      & 0.94 & 0.89 \\  
+Sensitivity      & 0.96& 0.84 \\   
+Specificity    & 0.84 & 0.96 \\   
+\hline                 
+\end{tabular} 
+
+
+  %       \caption{LLO}
+    \end{minipage}
+\caption{Performance analysis of lockloss prediction models for LHO and LLO. Each of them respectively has an accuracy of 92\% and 93\%.}    
+\end{table}
 
 \textbf{Code availability.}
 The code to reproduce the analysis is open-source and available at https://github.com/ligovirgo/seismon/ for public download.
@@ -291,28 +334,33 @@ The LIGO and Virgo detectors contain arrays of seismometers, from which we take 
 \textbf{MLA description}
 
 In previous work, \cite{CoEa2017} had developed an empirical equation to predict the Rayleigh wave amplitude based magnitude, depth and distance to the earthquake. The model was able to capture 90\% of the observational data within a factor of 5. To improve the accuracy further, we required more complex models that incorporate the physical mechanism of the fault rupture and along with the directional information of the earthquake. 
-In this work, we employ a deep neural network (DNN) to carry out the nonlinear regression. The network has a topology inspired from generalized regression neural networks but we back-propagate the errors and update the weights by training it through several epochs.   DNNs require larger data sets to learn the underlying function without overfitting the data. As the observed data could have measurement uncertainties, we boosted our data set by drawing additional samples from a normal distribution centered around each observation. This step prevented the early stopping during the training period and avoided the network to memorize the data.  The trained network can capture the radiation pattern associated with the fault rupture making it a good candidate for earthquake warning systems. 
 
-Recently stacked ensemble regressors have gained much prominence and are consistently outperforming others in several datasets hosted at Kaggle. The first level consists of a set of base learners who are individually trained and cross-validated. Their predictions form input to second level meta-learner regressor which is further trained to generate the final ensemble prediction.  Such systems are theoretically guaranteed to present be the optimal learners in the asymptotic sense \rednote{superLearner 2007}. 
+The deep neural network (DNN) that we employ to carry out the nonlinear regression has a topology inspired from generalized regression neural networks but we back-propagate the errors and update the weights by training it through several epochs.   DNNs require larger data sets to learn the underlying function without overfitting the data. As the observed data could have measurement uncertainties, we boosted our data set by drawing additional samples from a normal distribution centered around each observation. This step prevented the early stopping during the training period and avoided the network to memorize the data.  The trained network can capture the radiation pattern associated with the fault rupture making it a good candidate for earthquake warning systems. 
+
+Recently stacked ensemble regressors have gained much prominence and are consistently outperforming others in several datasets hosted at Kaggle. The first level consists of a set of base learners who are individually trained and cross-validated. Their predictions form input to second level meta-learner regressor which is further trained to generate the final ensemble prediction.  Such systems are theoretically guaranteed to present be the optimal learners in the asymptotic sense . 
+
+For the Gaussian Process Regression or kriging model we use squared exponential kernel with prediction based on block coordinate descent. We optimize the hyper-parameters using bayesian optimization.
+
+Mahalanobis distance is the multi-dimensional generalization of z-score which tell you how many sigma is the data away from the mean distribution. It is observed to be very robust technique as it takes into account the covariances between the variables. Our clustering technique makes use of this metric to find the closest matching earthquakes that happened in the past. This scheme naturally lets one identify outlier earthquakes with no similar events in the archival data.
 
 
     \begin{table}[h!]
         \centering
             \renewcommand\arraystretch{1.2}         
-            \caption[ML Performance Table]{Rf amplitude prediction performance of different ML algorithms in different scenarios }
+            \caption[ML Performance Table]{Rf amplitude prediction performance of different ML algorithms for real and simulated data }
             \begin{tabular}{|*{5}{c|}}\cline{2-5}
-                \multicolumn{1}{c|}{}& Deep Neural Nets & Stacked Ensemble & GPR & Model 4 \\
+                \multicolumn{1}{c|}{}& Deep Neural Nets & Stacked Ensemble & GPR & Clustering \\
                 \hline              
-                $LIGO \; Livingston $ & \diagbox[]{$85 \%$}{$89 \%$}& \diagbox[]{$89 \%$}{$93 \%$} &\diagbox[]{$98 \%$}{$--$}&\diagbox[]{$--$}{$--$}\\ 
+                $LIGO \; Livingston $ & \diagbox[]{$85 \%$}{$89 \%$}& \diagbox[]{$89 \%$}{$93 \%$} &\diagbox[]{$87 \%$}{$94\%$}&\diagbox[]{$94\%$}{$98\%$}\\ 
                 \hline              
-                $LIGO \; Hanford $ & \diagbox[]{$84 \%$}{$86 \%$}& \diagbox[]{$88 \%$}{$91 \%$} &\diagbox[]{$93 \%$}{$--$}&\diagbox[]{$--$}{$--$}\\          
+                $LIGO \; Hanford $ & \diagbox[]{$84 \%$}{$86 \%$}& \diagbox[]{$88 \%$}{$91 \%$} &\diagbox[]{$89 \%$}{$92\%$}&\diagbox[]{$92\%$}{$97\%$}\\          
                 \hline
             \end{tabular}
     \end{table} 
     
  \begin{figure*}[!htb]
  \includegraphics[scale=0.7]{./plots/SEISMON_flowchart.pdf}
- \caption{Process Flowchart}
+ \caption{Process flowchart depicting the low latency earthquake warning pipeline.}
  \label{fig:flowchart}
 \end{figure*}   
 
@@ -509,4 +557,3 @@ Recently stacked ensemble regressors have gained much prominence and are consist
 \end{figure*}   
 
 \end{document} 
-}  Non-astrophysical transients or glitches causes false triggers in various astrophysical signal search pipelines and increases the false alarm probability which reduces the significance of low SNR GW events. We had previously developed a real-data ready transient classification technique that was successfully applied to the strain and auxiliary channels of Advanced LIGO's first observing data. Currently, we are involved in upgrading the scheme to a real-time pipeline which could be incorporated with the next observing run (O3) data. The upgrade includes the usage of better classification algorithm (robust to outliers) which makes a probabilistic prediction for each new transient. We would also like to use the information from the classifier to improve the accuracy of traditional black hole binary search pipelines currently used within the LIGO community.

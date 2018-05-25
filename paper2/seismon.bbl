@@ -244,6 +244,39 @@ Sebastien Biscans, Jim Warner, Richard Mittleman, Christopher Buchanan,
   ligo gravitational-wave detectors.
 \newblock {\em Classical and Quantum Gravity}, 2018.
 
+\bibitem{Abadi:2016:TSL:3026877.3026899}
+Mart\'{\i}n Abadi, Paul Barham, Jianmin Chen, Zhifeng Chen, Andy Davis, Jeffrey
+  Dean, Matthieu Devin, Sanjay Ghemawat, Geoffrey Irving, Michael Isard,
+  Manjunath Kudlur, Josh Levenberg, Rajat Monga, Sherry Moore, Derek~G. Murray,
+  Benoit Steiner, Paul Tucker, Vijay Vasudevan, Pete Warden, Martin Wicke, Yuan
+  Yu, and Xiaoqiang Zheng.
+\newblock Tensorflow: A system for large-scale machine learning.
+\newblock In {\em Proceedings of the 12th USENIX Conference on Operating
+  Systems Design and Implementation}, OSDI'16, pages 265--283, Berkeley, CA,
+  USA, 2016. USENIX Association.
+
+\bibitem{wolpert1992stacked}
+David~H Wolpert.
+\newblock Stacked generalization.
+\newblock {\em Neural networks}, 5(2):241--259, 1992.
+
+\bibitem{van2007super}
+Mark~J Van~der Laan, Eric~C Polley, and Alan~E Hubbard.
+\newblock Super learner.
+\newblock {\em Statistical applications in genetics and molecular biology},
+  6(1), 2007.
+
+\bibitem{rasmussen2006gaussian}
+Carl~Edward Rasmussen and Christopher~KI Williams.
+\newblock Gaussian processes for machine learning. 2006.
+\newblock {\em The MIT Press, Cambridge, MA, USA}, 38:715--719, 2006.
+
+\bibitem{Mahalanobis}
+Prasanta~Chandra Mahalanobis.
+\newblock On the generalised distance in statistics.
+\newblock In {\em Proceedings of the National Institute of Sciences of India.},
+  UAI'95, page 49–55, 1936.
+
 \bibitem{ChBo2011}
 N.~V. {Chawla}, K.~W. {Bowyer}, L.~O. {Hall}, and W.~P. {Kegelmeyer}.
 \newblock {SMOTE: Synthetic Minority Over-sampling Technique}.
