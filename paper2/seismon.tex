@@ -213,9 +213,8 @@ We also demonstrate the resourcefulness  of the above scheme by making predictio
 The performance shows that the archival data based prediction scheme can be used to extend beyond the individual gravitational-wave detector sites to be used for hazard-based early warning alerts.
 
 \begin{figure*}[!htb]
-\hspace*{-0.5cm}
- \includegraphics[width=\textwidth]{./plots/EQ_Distribution.pdf}
- \caption{Impact of earthquakes happening worldwide on GW inteferometers. Points marked in red indicate the instances when the resulting ground motion caused the interferometer to go out of lock.}
+ \includegraphics[width=0.95\textwidth]{./plots/EQ_Distribution_geobubble.pdf}
+ \caption{Impact of earthquakes happening worldwide on LIGO Inteferometers at Hanford and Livingston. Points marked in red indicate the instances when the resulting ground motion caused the interferometer to go out of lock.}
  \label{fig:lockloss_distribution}
 \end{figure*}
 
@@ -332,13 +331,12 @@ The LIGO and Virgo detectors contain arrays of seismometers, from which we take 
 
 In previous work, \cite{CoEa2017} had developed an empirical equation to predict the Rayleigh wave amplitude based magnitude, depth and distance to the earthquake. The model was able to capture 90\% of the observational data within a factor of 5. To improve the accuracy further, we required more complex models that incorporate the physical mechanism of the fault rupture and along with the directional information of the earthquake. 
 
-The deep neural network (DNN) that we employ to carry out the nonlinear regression has a topology inspired from generalized regression neural networks but we back-propagate the errors and update the weights by training it through several epochs.   DNNs require larger data sets to learn the underlying function without overfitting the data. As the observed data could have measurement uncertainties, we boosted our data set by drawing additional samples from a normal distribution centered around each observation. This step prevented the early stopping during the training period and avoided the network to memorize the data.  The trained network can capture the radiation pattern associated with the fault rupture making it a good candidate for earthquake warning systems. 
-
-Recently stacked ensemble regressors have gained much prominence and are consistently outperforming others in several datasets hosted at Kaggle. The first level consists of a set of base learners who are individually trained and cross-validated. Their predictions form input to second level meta-learner regressor which is further trained to generate the final ensemble prediction.  Such systems are theoretically guaranteed to present be the optimal learners in the asymptotic sense . 
-
-For the Gaussian Process Regression or kriging model we use squared exponential kernel with prediction based on block coordinate descent. We optimize the hyper-parameters using bayesian optimization.
+The deep neural network (DNN) that we employ to carry out the nonlinear regression has a topology inspired from generalized regression neural networks but we back-propagate the errors and update the weights by training it through several epochs.   DNNs require larger data sets to learn the underlying function without overfitting the data. As the observed data could have measurement uncertainties, we boosted our data set by drawing additional samples from a normal distribution centered around each observation. This step prevented the early stopping during the training period and avoided the network to memorize the data.  The trained network can capture the radiation pattern associated with the fault rupture making it a good candidate for earthquake warning systems. Recently stacked ensemble regressors have gained much prominence and are consistently outperforming others in several datasets hosted at Kaggle. The first level consists of a set of base learners who are individually trained and cross-validated. Their predictions form input to second level meta-learner regressor which is further trained to generate the final ensemble prediction.  Such systems are theoretically guaranteed to present be the optimal learners in the asymptotic sense. Success with DNN and ensemble techniques crucially depends on the number of training data and is sensitive to the hyper-parameters. As for the Gaussian Process Regression or kriging, the results are seen to be betther than the above two when we use squared exponential kernel with prediction based on block coordinate descent. The GPR hyper-parameters are optimized using bayesian optimization. But the method scales as O($n^3$) resulting in high memory requirements and training time for large data sets.
 
 Mahalanobis distance is the multi-dimensional generalization of z-score which tell you how many sigma is the data away from the mean distribution. It is observed to be very robust technique as it takes into account the covariances between the variables. Our clustering technique makes use of this metric to find the closest matching earthquakes that happened in the past. This scheme naturally lets one identify outlier earthquakes with no similar events in the archival data.
+
+Among the various MLAs, we choose clustering based prediction for EEW pipeline \ref{fig:flowchart}. In addition to having the best prediction accuracy it has the following advantages.  Firstly, as there is no training involved, the need for hyper-parameter tuning is eliminated. As we are constantly monitoring the seismic data and appending the earthquake database, with time we expect a decrease in prediction error along with a reduction in the number of outliers. 
+
 
 
     \begin{table}[h!]
