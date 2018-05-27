@@ -192,7 +192,7 @@ To improve the learning and prevent early stopping, we augment the training data
  \label{fig:regression}
 \end{figure*}
 
-Figure~\ref{fig:regression} shows the prediction results from applying Mahalanobis based clustering on the simulated and real earthquake data. We obtain an accuracy above 90\% in both the cases. This performance improvement in prediction accuracy from a factor of 5 to 2.5 can be attributed to increased availability of data, inclusion of more earthquake parameters and the usage of robust algorithms. The possibility of further improvements using moment tensor solutions is left to future work.
+Figure~\ref{fig:regression} shows the prediction results from applying Mahalanobis based clustering on the simulated and real earthquake data. We obtain an accuracy above 90\% in both the cases. This performance improvement in prediction accuracy from a factor of 5 to 2.5 can be attributed to increased availability of data, inclusion of more earthquake parameters and the usage of robust algorithms.  As for the outliers, they don't seem to show any specific dependence with respect to the input parameters. One reason could be that their parameter combination is rather uncommon, so the predicted amplitude is averaged across non-so similar events. The general trend among outliers seems to be that the higher amplitude events are underestimated and the lower amplitude events are over-estimated. Such outliers should decrease as we gather more training data. The possibility of further improvements using moment tensor solutions is left to future work.
 
 \iffalse
 \begin{figure*}[t]
@@ -358,5 +358,17 @@ Among the various MLAs, we choose clustering based prediction for EEW pipeline \
  \caption{Process flowchart depicting the low latency earthquake warning pipeline.}
  \label{fig:flowchart}
 \end{figure*}   
+
+\textbf{Appendix}
+
+
+Results from applying the prediction algorithm to seismic events observed at the Advanced Virgo detector are reported here. 
+
+\begin{figure*}[!htb]
+\hspace*{-0.5cm}
+ \includegraphics[width=\textwidth]{./plots/ClusteringPredictionVirgo.pdf}
+ \caption{Fit of peak velocities seen during O1-O2 at the Virgo Interferometer}
+ \label{fig:regression}
+\end{figure*}
 
 \end{document} 
