@@ -1,5 +1,113 @@
 \begin{thebibliography}{10}
 
+\bibitem{aligo}
+{J Aasi et al.}
+\newblock Advanced ligo.
+\newblock {\em Classical and Quantum Gravity}, 32(7):074001, 2015.
+
+\bibitem{avirgo}
+{F Acernese et al}.
+\newblock Advanced virgo: a second-generation interferometric gravitational
+  wave detector.
+\newblock {\em Classical and Quantum Gravity}, 32(2):024001, 2015.
+
+\bibitem{Gr2010}
+{Grote H. for the LIGO Scientific Collaboration}.
+\newblock {The GEO 600 status}.
+\newblock {\em Class. Quantum Grav.}, 27:084003, 2010.
+
+\bibitem{AbEA2016a}
+{Abbott, B. P. et al}.
+\newblock Observation of gravitational waves from a binary black hole merger.
+\newblock {\em Phys. Rev. Lett.}, 116:061102, Feb 2016.
+
+\bibitem{AbEA2016e}
+{Abbott, B. P. et al.}
+\newblock Gw151226: Observation of gravitational waves from a 22-solar-mass
+  binary black hole coalescence.
+\newblock {\em Phys. Rev. Lett.}, 116:241103, Jun 2016.
+
+\bibitem{AbEA2017a}
+{Abbott, B. P. et al.}
+\newblock Gw170104: Observation of a 50-solar-mass binary black hole
+  coalescence at redshift 0.2.
+\newblock {\em Phys. Rev. Lett.}, 118:221101, Jun 2017.
+
+\bibitem{AbEA2017c}
+{Abbott, B. P. et al.}
+\newblock Gw170814: A three-detector observation of gravitational waves from a
+  binary black hole coalescence.
+\newblock {\em Phys. Rev. Lett.}, 119:141101, Oct 2017.
+
+\bibitem{AbEA2017b}
+{Abbott, B. P. et al.}
+\newblock Gw170817: Observation of gravitational waves from a binary neutron
+  star inspiral.
+\newblock {\em Phys. Rev. Lett.}, 119:161101, Oct 2017.
+
+\bibitem{AbEA2016f}
+{The LIGO Scientific Collaboration and Virgo Collaboration}.
+\newblock Characterization of transient noise in advanced ligo relevant to
+  gravitational wave signal gw150914.
+\newblock {\em Classical and Quantum Gravity}, 33(13):134001, 2016.
+
+\bibitem{BeCa2016}
+Mark Beker, Xander Campman, Julesvan Oven, Wim Walk, Jack Levell, Zijian Tang,
+  Mike Danilouchkine, Dirk Smit, Johannesvan den Brand, Soumen Koley, and Maria
+  Bader.
+\newblock Innovations in seismic sensors driven by the search for gravitational
+  waves.
+\newblock {\em The Leading Edge}, 35(7):590--593, 2016.
+
+\bibitem{VeHa2014}
+Krishna Venkateswara, Charles~A. Hagedorn, Matthew~D. Turner, Trevor Arp, and
+  Jens~H. Gundlach.
+\newblock A high-precision mechanical absolute-rotation sensor.
+\newblock {\em Review of Scientific Instruments}, 85(1):015005, 2014.
+
+\bibitem{CoSt2015}
+Michael Coughlin, Christopher Stubbs, Sergio Barrientos, Chuck Claver, Jan
+  Harms, R.~Chris~Smith, and Michael Warner.
+\newblock Real-time earthquake warning for astronomical observatories.
+\newblock {\em Experimental Astronomy}, 39(2):387--404, 2015.
+
+\bibitem{CoEa2017}
+Michael Coughlin, Paul Earle, Jan Harms, Sebastien Biscans, Christopher
+  Buchanan, Eric Coughlin, Fred Donovan, Jeremy Fee, Hunter Gabbard, Michelle
+  Guy, Nikhil Mukund, and Matthew Perry.
+\newblock Limiting the effects of earthquakes on gravitational-wave
+  interferometers.
+\newblock {\em Classical and Quantum Gravity}, 34(4):044004, 2017.
+
+\bibitem{AbAd2002}
+R~Abbott, R~Adhikari, et~al.
+\newblock Seismic isolation for advanced ligo.
+\newblock {\em Classical and Quantum Gravity}, 19(7):1591, 2002.
+
+\bibitem{StAb2009}
+Alberto Stochino, Benjamin Abbot, Yoichi Aso, Mark Barton, Alessandro
+  Bertolini, Valerio Boschi, Dennis Coyne, Riccardo DeSalvo, Carlo Galli, Yumei
+  Huang, Alex Ivanov, Szabolcs Marka, David Ottaway, Virginio Sannibale, Chiara
+  Vanni, Hiroaki Yamamoto, and Sanichiro Yoshida.
+\newblock The seismic attenuation system (sas) for the advanced {LIGO}
+  gravitational wave interferometric detectors.
+\newblock {\em Nuclear Instruments and Methods in Physics Research Section A:
+  Accelerators, Spectrometers, Detectors and Associated Equipment}, 598(3):737
+  -- 753, 2009.
+
+\bibitem{MaLa2015}
+F~Matichard, B~Lantz, R~Mittleman, K~Mason, J~Kissel, B~Abbott, S~Biscans,
+  J~McIver, R~Abbott, S~Abbott, E~Allwine, S~Barnum, J~Birch, C~Celerier,
+  D~Clark, D~Coyne, D~DeBra, R~DeRosa, M~Evans, S~Foley, P~Fritschel, J~A
+  Giaime, C~Gray, G~Grabeel, J~Hanson, C~Hardham, M~Hillard, W~Hua,
+  C~Kucharczyk, M~Landry, A~Le Roux, V~Lhuillier, D~Macleod, M~Macinnis,
+  R~Mitchell, B~O’Reilly, D~Ottaway, H~Paris, A~Pele, M~Puma, H~Radkins,
+  C~Ramet, M~Robinson, L~Ruet, P~Sarin, D~Shoemaker, A~Stein, J~Thomas,
+  M~Vargas, K~Venkateswara, J~Warner, and S~Wen.
+\newblock Seismic isolation of advanced ligo: Review of strategy,
+  instrumentation and performance.
+\newblock {\em Classical and Quantum Gravity}, 32(18):185003, 2015.
+
 \bibitem{Al2012}
 {RM. Allen}.
 \newblock Transforming earthquake detection?
@@ -64,94 +172,6 @@ Jennifer~A. Strauss and Richard~M. Allen.
 \newblock {Benefits and Costs of Earthquake Early Warning}.
 \newblock {\em Seismological Research Letters}, 87(3):765--772, 2016.
 
-\bibitem{aligo}
-{J Aasi et al.}
-\newblock Advanced ligo.
-\newblock {\em Classical and Quantum Gravity}, 32(7):074001, 2015.
-
-\bibitem{avirgo}
-{F Acernese et al}.
-\newblock Advanced virgo: a second-generation interferometric gravitational
-  wave detector.
-\newblock {\em Classical and Quantum Gravity}, 32(2):024001, 2015.
-
-\bibitem{Gr2010}
-{Grote H. for the LIGO Scientific Collaboration}.
-\newblock {The GEO 600 status}.
-\newblock {\em Class. Quantum Grav.}, 27:084003, 2010.
-
-\bibitem{AbEA2016a}
-{Abbott, B. P. et al}.
-\newblock Observation of gravitational waves from a binary black hole merger.
-\newblock {\em Phys. Rev. Lett.}, 116:061102, Feb 2016.
-
-\bibitem{AbEA2016e}
-{Abbott, B. P. et al.}
-\newblock Gw151226: Observation of gravitational waves from a 22-solar-mass
-  binary black hole coalescence.
-\newblock {\em Phys. Rev. Lett.}, 116:241103, Jun 2016.
-
-\bibitem{AbEA2017a}
-{Abbott, B. P. et al.}
-\newblock Gw170104: Observation of a 50-solar-mass binary black hole
-  coalescence at redshift 0.2.
-\newblock {\em Phys. Rev. Lett.}, 118:221101, Jun 2017.
-
-\bibitem{AbEA2017c}
-{Abbott, B. P. et al.}
-\newblock Gw170814: A three-detector observation of gravitational waves from a
-  binary black hole coalescence.
-\newblock {\em Phys. Rev. Lett.}, 119:141101, Oct 2017.
-
-\bibitem{AbEA2017b}
-{Abbott, B. P. et al.}
-\newblock Gw170817: Observation of gravitational waves from a binary neutron
-  star inspiral.
-\newblock {\em Phys. Rev. Lett.}, 119:161101, Oct 2017.
-
-\bibitem{CoSt2015}
-Michael Coughlin, Christopher Stubbs, Sergio Barrientos, Chuck Claver, Jan
-  Harms, R.~Chris~Smith, and Michael Warner.
-\newblock Real-time earthquake warning for astronomical observatories.
-\newblock {\em Experimental Astronomy}, 39(2):387--404, 2015.
-
-\bibitem{CoEa2017}
-Michael Coughlin, Paul Earle, Jan Harms, Sebastien Biscans, Christopher
-  Buchanan, Eric Coughlin, Fred Donovan, Jeremy Fee, Hunter Gabbard, Michelle
-  Guy, Nikhil Mukund, and Matthew Perry.
-\newblock Limiting the effects of earthquakes on gravitational-wave
-  interferometers.
-\newblock {\em Classical and Quantum Gravity}, 34(4):044004, 2017.
-
-\bibitem{AbAd2002}
-R~Abbott, R~Adhikari, et~al.
-\newblock Seismic isolation for advanced ligo.
-\newblock {\em Classical and Quantum Gravity}, 19(7):1591, 2002.
-
-\bibitem{StAb2009}
-Alberto Stochino, Benjamin Abbot, Yoichi Aso, Mark Barton, Alessandro
-  Bertolini, Valerio Boschi, Dennis Coyne, Riccardo DeSalvo, Carlo Galli, Yumei
-  Huang, Alex Ivanov, Szabolcs Marka, David Ottaway, Virginio Sannibale, Chiara
-  Vanni, Hiroaki Yamamoto, and Sanichiro Yoshida.
-\newblock The seismic attenuation system (sas) for the advanced {LIGO}
-  gravitational wave interferometric detectors.
-\newblock {\em Nuclear Instruments and Methods in Physics Research Section A:
-  Accelerators, Spectrometers, Detectors and Associated Equipment}, 598(3):737
-  -- 753, 2009.
-
-\bibitem{MaLa2015}
-F~Matichard, B~Lantz, R~Mittleman, K~Mason, J~Kissel, B~Abbott, S~Biscans,
-  J~McIver, R~Abbott, S~Abbott, E~Allwine, S~Barnum, J~Birch, C~Celerier,
-  D~Clark, D~Coyne, D~DeBra, R~DeRosa, M~Evans, S~Foley, P~Fritschel, J~A
-  Giaime, C~Gray, G~Grabeel, J~Hanson, C~Hardham, M~Hillard, W~Hua,
-  C~Kucharczyk, M~Landry, A~Le Roux, V~Lhuillier, D~Macleod, M~Macinnis,
-  R~Mitchell, B~O’Reilly, D~Ottaway, H~Paris, A~Pele, M~Puma, H~Radkins,
-  C~Ramet, M~Robinson, L~Ruet, P~Sarin, D~Shoemaker, A~Stein, J~Thomas,
-  M~Vargas, K~Venkateswara, J~Warner, and S~Wen.
-\newblock Seismic isolation of advanced ligo: Review of strategy,
-  instrumentation and performance.
-\newblock {\em Classical and Quantum Gravity}, 32(18):185003, 2015.
-
 \bibitem{KuCo2015}
 H.~S. Kuyuk, S.~Colombelli, A.~Zollo, R.~M. Allen, and M.~O. Erdik.
 \newblock Automatic earthquake confirmation for early warning system.
@@ -165,12 +185,6 @@ J.~{Douglas}.
   response spectral ordinates}.
 \newblock {\em Earth Science Reviews}, 61:43--104, April 2003.
 
-\bibitem{AlGa2009}
-Richard~M. Allen, Paolo Gasparini, Osamu Kamigaichi, and Maren B{\"o}se.
-\newblock The status of earthquake early warning around the world: An
-  introductory overview.
-\newblock {\em Seismological Research Letters}, 80(5):682--693, 2009.
-
 \bibitem{MeCr2015}
 Diego Melgar, Brendan~W. Crowell, Jianghui Geng, Richard~M. Allen, Yehuda Bock,
   Sebastian Riquelme, Emma~M. Hill, Marino Protti, and Athanassios Ganas.
@@ -179,17 +193,57 @@ Diego Melgar, Brendan~W. Crowell, Jianghui Geng, Richard~M. Allen, Yehuda Bock,
 \newblock {\em Geophysical Research Letters}, 42(13):5197--5205, 2015.
 \newblock 2015GL064278.
 
-\bibitem{PaMu2012}
-G.~F. {Panza}, C.~L. {Mura}, A.~{Peresan}, F.~{Romanelli}, and F.~{Vaccari}.
-\newblock {Seismic Hazard Scenarios as Preventive Tools for a Disaster
-  Resilient Society}.
-\newblock {\em Advances in Geophysics}, 53:93--165, 2012.
+\bibitem{BiWa2018}
+Sebastien Biscans, Jim Warner, Richard Mittleman, Christopher Buchanan,
+  Michael~W Coughlin, Matthew Evans, Hunter Gabbard, Jan Harms, Brian Lantz,
+  Nikhil Mukund, Arnaud Pele, Charles Pezerat, Pascal Picart, Hugh Radkins, and
+  Thomas Shaffer.
+\newblock Control strategy to limit duty cycle impact of earthquakes on the
+  ligo gravitational-wave detectors.
+\newblock {\em Classical and Quantum Gravity}, 2018.
 
-\bibitem{Ch2007}
-Anil~K. Chopra.
-\newblock Elastic response spectrum: a historical note.
-\newblock {\em Earthquake Engineering \& Structural Dynamics}, 36(1):3--12,
-  2007.
+\bibitem{BCB2006}
+S.~Bonnefoy-Claudet, F.~Cotton, and P.-Y. Bard.
+\newblock {The nature of noise wavefield and its applications for site effects
+  studies; A literature review}.
+\newblock {\em Earth-Science Rev.}, 79:205, 2006.
+
+\bibitem{Pet1993}
+J.~Peterson.
+\newblock Observation and modeling of seismic background noise.
+\newblock {\em Open-file report}, 93-322, 1993.
+
+\bibitem{BDE2004}
+J.~Berger, P.~Davis, and G.~Ekstr{\"o}m.
+\newblock {Ambient Earth Noise: A survey of the Global Seismographic Network}.
+\newblock {\em Journal of Geophysical Research}, 109:B11307, 2004.
+
+\bibitem{McEA2009}
+D.~E. McNamara, C.~R. Hutt, L.~S. Gee, H.~M. Benz, and R.~P. Buland.
+\newblock {A Method to Establish Seismic Noise Baselines for Automated Station
+  Assessment}.
+\newblock {\em Seism.~Res.~Lett.}, 80:628, 2009.
+
+\bibitem{HMS1963}
+R.~A. Haubrich, W.~H. Munk, and F.~E. Snodgrass.
+\newblock Comparative spectra of microseisms and swell.
+\newblock {\em BSSA}, 53:27, 1963.
+
+\bibitem{ToLa1968}
+M.~N. {Toks\"oz} and R.~T. Lacoss.
+\newblock {Microseisms: Mode Structure and Sources}.
+\newblock {\em Science}, 159:872, 1968.
+
+\bibitem{Ces1994}
+R.~K. Cessaro.
+\newblock {Sources of Primary and Secondary Microseisms}.
+\newblock {\em BSSA}, 84:142, 1994.
+
+\bibitem{FKK1998}
+A.~Friedrich, F.~{Kr\"uger}, and K.~Klinge.
+\newblock Oceangenerated microseismic noise located with the {Gr\"afenberg}
+  array.
+\newblock {\em J.~Seism.}, 2:47, 1998.
 
 \bibitem{KoAl2016}
 Qingkai Kong, Richard~M. Allen, Louis Schreier, and Young-Woo Kwon.
@@ -235,15 +289,6 @@ Steve Diersen, En-Jui Lee, Diana Spears, Po~Chen, and Liqiang Wang.
 \newblock Proceedings of the International Conference on Computational Science,
   ICCS 2011.
 
-\bibitem{BiWa2018}
-Sebastien Biscans, Jim Warner, Richard Mittleman, Christopher Buchanan,
-  Michael~W Coughlin, Matthew Evans, Hunter Gabbard, Jan Harms, Brian Lantz,
-  Nikhil Mukund, Arnaud Pele, Charles Pezerat, Pascal Picart, Hugh Radkins, and
-  Thomas Shaffer.
-\newblock Control strategy to limit duty cycle impact of earthquakes on the
-  ligo gravitational-wave detectors.
-\newblock {\em Classical and Quantum Gravity}, 2018.
-
 \bibitem{Abadi:2016:TSL:3026877.3026899}
 Mart\'{\i}n Abadi, Paul Barham, Jianmin Chen, Zhifeng Chen, Andy Davis, Jeffrey
   Dean, Matthieu Devin, Sanjay Ghemawat, Geoffrey Irving, Michael Isard,
@@ -277,72 +322,19 @@ Prasanta~Chandra Mahalanobis.
 \newblock In {\em Proceedings of the National Institute of Sciences of India.},
   UAI'95, page 49–55, 1936.
 
-\bibitem{ChBo2011}
-N.~V. {Chawla}, K.~W. {Bowyer}, L.~O. {Hall}, and W.~P. {Kegelmeyer}.
-\newblock {SMOTE: Synthetic Minority Over-sampling Technique}.
-\newblock {\em ArXiv e-prints}, June 2011.
+\bibitem{specht1991general}
+Donald~F Specht.
+\newblock A general regression neural network.
+\newblock {\em IEEE transactions on neural networks}, 2(6):568--576, 1991.
 
-\bibitem{BCB2006}
-S.~Bonnefoy-Claudet, F.~Cotton, and P.-Y. Bard.
-\newblock {The nature of noise wavefield and its applications for site effects
-  studies; A literature review}.
-\newblock {\em Earth-Science Rev.}, 79:205, 2006.
+\bibitem{kingma2014adam}
+Diederik~P Kingma and Jimmy Ba.
+\newblock Adam: A method for stochastic optimization.
+\newblock {\em arXiv preprint arXiv:1412.6980}, 2014.
 
-\bibitem{Pet1993}
-J.~Peterson.
-\newblock Observation and modeling of seismic background noise.
-\newblock {\em Open-file report}, 93-322, 1993.
-
-\bibitem{BDE2004}
-J.~Berger, P.~Davis, and G.~Ekstr{\"o}m.
-\newblock {Ambient Earth Noise: A survey of the Global Seismographic Network}.
-\newblock {\em Journal of Geophysical Research}, 109:B11307, 2004.
-
-\bibitem{McEA2009}
-D.~E. McNamara, C.~R. Hutt, L.~S. Gee, H.~M. Benz, and R.~P. Buland.
-\newblock {A Method to Establish Seismic Noise Baselines for Automated Station
-  Assessment}.
-\newblock {\em Seism.~Res.~Lett.}, 80:628, 2009.
-
-\bibitem{HMS1963}
-R.~A. Haubrich, W.~H. Munk, and F.~E. Snodgrass.
-\newblock Comparative spectra of microseisms and swell.
-\newblock {\em BSSA}, 53:27, 1963.
-
-\bibitem{ToLa1968}
-M.~N. {Toks\"oz} and R.~T. Lacoss.
-\newblock {Microseisms: Mode Structure and Sources}.
-\newblock {\em Science}, 159:872, 1968.
-
-\bibitem{Ces1994}
-R.~K. Cessaro.
-\newblock {Sources of Primary and Secondary Microseisms}.
-\newblock {\em BSSA}, 84:142, 1994.
-
-\bibitem{FKK1998}
-A.~Friedrich, F.~{Kr\"uger}, and K.~Klinge.
-\newblock Oceangenerated microseismic noise located with the {Gr\"afenberg}
-  array.
-\newblock {\em J.~Seism.}, 2:47, 1998.
-
-\bibitem{BeCa2016}
-Mark Beker, Xander Campman, Julesvan Oven, Wim Walk, Jack Levell, Zijian Tang,
-  Mike Danilouchkine, Dirk Smit, Johannesvan den Brand, Soumen Koley, and Maria
-  Bader.
-\newblock Innovations in seismic sensors driven by the search for gravitational
-  waves.
-\newblock {\em The Leading Edge}, 35(7):590--593, 2016.
-
-\bibitem{VeHa2014}
-Krishna Venkateswara, Charles~A. Hagedorn, Matthew~D. Turner, Trevor Arp, and
-  Jens~H. Gundlach.
-\newblock A high-precision mechanical absolute-rotation sensor.
-\newblock {\em Review of Scientific Instruments}, 85(1):015005, 2014.
-
-\bibitem{AbEA2016f}
-{The LIGO Scientific Collaboration and Virgo Collaboration}.
-\newblock Characterization of transient noise in advanced ligo relevant to
-  gravitational wave signal gw150914.
-\newblock {\em Classical and Quantum Gravity}, 33(13):134001, 2016.
+\bibitem{Kaggle}
+{Kaggle} website.
+\newblock \url{https://www.kaggle.com}.
+\newblock Accessed: 2018-06-15.
 
 \end{thebibliography}
