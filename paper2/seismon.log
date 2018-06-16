@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.5.5)  16 JUN 2018 05:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.5.5)  16 JUN 2018 16:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1330,14 +1330,14 @@ File: ./plots/EQ_Distribution_geobubble.pdf Graphic file (type pdf)
 Package pdftex.def Info: ./plots/EQ_Distribution_geobubble.pdf  used on input l
 ine 151.
 (pdftex.def)             Requested size: 510.0pt x 187.44563pt.
-<./plots/Lockloss_Sensitivity.pdf, id=51, 954.37688pt x 379.0414pt>
-File: ./plots/Lockloss_Sensitivity.pdf Graphic file (type pdf)
-<use ./plots/Lockloss_Sensitivity.pdf>
-Package pdftex.def Info: ./plots/Lockloss_Sensitivity.pdf  used on input line 1
-59.
-(pdftex.def)             Requested size: 510.0pt x 202.55667pt.
+<./plots/Lockloss_Sensitivity_3.pdf, id=51, 921.95718pt x 254.81187pt>
+File: ./plots/Lockloss_Sensitivity_3.pdf Graphic file (type pdf)
+<use ./plots/Lockloss_Sensitivity_3.pdf>
+Package pdftex.def Info: ./plots/Lockloss_Sensitivity_3.pdf  used on input line
+ 159.
+(pdftex.def)             Requested size: 510.0pt x 140.95569pt.
  [1{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2 <
-./plots/EQ_Distribution_geobubble.pdf> <./plots/Lockloss_Sensitivity.pdf>]
+./plots/EQ_Distribution_geobubble.pdf> <./plots/Lockloss_Sensitivity_3.pdf>]
 <./plots/SEISMON_flowchart.pdf, id=138, 224.84pt x 334.24875pt>
 File: ./plots/SEISMON_flowchart.pdf Graphic file (type pdf)
 <use ./plots/SEISMON_flowchart.pdf>
@@ -1350,19 +1350,19 @@ pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./plots/SEISMON_flowchart.pd
 f): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', typ
 e <array>); ignored.
 >]
-<./plots/ClusteringPrediction.pdf, id=171, 1023.22577pt x 739.40665pt>
+<./plots/ClusteringPrediction.pdf, id=174, 1023.22577pt x 739.40665pt>
 File: ./plots/ClusteringPrediction.pdf Graphic file (type pdf)
 <use ./plots/ClusteringPrediction.pdf>
 Package pdftex.def Info: ./plots/ClusteringPrediction.pdf  used on input line 2
 30.
 (pdftex.def)             Requested size: 510.0pt x 368.52904pt.
-<./plots/ClusteringPredictionVirgo.pdf, id=172, 976.39377pt x 377.49821pt>
+<./plots/ClusteringPredictionVirgo.pdf, id=175, 976.39377pt x 377.49821pt>
 File: ./plots/ClusteringPredictionVirgo.pdf Graphic file (type pdf)
 <use ./plots/ClusteringPredictionVirgo.pdf>
 Package pdftex.def Info: ./plots/ClusteringPredictionVirgo.pdf  used on input l
 ine 237.
 (pdftex.def)             Requested size: 510.0pt x 197.1815pt.
-<./plots/USArray_with_HeatMap.pdf, id=178, 1009.8231pt x 415.69945pt>
+<./plots/USArray_with_HeatMap.pdf, id=181, 1009.8231pt x 415.69945pt>
 File: ./plots/USArray_with_HeatMap.pdf Graphic file (type pdf)
 <use ./plots/USArray_with_HeatMap.pdf>
 Package pdftex.def Info: ./plots/USArray_with_HeatMap.pdf  used on input line 2
@@ -1452,13 +1452,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 32971 strings out of 492649
- 666195 string characters out of 6129623
- 758796 words of memory out of 5000000
- 36329 multiletter control sequences out of 15000+600000
+ 32969 strings out of 492649
+ 666181 string characters out of 6129623
+ 757794 words of memory out of 5000000
+ 36327 multiletter control sequences out of 15000+600000
  539790 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,15n,67p,10380b,976s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,15n,67p,10380b,980s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
@@ -1473,7 +1473,7 @@ ive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texli
 ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/local/texlive
 /2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2
 018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on seismon.pdf (9 pages, 8673947 bytes).
+Output written on seismon.pdf (9 pages, 8677646 bytes).
 PDF statistics:
  363 PDF objects out of 1000 (max. 8388607)
  306 compressed objects within 4 object streams
