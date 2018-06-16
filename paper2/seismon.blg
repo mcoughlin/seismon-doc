@@ -1,47 +1,47 @@
-This is BibTeX, Version 0.99d (TeX Live 2018)
-Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: seismon.aux
-The style file: unsrt.bst
-Database file #1: seismonNotes.bib
-Database file #2: references.bib
-You've used 53 entries,
-            1791 wiz_defined-function locations,
-            809 strings with 14636 characters,
-and the built_in function-call counts, 13412 in all, are:
-= -- 1035
-> -- 884
+The style file: iopart-num.bst
+Database file #1: references.bib
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+You've used 54 entries,
+            3033 wiz_defined-function locations,
+            1019 strings with 16985 characters,
+and the built_in function-call counts, 62953 in all, are:
+= -- 7399
+> -- 964
 < -- 3
-+ -- 319
-- -- 266
-* -- 1116
-:= -- 2309
-add.period$ -- 164
-call.type$ -- 53
-change.case$ -- 53
++ -- 470
+- -- 370
+* -- 4391
+:= -- 6995
+add.period$ -- 0
+call.type$ -- 54
+change.case$ -- 8
 chr.to.int$ -- 0
-cite$ -- 53
-duplicate$ -- 506
-empty$ -- 1158
-format.name$ -- 266
-if$ -- 2836
+cite$ -- 54
+duplicate$ -- 5573
+empty$ -- 5838
+format.name$ -- 303
+if$ -- 14496
 int.to.chr$ -- 0
-int.to.str$ -- 53
-missing$ -- 52
-newline$ -- 271
+int.to.str$ -- 54
+missing$ -- 693
+newline$ -- 172
 num.names$ -- 54
-pop$ -- 72
+pop$ -- 1268
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 212
+skip$ -- 558
 stack$ -- 0
-substring$ -- 830
-swap$ -- 85
+substring$ -- 10371
+swap$ -- 1534
 text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 111
-width$ -- 55
-write$ -- 592
+while$ -- 785
+width$ -- 56
+write$ -- 486
