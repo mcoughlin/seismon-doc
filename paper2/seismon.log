@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  16 JUN 2018 13:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  3 JUL 2018 16:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1515,7 +1515,7 @@ File: ./plots/EQ_Distribution_geobubble.pdf Graphic file (type pdf)
 
 <use ./plots/EQ_Distribution_geobubble.pdf>
 Package pdftex.def Info: ./plots/EQ_Distribution_geobubble.pdf used on input li
-ne 151.
+ne 154.
 (pdftex.def)             Requested size: 510.0pt x 187.44563pt.
 
 <./plots/Lockloss_Sensitivity_3.pdf, id=51, 921.95718pt x 254.81187pt>
@@ -1523,7 +1523,7 @@ File: ./plots/Lockloss_Sensitivity_3.pdf Graphic file (type pdf)
 
 <use ./plots/Lockloss_Sensitivity_3.pdf>
 Package pdftex.def Info: ./plots/Lockloss_Sensitivity_3.pdf used on input line 
-159.
+162.
 (pdftex.def)             Requested size: 510.0pt x 140.95569pt.
  [1{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2 <
 ./plots/EQ_Distribution_geobubble.pdf> <./plots/Lockloss_Sensitivity_3.pdf>]
@@ -1531,38 +1531,38 @@ Package pdftex.def Info: ./plots/Lockloss_Sensitivity_3.pdf used on input line
 File: ./plots/SEISMON_flowchart.pdf Graphic file (type pdf)
 
 <use ./plots/SEISMON_flowchart.pdf>
-Package pdftex.def Info: ./plots/SEISMON_flowchart.pdf used on input line 199.
+Package pdftex.def Info: ./plots/SEISMON_flowchart.pdf used on input line 202.
 (pdftex.def)             Requested size: 157.38692pt x 233.97252pt.
  [3 <./plots/SEISMON_flowchart.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./plots/SEISMON_flowchart.pd
 f): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', typ
 e <array>); ignored.
->] <./plots/ClusteringPrediction.pdf, id=177, 1023.22577pt x 739.40665pt>
+>] <./plots/ClusteringPrediction.pdf, id=176, 1023.22577pt x 739.40665pt>
 File: ./plots/ClusteringPrediction.pdf Graphic file (type pdf)
 
 <use ./plots/ClusteringPrediction.pdf>
 Package pdftex.def Info: ./plots/ClusteringPrediction.pdf used on input line 22
-6.
+9.
 (pdftex.def)             Requested size: 510.0pt x 368.52904pt.
 
-<./plots/ClusteringPredictionVirgo.pdf, id=178, 976.39377pt x 377.49821pt>
+<./plots/ClusteringPredictionVirgo.pdf, id=177, 976.39377pt x 377.49821pt>
 File: ./plots/ClusteringPredictionVirgo.pdf Graphic file (type pdf)
 
 <use ./plots/ClusteringPredictionVirgo.pdf>
 Package pdftex.def Info: ./plots/ClusteringPredictionVirgo.pdf used on input li
-ne 233.
+ne 236.
 (pdftex.def)             Requested size: 510.0pt x 197.1815pt.
 
-<./plots/USArray_with_HeatMap.pdf, id=185, 1009.8231pt x 415.69945pt>
+<./plots/USArray_with_HeatMap.pdf, id=184, 1009.8231pt x 415.69945pt>
 File: ./plots/USArray_with_HeatMap.pdf Graphic file (type pdf)
 
 <use ./plots/USArray_with_HeatMap.pdf>
 Package pdftex.def Info: ./plots/USArray_with_HeatMap.pdf used on input line 26
-0.
+3.
 (pdftex.def)             Requested size: 510.0pt x 209.94241pt.
 
-Underfull \hbox (badness 1308) in paragraph at lines 268--269
+Underfull \hbox (badness 1308) in paragraph at lines 271--272
 []\OT1/cmr/m/n/10 Recently stacked en-sem-ble re-gres-sors have gained
  []
 
@@ -1575,22 +1575,22 @@ Overfull \vbox (17.21051pt too high) has occurred while \output is active []
 
 [5 <./plots/ClusteringPrediction.pdf> <./plots/ClusteringPredictionVirgo.pdf>]
 [6 <./plots/USArray_with_HeatMap.pdf>]
-Underfull \hbox (badness 5756) in paragraph at lines 351--353
+Underfull \hbox (badness 5756) in paragraph at lines 353--355
 []\OT1/cmr/bx/n/10 Code avail-abil-ity. \OT1/cmr/m/n/10 The code to re-pro-duce
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 351--353
+Underfull \hbox (badness 10000) in paragraph at lines 353--355
 \OT1/cmr/m/n/10 the anal-y-sis is open-source and avail-able at
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 351--353
+Underfull \hbox (badness 10000) in paragraph at lines 353--355
 \OT1/cmr/m/n/10 https://github.com/ligovirgo/seismon/ for pub-lic
  []
 
-(./seismon.bbl
+(./seismon.bbl [7]
 Underfull \hbox (badness 4792) in paragraph at lines 23--26
  []\OT1/cmr/m/n/9 Abbott, B P et al (LIGO Sci-en-tific Col-lab-o-ra-
  []
@@ -1601,7 +1601,7 @@ Underfull \hbox (badness 3919) in paragraph at lines 23--26
  link . aps . org / doi / 10 .
  []
 
-[7]
+
 Underfull \hbox (badness 4792) in paragraph at lines 28--31
  []\OT1/cmr/m/n/9 Abbott, B P et al (LIGO Sci-en-tific Col-lab-o-ra-
  []
@@ -1673,7 +1673,7 @@ Underfull \hbox (badness 2165) in paragraph at lines 159--162
 m / science /
  []
 
-
+[8]
 Underfull \hbox (badness 6493) in paragraph at lines 175--179
  []\OT1/cmr/m/n/9 Diersen S, Lee E J, Spears D, Chen P and
  []
@@ -1706,7 +1706,7 @@ Underfull \hbox (badness 3989) in paragraph at lines 190--194
 cience . iop . org / 10 . 1088 /
  []
 
-[8]
+
 Underfull \hbox (badness 10000) in paragraph at lines 254--255
  []\OT1/cmr/m/n/9 Kingma D P and Ba J 2014 \OT1/cmr/m/it/9 arXiv preprint
  []
@@ -1718,11 +1718,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 257--258
  []
 
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 366.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 366.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 368.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 368.
  [9] (./seismon.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 366.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 366.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 368.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 368.
 Package rerunfilecheck Info: File `seismon.out' has not changed.
 (rerunfilecheck)             Checksum: 00FC9ED9717F3F745F834BABFFBBD857;359.
 
@@ -1732,12 +1732,12 @@ LaTeX Warning: There were multiply-defined labels.
  ) 
 Here is how much of TeX's memory you used:
  31006 strings out of 493089
- 626878 string characters out of 6134842
- 702178 words of memory out of 5000000
+ 626875 string characters out of 6134842
+ 706178 words of memory out of 5000000
  33943 multiletter control sequences out of 15000+600000
  13158 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,15n,67p,10396b,1008s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,15n,67p,10396b,994s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
@@ -1752,7 +1752,7 @@ ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texli
 ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/local/texlive
 /2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2
 015/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on seismon.pdf (9 pages, 8682886 bytes).
+Output written on seismon.pdf (9 pages, 8683136 bytes).
 PDF statistics:
  410 PDF objects out of 1000 (max. 8388607)
  353 compressed objects within 4 object streams

@@ -121,6 +121,9 @@ INFN, Laboratori Nazionali del Gran Sasso, I-67100 Assergi, Italy}
 \author{Hugh Radkins}
 \affiliation{LIGO Hanford Observatory, Richland, WA 99352, USA}
 
+\author{Sky Soltero}
+\affiliation{Department of Physics, Cypress College, Cypress, CA 90630, USA}
+
 \author{Bas Swinkels}
 \affiliation{European Gravitational Observatory (EGO), I-56021 Cascina, Pisa, Italy}
 
@@ -344,9 +347,8 @@ we are able to make predictions for the inliers with an accuracy above 92\,\%, k
 \section{Conclusions}
 \label{sec:conclusion}
 In conclusion, we have used MLAs to predict peak ground velocities from teleseismic earthquakes. The estimated ground velocity is used to forecast the potential effect of earthquakes on gravitational-wave detectors and issue near real-time alerts at the site \ref{fig:flowchart}. Alert system based on this scheme has been implemented at the GW observatories and would be used in the near future to switch seismic filters at very low frequencies. Given the significant interest in accurate ground velocity predictions for EEW systems in general, we believe the techniques here are beneficial beyond the gravitational-wave community.
-While we focus on the prediction of peak ground velocity here, in future we would explore the possibility of using historical seismometer data along with CMT parameters to predict radiation pattern associated with the fault rupture.
-This would provide a way to directly measure transfer functions between ground motion very near the earthquake source and those in areas of significant seismological hazard, such as in the Los Angeles basin.
 
+This paper has discussed the predictions of ground velocities from earthquakes and their effects on ground-based detectors. While these predictions are useful, they are only part of the story, as accurate earthquake arrival times are required for a useful response. For this reason, in the future, we will improve the existing infrastructure to use the machine learning algorithms described here to improve arrival time predictions. Further investigations into how to best broaden the data resources and link into the vast global network of seismic stations to improve ground velocity and arrival time predictions will be explored. In addition, we would explore the possibility of using historical seismometer data along with CMT parameters to predict radiation pattern associated with the fault rupture. This would provide a way to directly measure transfer functions between ground motion very near the earthquake source and those in areas of significant seismological hazard, such as in the Los Angeles basin.
 
 \textbf{Code availability.}
 The code to reproduce the analysis is open-source and available at https://github.com/ligovirgo/seismon/ for public download.
